@@ -1,0 +1,23 @@
+#reference: Table 3 in http://share.scb.se/ov9993/data/publikationer/statistik/am/am0208/2007a01/am0208_2007a01_sm_am33sm0901.pdf
+
+#occupation  #nr  women  #nr-men  #women-%  #men-% 
+Undersköterskor, sjukvårdsbiträden m.fl. 148 600 11 700 93 7
+Vårdbiträden, personliga assistenter m.fl. 135 000 25 500 84 16
+Barnskötare m.fl. 85 300 10 900 89 11
+Förskollärare och fritidspedagoger 74 900 6 200 92 8
+Övrig kontorspersonal 73 500 19 600 79 21
+Grundskollärare 66 600 20 400 77 23
+Försäljare, fackhandel 61 000 38 000 62 38
+Hotell- och kontorsstädare m.fl. 52 600 13 500 80 20
+Bokförings- och redovisningsassistenter 47 400 5 100 90 10
+Övriga sjuksköterskor 47 400 4 900 91 9
+Skötare och vårdare 47 000 15 600 75 25
+Försäljare, dagligvaror 44 400 19 600 69 31
+Köks- och restaurangbiträden 42 500 12 900 77 23
+Administratörer i offentlig förvaltning 32 500 22 300 59 41
+Administrativa assistenter 32 100 8 200 80 20
+Kontorssekreterare, läkarsekreterare m.fl. 31 100 800 97 3
+Socialsekreterare och kuratorer 23 000 4 500 84 16
+Företagssäljare 23 000 60 000 28 72
+Kockar och kokerskor 18 300 13 500 58 42
+Receptionister m.fl. 17 900 3 500 84 16
