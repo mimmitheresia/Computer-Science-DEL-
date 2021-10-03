@@ -1,14 +1,15 @@
 # adSeparator.py reads advertasement dataset from each year (default 2006-2010).
 # Python program to read
+# Python program to read
 # json file
 import json 
-import re
+
 
 class FileObjects:
     def __init__(self):
-        self.f_nr = open("nr-by-occupation-10.txt","w",encoding="utf8") #0-07 size: 22.8kB
-        self.f_tx = open("text-by-occupation-10.txt","w",encoding="utf8") #06-07 size: 39.1MB
-        self.f_hd = open("head-by-occupation-10.txt","w",encoding="utf8") #06-07 size: 976kB
+        self.f_nr = open("nr-by-occupation-06.txt","w",encoding="utf8") #0-07 size: 22.8kB
+        self.f_tx = open("text-by-occupation-06.txt","w",encoding="utf8") #06-07 size: 39.1MB
+        self.f_hd = open("head-by-occupation-06.txt","w",encoding="utf8") #06-07 size: 976kB
     
     def write_to_file(self, occ_mer):
         
@@ -113,6 +114,6 @@ def main():
         print("Valid adds: " + str(valid_nr))
         print("Invalid adds: " + str(adv_total-valid_nr))
         f.close()
-    f_o.write_to_file(occ_mer)
+    #f_o.write_to_file(occ_mer)
     print("End") 
 main()
