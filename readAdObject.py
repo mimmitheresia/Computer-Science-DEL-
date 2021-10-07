@@ -58,16 +58,16 @@ def sort_popular_occ(occ):
     print("Top 50 popular occupations in total advertisement set (2006-2010)")
     print("#Occupation  #Nr of advertisements")
     popular_occupations = {}
-    it = len(occ.nr_by_occupation)
+    it = len(occ.occupation_frequency)
     for i in range(1,101):
         current_value = 0
         current_occ = None 
-        for occ in occ.nr_by_occupation:
-            occ_nr = occ.nr_by_occupation.get(occ)
+        for term in occ.occupation_frequency:
+            occ_nr = occ.occupation_frequency.get(term)
             if occ_nr > current_value:
-                if occ not in popular_occupations: 
+                if term not in popular_occupations: 
                     current_value = occ_nr
-                    current_occ = occ
+                    current_occ = term
         highest_value = current_value
         highest_occ = current_occ
         popular_occupations[highest_occ] = True
@@ -119,7 +119,7 @@ def main():
         print("Valid adds: " + str(valid_nr))
         print("Invalid adds: " + str(ad_total-valid_nr))
         f.close()
-    #f_o.write_to_file(occ)
+    f_o.write_to_file(occ)
     sort_popular_occ(occ)
     print("End") 
 main()
