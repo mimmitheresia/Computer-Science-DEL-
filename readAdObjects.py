@@ -106,7 +106,7 @@ def iterate_adv_set(occ,ad_set):
 
 def main(): 
     occ = OccupationDict()
-    f_o = TextFile()
+    #f_o = TextFile()
     valid_nr = 0 #Initiating 
     for year in range(2006,2011):
         f = open(str(year)+'.json')
@@ -119,7 +119,7 @@ def main():
         print("Valid adds: " + str(valid_nr))
         print("Invalid adds: " + str(ad_total-valid_nr))
         f.close()
-    f_o.write_to_file(occ)
+    #f_o.write_to_file(occ)
     sort_popular_occ(occ)
     print("End") 
 main()
