@@ -16,7 +16,7 @@ class OccupationAds:
 def readAdTerms():
     ads_obj_dict = {}
     ads_occ_list = []
-    f = open("2006-2011-occupation-frequency.txt","r",encoding="utf8")
+    f = open("2006-2010-occupation-frequency.txt","r",encoding="utf8")
     for row in f:
         index = row.rfind(":")
         occ = row[:index].strip()
@@ -54,7 +54,8 @@ def return_manual_match(stat_gender, ad_occ,ad_obj, gender):
     #{stat_index, [ad_indexs]}  = {index of accurate label in stat_women, list of index of accurate ad match in match-list}
     #if match is set to True: all matches are included 
     if gender == "Women":
-        accurate_gender_ads = {0:0, 2:0, 3:"ALL", 4:0, 5:0, 8:0, 9:0, 10:[0,1],11:0, 14:3} 
+       # _old_accurate_gender_ads = {0:0, 2:0, 3:"ALL", 4:0, 5:0, 8:0, 9:0, 10:[0,1],11:0, 14:3} 
+        accurate_gender_ads = {0:[0,1,2,3,4,5,7,8], 1: "ALL" , 2:"ALL", 3: "ALL", 4:[0,1,3], 5:[0,5], 6:2, 7:[3,5], 8:0, 9:0, 10:[0,1,5],11:0,12:[0,],13:0, 14:3}
         f = open("women-ad-occupations.txt", "w", encoding = "utf-8")
     if gender == "Men":
         accurate_gender_ads = { 0:0, 11:6, 18:[0,1,4], 19:0, 31:0,32:0, 36:[0,3], 37:[1,2], 38:[1,2], 39:0, 40:[0,1], 55:0}
@@ -107,7 +108,6 @@ def returnOneAccurate(ad_matches, ad_indexs):
         ad_i +=1
 
 def returnSeveralAccurate(ad_matches, ad_indexs):
-    
     returnlist = []
     for acc in ad_indexs:
         ad_i = 0
