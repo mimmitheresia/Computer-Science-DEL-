@@ -18,10 +18,10 @@ class OccupationDict():
 
 class TextFile:
     def __init__(self):
-        self.f_nr = open("2006-2011-occupation-frequency.txt","w",encoding="utf8") #0-07 size: 22.8kB 
+        self.f_nr = open("2006-2010-occupation-frequency.txt","w",encoding="utf8") #0-07 size: 22.8kB 
     
     def write_to_file(self, occ):
-        print("Writing each occupation to 2006-2011-occupation-frequency.txt.")
+        print("Writing each occupation to 2006-2010-occupation-frequency.txt.")
         nr_of_occ = len(occ.occupation_frequency)
         print("Number of unique occupations in total data set:" + str(nr_of_occ))
         term_nr = 0
