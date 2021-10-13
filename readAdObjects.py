@@ -18,10 +18,10 @@ class OccupationDict():
 
 class TextFile:
     def __init__(self):
-        self.f_nr = open("2006-2010-occupation-frequency.txt","w",encoding="utf8") #0-07 size: 22.8kB 
+        self.f_nr = open("2006-2011-occupation-frequency.txt","w",encoding="utf8") #0-07 size: 22.8kB 
     
     def write_to_file(self, occ):
-        print("Writing each occupation to 2006-2010-occupation-frequency.txt.")
+        print("Writing each occupation to 2006-2011-occupation-frequency.txt.")
         nr_of_occ = len(occ.occupation_frequency)
         print("Number of unique occupations in total data set:" + str(nr_of_occ))
         term_nr = 0
@@ -106,7 +106,7 @@ def iterate_adv_set(occ,ad_set):
 
 def main(): 
     occ = OccupationDict()
-    #f_o = TextFile()
+    f_o = TextFile()
     valid_nr = 0 #Initiating 
     for year in range(2006,2011):
         f = open(str(year)+'.json')
@@ -119,7 +119,7 @@ def main():
         print("Valid adds: " + str(valid_nr))
         print("Invalid adds: " + str(ad_total-valid_nr))
         f.close()
-    #f_o.write_to_file(occ)
+    f_o.write_to_file(occ)
     sort_popular_occ(occ)
     print("End") 
 main()
