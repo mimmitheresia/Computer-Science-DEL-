@@ -98,7 +98,7 @@ class NaiveBayes:
             
             #CHECK CLASS2
             if lemma not in class2.lemma_pos_freq:
-                P_c1_t =  0
+                P_c2_t =  0
                 c2_term_freq = 0
             else: #if lemma is in class
                 if pos not in class2.lemma_pos_freq[lemma]:
@@ -257,7 +257,9 @@ def POS_all_ads(pos, occ,gC,limit,f):
                         extract_word_classes(token,gC,f) 
 
        
-
+"""
+USED IN STEP 1
+"""
 def find_gender_occupation(occ,adv,classified_occupations):
     valid = True 
     occ_label = adv["occupation"]["label"]
@@ -277,6 +279,9 @@ def find_gender_occupation(occ,adv,classified_occupations):
         valid = False
     return valid 
 
+"""
+USED IN STEP 1
+"""
 def iterate_ad_set(occ_sep,ad_set,classified_occupations): 
     valid_nr = 0
     adv_nr = 1
@@ -324,7 +329,7 @@ def read_classified_occupations(gender):
 USED IN STEP 2
 Goes through the POS-files and create token-objects (MANUAL_POS)
 """
-def read_POS_terms(gC,gender,limit,year,POS_obj):
+def read_POS_terms(gC,gender,limit,year,POS_obj, use_sprakbanken_wordclasses):
     if gender == "Women":
         f = open("POS-" + str(year) + "-Women", "r", encoding = "utf-8")
     if gender == "Men":
@@ -333,14 +338,17 @@ def read_POS_terms(gC,gender,limit,year,POS_obj):
     for row in f: 
         term = row.split(" ")
         if len(term) == 4:
-            #----Change----
-            #Check if the term is in the POS_obj.wordclass-dict, i.e. from the new wordclass-dataset
-            if term[0].lower() in POS_obj.wordclass:
-                POStag = max(POS_obj.wordclass.get(term[0].lower()), key=POS_obj.wordclass.get(term[0].lower()).get)
-            #if the term isn't available in the POS_obj.wordclass-dict, then we use the spacy_udpipe POStag
+            if use_sprakbanken_wordclasses == True:
+                #----Change----
+                #Check if the term is in the POS_obj.wordclass-dict, i.e. from the new wordclass-dataset
+                if term[0].lower() in POS_obj.wordclass:
+                    POStag = max(POS_obj.wordclass.get(term[0].lower()), key=POS_obj.wordclass.get(term[0].lower()).get)
+                #if the term isn't available in the POS_obj.wordclass-dict, then we use the spacy_udpipe POStag
+                else:
+                    POStag = term[2]
+                #----End-of-change----
             else:
                 POStag = term[2]
-            #----End-of-change----
             token = MANUAL_POS(term[0].lower(),term[1].lower(),POStag,term[3].strip('\n')) #change POStag to term[2] for older version
             if limit == None:
                 extract_word_classes(token,gC,None)
@@ -459,7 +467,9 @@ def extract_unique_gender_terms(gender_class_list):
     #         i+=1
             #print(str(i) + ". " + str(term) + " " + str(class1.lemma_pos_freq.get(term)) +" " + str(class1.word_class.get(term)))
     
-
+"""
+USED IN STEP 2
+"""
 def classify_extreme(nB,gender_class_list):
     class1 = gender_class_list[0]
     class2 = gender_class_list[1]
@@ -468,23 +478,26 @@ def classify_extreme(nB,gender_class_list):
     result_list = {}
     for lemma in class1.lemma_pos_freq:
         pos_dict = class1.lemma_pos_freq.get(lemma)
-
-        P_1, P_2 = nB.classify_lemma(lemma)
-        if (P_1 > 0.88) and (P_1 < 0.95): 
-             result_list[lemma] = ["M", P_1,P_2] 
-        
-        if (P_2 > 0.88) and (P_2 < 0.95):
-            result_list[lemma] = ["W", P_1,P_2]
+        POStag = max(pos_dict, key=pos_dict.get)
+        if POStag == "ADJ":
+            P_1, P_2 = nB.classify_lemma(lemma, POStag)
+            if (P_1 > 0.85) and (P_1 < 0.98): 
+                result_list[lemma] = ["M", P_1,P_2] 
+            
+            if (P_2 > 0.85) and (P_2 < 0.98):
+                result_list[lemma] = ["W", P_1,P_2]
 
     print(" ")
     print("RESULT:")
     print("term [Gender,P(M|term), P(W|term)]")
-    special_char = '"-[@_!$%^&*().<>?/\|}{~:]#'
     for term in result_list:
-        if (class1.word_class[term] == "ADJ") and not any(c in special_char for c in term):
-            print(str(term)+ " " + str(class1.word_class[term]) + " " +str(result_list.get(term)))
-    
-def classify_input(pos,nB):
+        print(str(term)+ " " + str(result_list.get(term)))
+
+"""
+USED IN STEP 2
+Classify the user-input from the terminal
+""" 
+def classify_input(pos,nB,POS_obj,use_sprakbanken_wordclasses):
     while True:
         print(" ")
         print("Type input text:") 
@@ -496,11 +509,15 @@ def classify_input(pos,nB):
         print(" ")
         result_list = {}
         pos_list = pos.nlp(lower_terms)
-            
+
         #CLASSIFY WITH LEMMA
         print("CLASSIFY WITH LEMMA: ")
         for term in pos_list:
-            P_1, P_2 = nB.classify_lemma(term.lemma_, term.pos_)
+            if (use_sprakbanken_wordclasses == True) and (term.text in POS_obj.wordclass):
+                POStag = max(POS_obj.wordclass.get(term.text), key=POS_obj.wordclass.get(term.text).get)
+                P_1, P_2 = nB.classify_lemma(term.lemma_, POStag)
+            else:
+                P_1, P_2 = nB.classify_lemma(term.lemma_, term.pos_)
             print(term.text, term.lemma_, term.pos_, term.dep_, term.tag_)
             
     
@@ -547,79 +564,7 @@ def classify_input(pos,nB):
         for term in result_list:
             print(str(term)+  " " +str(result_list.get(term)))
 
-"""
-USED IN STEP 2
-"""
-def classify_input_with_new_POStag(pos, POS_obj, nB):
-    while True:
-        print(" ")
-        print("Type input text:") 
-        inp = input()
-        terms  = inp.split()
-        lower_terms = []
-        POStag_list = []
-        for term in terms:
-            lower_term = term.lower()
-            lower_terms.append(lower_term)
-            if lower_term in POS_obj.wordclass:
-                print("Finns med i listan")
-                wordclass = max(POS_obj.wordclass.get(lower_term), key=POS_obj.wordclass.get(lower_term).get)
-                POStag_list.append(wordclass)
-            else:
-                print("Finns EJ med i listan")
-                POStag_list.append(None)
-        
-        result_list = {}
-        pos_list = pos.nlp(lower_terms)
-            
-        # #CLASSIFY WITH LEMMA
-        print("CLASSIFY WITH LEMMA: ")
-        i = 0
-        for term in pos_list:
-            P_1, P_2 = nB.classify_lemma(term.lemma_, POStag_list[i])   
-            i+=1
-    
-            if (P_1 and P_2) == None: 
-                #print("The term '" +str(term) + "' cannot be classified.")
-                result_list[term] = None
-            elif P_1 > P_2: 
-                #print(str(term) + " = MEN  ")
-                result_list[term] = ["M", P_1,P_2] 
-            else:
-                #print(str(term) + " = WOMEN  ")
-                result_list[term] = ["W", P_1,P_2]
-            #print("P(Men I " + str(term) + ") = " + str(P_1) + "   -   P(Women I " + str(term) + ") = " + str(P_2))
 
-
-        print(" ")
-        print("RESULT WITH LEMMA:")
-        print("term [Gender,P(M|term), P(W|term)]")
-        for term in result_list:
-            print(str(term)+  " " +str(result_list.get(term)))
-
-        print("-----")
-        #CLASSIFY WITH TEXT
-        for term in pos_list:
-            P_1, P_2 = nB.classify_text(term.text, term.lemma_)
-            
-    
-            if (P_1 and P_2) == None: 
-                #print("The term '" +str(term) + "' cannot be classified.")
-                result_list[term] = None
-            elif P_1 > P_2: 
-                #print(str(term) + " = MEN  ")
-                result_list[term] = ["M", P_1,P_2] 
-            else:
-                #print(str(term) + " = WOMEN  ")
-                result_list[term] = ["W", P_1,P_2]
-            #print("P(Men I " + str(term) + ") = " + str(P_1) + "   -   P(Women I " + str(term) + ") = " + str(P_2))
-
-
-        print(" ")
-        print("RESULT WITH TEXT:")
-        print("term [Gender,P(M|term), P(W|term)]")
-        for term in result_list:
-            print(str(term)+  " " +str(result_list.get(term)))
 
 """
 USED IN STEP 2
@@ -686,23 +631,25 @@ def step2_collect_POStags_and_classify(g_list, nB, pos, limit):
     #List to be able to access the GenderClass-objects
     gender_class_list = []
 
-    #Read all POStags from the new wordclass-dataset and collect it the POS_obj
+    #Read all POStags from the new wordclass-dataset and collect it in the POS_obj
     POS_obj = POStags()
     collect_POS_tags(POS_obj)
+
+    #Set this one to True if you want to use språkbankens dataset och False otherwise
+    use_sprakbanken_wordclasses = True
     
     for gender in g_list:
         gC = GenderClass(gender)
         gender_class_list.append(gC)
         for year in range(2006, 2011):
-            read_POS_terms(gC,gender,limit, year, POS_obj)
+            read_POS_terms(gC,gender,limit, year, POS_obj, use_sprakbanken_wordclasses)
         nB.createClass(gC)
         limit = gC.total_nr
         #sort_popular_terms(gC)
     #xtract_unique_gender_lemmas(gender_class_list)
     #extract_unique_gender_terms(gender_class_list)
     #classify_extreme(nB, gender_class_list)
-    #classify_input(pos,nB)
-    classify_input_with_new_POStag(pos, POS_obj, nB)
+    classify_input(pos,nB, POS_obj, use_sprakbanken_wordclasses)
 
 def main():
     g_list = ["Men", "Women"]
