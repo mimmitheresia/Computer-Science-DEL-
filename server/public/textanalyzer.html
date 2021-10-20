@@ -1,75 +1,259 @@
 <!DOCTYPE html> 
 <html lang="sv"> 
 <head>
-    <link rel="stylesheet" type="text/css" href="styletextanalyzer.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Textanalyzer</title>
+    <style> 
+        body {
+            background-color:rgb(121, 124, 121);
+        }
+        h1{
+            color: rgb(255, 255, 255);
+        }
+        .p {
+        font-family: "Lucida Console", "Courier New", monospace;
+        }
+        .header-right { 
+            position:float;
+            margin-right:5px;
+            }
+            #profile-btn {
+            font-family: "Lucida Console", "Courier New", monospace;
+            background-color: #ddd;
+            border: none;
+            color: rgb(65, 62, 62);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+            }
+            #logout-btn {
+            font-family: "Lucida Console", "Courier New", monospace;
+            background-color: rgb(41, 34, 34);
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+            }
+
+        .profile-table-right{
+            float:right;
+            background:#fceadfbb;
+            width:40%;
+            margin-top: 8%;
+            margin-left: 75%;
+            height:310px;
+            }
+
+        .ad-table-left{
+            float:left;
+            position: absolute;
+            width:70%;
+          
+            }
+            .target-btns {
+            background-color: #fceadfbb; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-family: "Lucida Console", "Courier New", monospace;
+            }
+            #edittable {
+            width: 540px;
+            height: 200px;
+            border: 3px #3d3838 solid;
+            padding: 12px;
+            overflow: scroll;
+            background-color: rgb(255, 255, 255);
+            }
+        
+       
+        #w-class{
+            text-decoration-color: rgb(192, 115, 154);
+            text-decoration-thickness: 3px;
+          
+        }
+        #m-class{
+            text-decoration-color:rgb(58, 122, 196);
+            text-decoration-thickness: 3px;
+        }
+        #n-class {
+            text-decoration-color: rgba(150, 34, 34, 0.3);
+            text-decoration-thickness: 3px;
+            text-decoration: none;
+        }
+        #remove-under {
+            text-decoration: none;
+        }
+       
+    </style> 
 </head>
+
+
 <body>
-    <form action ="/useraction" id ="action" method="post">
-        <div id="username" name="username" ></div>
-        <h1>Carpe Competence</h1>   
-        <b> 
-            Choose which gender you would like to target: 
-            <input type="submit" name="target" id="t1" value="male"> 
-            <input type = "submit" name="target" id="t2" value="female">
-            <div id="t-status">t-status here: </div>
-        </b>
-        <h3>Write or paste your description here:</h3>
-        <textarea cols="70" rows="15" name="description"></textarea>
-        <input type="submit"  cols="35" name = "analyze" value="analyze">
-        <div id="a-status">a-status here:</div>
-    </form>
+    <div class="header-right">
+            <button id="profile-btn"></button>
+            <form action ="/signout" method="get">
+                <input type="submit" id="logout-btn" name="signout" value="Logga ut">  
+            </form>  
+    </div>
+
+    <div class="profile-table-right"> 
+        <div id = "statistics" class = "p">
+            Profil:
+        </div>
+        <div id="result-board" class = "p">
+            Resultat:
+        </div>     
+    </div>
+    
+    <div class ="ad-table-left">
+        <h1 class = "p">Carpe Competence</h1>
+        <form action ="/targetaction" id ="target-area" method="post">
+             
+            <label class ="p">Välj önskat kön att attrahera:</label>
+
+            <input type="submit" class="target-btns" name="target" id="MAN" value="MAN"> 
+            <input type = "submit" class = "target-btns" name="target" id="KVINNA" value="KVINNA">
+        </form>
+
+        <form action ="/analyzeaction" id ="analyze-area" method="post">
+            <pre>
+                <div contenteditable="true" id ="edittable" name = "description"></div>
+            </pre>
+            <input type="hidden" id="h-content" name="hidden" value="lala">
+            <input type="submit" class="p" cols="35" name = "analyze" value="analyze" onclick="SetHiddenDescription()"> 
+            <div id="a-status" class="p"> </div>
+        </form>
+    </div>
   
 
     <script>
-        class LoggedInUser {
-            constructor() {
-                this.name = null;
-            }
-        }
-        const currentuser = new LoggedInUser();
-        const params = new URLSearchParams(location.search);
-        const $userDiv = document.querySelector('#username');
-        //document.getElementById("action").action = "/useraction:" + currentuser;
-        if (params.has('user')) {
-            console.log("param has user");
-            currentuser.name = params.get('user');
-            $userDiv.innerText = `User: ${currentuser.name}`;
-            document.getElementById("action").action = "/useraction:" + currentuser.name;
-            //document.getElementById("a-t").action = "/analyzetext:" + username
-        }
-        if (params.has('target')) {
-            console.log("param has target");
-            const currentuser = params.get("user");
-            console.log(currentuser)
-            const targetstatus = params.get('target');
-            console.log(targetstatus);
-            //const newDiv = document.createElement("div");
-            const currentDiv = document.getElementById("t-status");
-            const newNode = document.createTextNode(targetstatus);
-            currentDiv.appendChild(newNode);
-            document.getElementById("action").action = "/useraction:" + currentuser;
-            //document.getElementById("userurl").action = "/targetaction:" + username;
-            //document.getElementById("analyze").action = "/analyzetext:" + username
-        }
-        if (params.has('analyze')) {
-            console.log("param has analyze")
+        let name;
+        let target;
+        let description;
+        getUserParams();
+    
+        function getUserParams() { 
+            const params = new URLSearchParams(location.search);
+            name = params.get('user');
+            const textNode = document.createTextNode(name);
+            const nameNode = document.getElementById("profile-btn");
+            nameNode.appendChild(textNode);
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = "Skriv din annons här...";
+            document.getElementById("target-area").action += ":" + name;
+            console.log(name);
+            
+            if (params.has('target')) {
+            target = params.get('target');
+            document.getElementById(target).style.background='#3d3838';
+            console.log(target);}
+
+            if (params.has('analyze')) {
             const analyzestatus = params.get('analyze');
-            console.log(analyzestatus);
-            //const newDiv = document.createElement("div");
-            const currentDiv = document.getElementById("a-status");
-            const newNode = document.createTextNode(analyzestatus);
-            currentDiv.appendChild(newNode);
-            document.getElementById("action").action = "/useraction:" + currentuser.name;
+                if (analyzestatus.includes("Not successful")){
+                    alert("Du måste välja en profil att anställa");}
+                else {
+                    const aDiv = document.getElementById("a-status");
+                    const textNode = document.createTextNode(analyzestatus);
+                    aDiv.appendChild(textNode);
+                    console.log(analyzestatus);}}
+
+            if (params.has('description')) {
+                tagAnalyzedDescription(params.get('description'), params.get('result'))}
         }
-       
+
+        function tagAnalyzedDescription(description,result){
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = "";
+
+            var result_by_word = result.split("{"); 
+            result_by_word = result_by_word.slice(1);
+            for (var i in result_by_word) { 
+                //Get result by word 
+                word_res = result_by_word[i].replace("}","");
+                word_res = word_res.split("[");
+                var word = word_res[1].replace("]","").trim();   
+                const g_class = word_res[2].replace("]","").trim(); 
+                const prob = word_res[3].replace("]","").trim(); 
+
+                //Create nodes for word   
+                var textNode = null;
+                var charNode = null;
+                var spaceNode = document.createTextNode(" ");
+                var charElement = null;
+                var spaceElement = document.createElement('u');
+                spaceElement.setAttribute("id", "remove-under");
+                spaceElement.appendChild(spaceNode);
+                const wordNode = document.createElement('u');
+
+                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+                var lastChar = word.charAt(word.length-1);
+                wordContainsChar = /[,.]/.test(lastChar);
+                if (wordContainsChar){
+                    //Adding tag without underline for commas. 
+                    console.log("WORD CONTAINS CHAR");
+                    var word_without_char = word.substring(0, word.length-1);
+                    textNode = document.createTextNode(word_without_char);
+                    console.log("cleanword:");
+                    console.log(word_without_char);       
+                    charNode = document.createTextNode(lastChar);
+                    charElement = document.createElement('u');
+                    charElement.setAttribute("id", "remove-under");
+                    charElement.appendChild(charNode);
+                }
+                else {
+                    //The whole word can be underlined. 
+                    textNode = document.createTextNode(word);
+                }    
+ 
+                //Set genderclass as ID for word
+                if (g_class.includes("n")) {
+                    console.log("n-class");
+                    wordNode.setAttribute("id", "n-class");}
+                if (g_class.includes("w")) {
+                    console.log("w-class");
+                    wordNode.setAttribute("id", "w-class");}
+                if (g_class.includes("m")) {
+                    console.log("m-class");
+                    wordNode.setAttribute("id", "m-class");}   
+                
+                //Add word to textArea     
+                wordNode.appendChild(textNode);
+                textArea.appendChild(wordNode);
+                if (wordContainsChar){ 
+                    textArea.appendChild(charElement)
+                }
+                textArea.appendChild(spaceElement);
+            }          
+        }
+         
+            
+        function SetHiddenDescription(){
+            console.log("GetinputText()")
+            const contentDiv = document.getElementById("edittable");
+            description = contentDiv.textContent;
+            document.getElementById("h-content").value = description;
+            document.getElementById("analyze-area").action += ":" + name + ":" + target
+        }
+           // <img src="https://assets.codepen.io/3306515/IMG_2d025.jpg" />
       </script>
 
 </body>
 </html>
   
-
 
