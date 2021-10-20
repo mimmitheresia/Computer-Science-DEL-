@@ -70,9 +70,11 @@ app.get('/userprofile*', (req, res) => {
   console.log(req.head)
 });
 
-app.get('/target', (req, res) => {
-  console.log("in target")
-  console.log(req.head)
+app.get('/signout', (req, res) => {
+  res.sendFile(
+    path.join(publicPath, 'login.html'),
+  );
+  console.log(req.head);
 });
 
 
@@ -137,41 +139,34 @@ app.post('/authenticate', (req, res) => {
   });
 });
 
-app.post('/useraction*', (req, res) => {
+app.post('/targetaction*', (req, res) => {
   const username = (req.url).split(":")[1];
-  console.log("POST /useraction")
+  console.log("POST /targetaction")
   console.log(username) 
   if (req.body.target) {
-    console.log("action: Selecting gender. ") 
     console.log("Gender:")
     console.log(req.body.target)
     users.setTarget(username,req.body.target);
-    res.redirect(`/userprofile/?user=${username}?target=Your target: ${req.body.target}.`) 
-    //res.redirect(`/userprofile?user=${row.username}`);
-  }
-  if (req.body.analyze) {
-    console.log("action: Analyze description.")
-    console.log(req.body.description)
-    const target = users.getTarget(username);
-    if (target === null) {
-      console.log("no target")
-      res.redirect(`/userprofile/?user=${username} ?analyze= Not successful. You have to choose a gender.`)
-    }
-    else {
-      console.log("target is ok")
-      if (req.body.description === ""){
-        console.log("no description input")
-        res.redirect(`/userprofile/?user=${username}?target=${target}?analyze= Not successful. No text to analyze.`)
-      } 
-      else {
-        res.redirect(`/userprofile/?user=${username}?target=${target}?analyze= Analyzing...`)
-        const des = req.body.description;
-        console.log("Description:")
-        console.log(des); 
-      }     
-    }  
+    res.redirect(`/userprofile/?user=${username}&target=${req.body.target}`) 
   }
 });
+
+app.post('/analyzeaction*', (req, res) => {
+  console.log("POST /analyzeaction")
+  const username = (req.url).split(":")[1];
+  const target = users.getTarget(username);
+  const des = req.body.hidden;
+  if (target){
+    if (des) {
+      const result = "{[Jag] [n] [0.5]} {[söker] [n] [0.5]} {[en] [n] [0.5]} {[redig,] [m] [0.8]} {[stark] [m] [0.9]} {[och] [n] [0.5]} {[vacker] [w] [0.9]} {[kollega.] [n] [0.5]}";
+      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Analyzing...&description=${des}&result=${result}`)
+    }
+    else {
+      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Not successful. No text to analyze.`)
+    }}
+  else {
+    res.redirect(`/userprofile/?user=${username}&analyze=Not successful. You have to choose a gender.&description=${des}`)
+  }});
 
 app.listen(port, () => {
   console.info(`Listening on port ${port}!`);
