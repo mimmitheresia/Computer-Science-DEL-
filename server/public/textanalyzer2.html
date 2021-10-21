@@ -1,0 +1,422 @@
+<!DOCTYPE html> 
+<html lang="sv"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style> 
+        /* START OF CSS -------------------------------------------------------------------------------------------------------------------*/ 
+        body {
+            background-color:rgb(121, 124, 121);}
+
+        header {
+            position:relative;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            border-bottom: #bfa161 solid 3px;
+            height: 60px;
+            width: 100%;
+            z-index: 9999; 
+            border-style: solid;
+            border-color:rgb(255, 255, 255);
+            border-width: 2px;  
+            margin-bottom: 30px;
+            }
+        .logo {
+            float:left;
+        }
+
+        .h1{  
+            margin-top:0px ;
+            margin-left:15px;
+            color: rgb(255, 255, 255);}
+    
+        .head-btns { 
+            float: right;
+            margin-top: 7px;
+            border: none;  
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 2px 10px; 
+            cursor: pointer;
+            color: rgb(255, 255, 255);
+            background-color: rgb(41, 34, 34);
+            font-family: "Arial Black", Gadget, sans-serif;}
+      
+        section {
+            float:left;
+            border-radius: 6px;
+            padding: 0px 0px;  
+            }
+
+        /* Clear floats after the columns */
+        section:after {
+            content: "";
+            display: table;
+            clear: both;} 
+
+        .instructionarea {
+            width: 30%;
+            height: 400px;
+            margin:10px;  
+            padding: 15px;
+            text-align: center;
+            background: #ccc;}
+         
+    
+        .textarea {
+            width: 60%;
+            height: 400px; 
+            margin:10px;
+            padding: 15px;
+            /*border-style: solid;
+            border-color:rgb(255, 255, 255);
+            border-width: 2px;*/
+            text-align:center ;
+            align-content: center;  
+            background: #ccc;}
+        
+        .textarea-decor {
+            float:left;
+        }
+
+        
+            
+        .left-btn-group button {
+            position:static;
+            margin-top: 10px;  
+            border:none;
+            border-top-left-radius:15px;
+            border-bottom-left-radius: 15px;
+            padding: 5px 15px;
+            height: 20px;
+            width: 70px;
+            color: white; /* White text */
+            cursor: pointer; /* Pointer/hand icon  .button:hover #myId.top */ 
+            display: block; /* Make the buttons appear below each other */
+            text-align: center;
+            text-decoration: none;
+            font-family: "Arial Black", Gadget, sans-serif;}
+        .left-btn-group button:not(:last-child) {
+            margin-top:40px;
+            border-bottom: none; /* Prevent double borders */}
+        .left-btn-group button:hover{
+            height: 30px;
+           }
+             
+        .right-btn-group button {
+            margin-top: 40px; 
+            margin-left:-2px; 
+            border:none;
+            border-top-right-radius:15px;
+            border-bottom-right-radius: 15px;
+            padding: 5px 15px;
+            height: 40px;
+            width: 90px;
+            color: #867979; /* White text */
+            background-color:rgba(255, 255, 255, 0.603);
+            border: 3px #867979 solid;
+            cursor: pointer; /* Pointer/hand icon  .button:hover #myId.top */ 
+            display: block; /* Make the buttons appear below each other */
+            text-align: center;
+            text-decoration: none;
+            font-family: "Arial Black", Gadget, sans-serif;}
+        .right-btn-group button:not(:last-child) {
+            margin-top:40px;
+            border-bottom: none; /* Prevent double borders */}
+        .right-btn-group button:hover{
+            background-color:rgb(255, 255, 255);
+           }
+
+        #edittable { 
+            width: 400px;
+            height: 350px;
+            border: 2px #867979 solid;
+            padding: 12px;
+            margin-top: 30px;
+            margin-left:0px;
+            overflow: scroll;
+            text-align:start;
+            background-color: rgb(255, 255, 255);
+            font-size: 10;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            font-family: "Lucida Console", "Courier New", monospace;}
+       
+        #w-class{
+            text-decoration-color: #e59abf;
+            text-decoration-thickness: 3px;}
+        #m-class{
+            text-decoration-color:#6ea7e9;
+            text-decoration-thickness: 3px;}
+        #n-class {
+            text-decoration-color: rgba(150, 34, 34, 0.3);
+            text-decoration-thickness: 3px;
+            text-decoration: none;}
+        #remove-under {
+            text-decoration: none;}
+        .p {
+            color:rgb(255, 255, 255);
+            font-family: "Arial Black", Gadget, sans-serif;}
+
+        #KVINNA{
+            background-color:#e59abf;}
+        #MAN {
+            background-color: #6ea7e9;}
+
+
+            .grad-btn {
+    margin: 10px;
+    margin-top:15px;
+    margin-right:0px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    
+    padding: 2px;
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border:0px;
+    width: 80px;
+    height: 25px;
+    box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    
+}
+.grad-btn:not(:last-child) {
+            margin-top:40px;
+            border-bottom: none; /* Prevent double borders */}
+
+.grad-btn:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    /*margin: 8px 10px 12px;*/
+}
+.grad-btn-w {
+    font-size: 10px;
+    background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;}
+.grad-btn-m {background-image: linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%);
+    font-size: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;}
+
+
+.grad-btn-anlz {background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+    font-size: 15px;
+    width: 110px;
+    height: 50px;
+    margin-top:40px;
+    margin-left:-0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;}
+.grad-btn-m:hover { background-position: right center; }
+.grad-btn-w:hover { background-position: right center; }   
+.grad-btn-anlz:hover { background-position: right center; }
+
+
+
+
+
+        /* END OF CSS -------------------------------------------------------------------------------------------------------------------*/ 
+    </style> 
+</head>
+
+
+<body>  
+    <div>
+        <form action ="/signout" method="get">
+        <button type="submit" id="logout-btn" class="head-btns" name="signout" value="Logga ut">Logga ut</button> 
+        <button type="submit" id="profile-btn" class="head-btns" value="Din profil">Din profil</button>
+        <button id="username-btn" class="head-btns"></button></form> 
+
+    </div>
+    
+    <header>
+        <img src="https://media.istockphoto.com/photos/reach-a-goal-among-many-picture-id613669942?s=612x612" class="logo" width="70px" height="60px" margin-right="10px" alt="logo">
+        <p class="h1" class="p" class="logo">Carpe Compentence</h1>
+        <p class ="p" style="margin-top:0px;">Hitta rätt kandidater med ett knapptryck</p>      
+    </header>
+    
+   
+
+    <section class ="textarea">
+        <b class ="p" style="text-align:center;">STEG 2</b>
+
+        <div class="textarea-decor"> 
+            <form action ="/targetaction" id ="target-post" method="post">
+              
+                <input type="submit" class="grad-btn grad-btn-m" name="target" id="MAN" value="MAN">
+                <input type = "submit" class="grad-btn grad-btn-w" name="target" id="KVINNA" value="KVINNA">
+            
+        </form></div>
+        
+        <div class="textarea-decor"> 
+            <div contenteditable="true"  id ="edittable" name = "description"></div>
+        </div>    
+                
+        <div class="textarea-decor">
+            <form action ="/analyzeaction" id ="analyze-area" method="post">
+                <input type="hidden" id="h-content" name="hidden" value="lala">
+                <div class="btn-grad">
+                <button type="submit" class="grad-btn grad-btn-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="SetHiddenDescription()">SKANNA</button>
+                </div>
+            </form>
+        </div>
+        <div id="a-status" class="p"> </div>
+    </section>
+         
+    <section class="instructionarea">
+        <b class ="p" style="text-align:center;"></b>
+        <div id="result-board" class = "p">
+            <p>SÄTT</p>
+        </div>     
+    </section>
+
+    
+       
+    
+    <script>
+        //START OF SCRIPT --------------------------------------------------------------------------------------------------------------------
+        let name;
+        let target;
+        let description;
+        getUserParams();
+    
+        function getUserParams() { 
+            const params = new URLSearchParams(location.search);
+            name = params.get('user');
+            //const textNode = document.createTextNode(name);
+            var button = document.getElementById("username-btn"); 
+            button.setAttribute('content', 'test content');
+            button.textContent = name;
+          
+            //nameNode.appendChild(textNode);
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = " Här knappar du in din annons...";
+            document.getElementById("target-post").action += ":" + name;
+            console.log("In getUserparams:");
+            console.log(name);
+            
+            if (params.has('target')) {
+            target = params.get('target');
+            if (target.includes("MAN")){
+                //document.getElementById("MAN").style.padding = "30px";
+                //document.getElementById("MAN").style.height = "30px";
+                document.getElementById("edittable").style.borderColor = "#2427e4";
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right, #73dd5e 0%, #53dac8 51%, #2427e4 100%)";
+                document.getElementById("analyze-btn").style.borderColor ="#6ea7e9";
+                document.getElementById("KVINNA").style.background ='#acacac'; //reset colour
+            }
+            if (target.includes("KVINNA")){
+               // document.getElementById("KVINNA").style.height = "30px";
+                document.getElementById("edittable").style.borderColor = "#DD5E89";
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,#DD5E89 0%, #F7BB97 51%, #DD5E89 100%)";
+                document.getElementById("analyze-btn").style.borderColor ="#e59abf";
+                document.getElementById("MAN").style.background ='#acacac'; //reset colour
+            }
+            
+            console.log(target);}
+
+            if (params.has('analyze')) {
+            const analyzestatus = params.get('analyze');
+                if (analyzestatus.includes("Not successful")){
+                    alert("Du måste välja en profil att anställa");}
+                else {
+                    const aDiv = document.getElementById("a-status");
+                    const textNode = document.createTextNode(analyzestatus);
+                    aDiv.appendChild(textNode);
+                    console.log(analyzestatus);}}
+
+            if (params.has('description')) {
+                tagAnalyzedDescription(params.get('description'), params.get('result'))}
+        }
+
+        function tagAnalyzedDescription(description,result){
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = "";
+
+            var result_by_word = result.split("{"); 
+            result_by_word = result_by_word.slice(1);
+            for (var i in result_by_word) { 
+                //Get result by word 
+                word_res = result_by_word[i].replace("}","");
+                word_res = word_res.split("[");
+                var word = word_res[1].replace("]","").trim();   
+                const g_class = word_res[2].replace("]","").trim(); 
+                const prob = word_res[3].replace("]","").trim(); 
+
+                //Create nodes for word   
+                var textNode = null;
+                var charNode = null;
+                var spaceNode = document.createTextNode(" ");
+                var charElement = null;
+                var spaceElement = document.createElement('u');
+                spaceElement.setAttribute("id", "remove-under");
+                spaceElement.appendChild(spaceNode);
+                const wordNode = document.createElement('u');
+
+                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+                var lastChar = word.charAt(word.length-1);
+                wordContainsChar = /[,.]/.test(lastChar);
+                if (wordContainsChar){
+                    //Adding tag without underline for commas. 
+                    console.log("WORD CONTAINS CHAR");
+                    var word_without_char = word.substring(0, word.length-1);
+                    textNode = document.createTextNode(word_without_char);
+                    console.log("cleanword:");
+                    console.log(word_without_char);       
+                    charNode = document.createTextNode(lastChar);
+                    charElement = document.createElement('u');
+                    charElement.setAttribute("id", "remove-under");
+                    charElement.appendChild(charNode);
+                }
+                else {
+                    //The whole word can be underlined. 
+                    textNode = document.createTextNode(word);
+                }    
+ 
+                //Set genderclass as ID for word
+                if (g_class.includes("n")) {
+                    console.log("n-class");
+                    wordNode.setAttribute("id", "n-class");}
+                if (g_class.includes("w")) {
+                    console.log("w-class");
+                    wordNode.setAttribute("id", "w-class");}
+                if (g_class.includes("m")) {
+                    console.log("m-class");
+                    wordNode.setAttribute("id", "m-class");}   
+                
+                //Add word to textArea     
+                wordNode.appendChild(textNode);
+                textArea.appendChild(wordNode);
+                if (wordContainsChar){ 
+                    textArea.appendChild(charElement)
+                }
+                textArea.appendChild(spaceElement);
+            }          
+        }
+         
+            
+        function SetHiddenDescription(){
+            console.log("GetinputText()")
+            console.log(name);
+            
+            const contentDiv = document.getElementById("edittable");
+            description = contentDiv.textContent;
+            document.getElementById("h-content").value = description;
+            console.log(description);
+            document.getElementById("analyze-area").action += ":" + name + ":" + target
+      
+        }
+        
+           // <img src="https://assets.codepen.io/3306515/IMG_2d025.jpg" />
+      </script>
+
+</body>
+</html>
