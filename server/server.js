@@ -65,7 +65,7 @@ app.get('/userprofile*', (req, res) => {
   // if sessionid.correctPassword == true:
   //`Welcome ${req.query.user}!`
   res.sendFile(
-    path.join(publicPath, 'textanalyzer.html'),
+    path.join(publicPath, 'carpeCompetencia.html'),
   );
   //res.redirect('/?registration= LALALAL' );  
   console.log(req.head)
