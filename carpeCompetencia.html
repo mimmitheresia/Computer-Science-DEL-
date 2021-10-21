@@ -1,0 +1,607 @@
+<!DOCTYPE html> 
+<html lang="sv"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style> 
+
+    /* SLOGAN CSS */
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans:600');
+
+    :root {
+	    --main-color: #643A7A;
+	    --secondary-color: #741CAF;
+	    --sans: "josefin sans", sans serif;}
+
+    .container {
+        position: absolute;
+        top: 20%;
+        left: 2%;
+        width: 20%;
+        height: 400px;
+        background: var(--main-color);
+        border-radius: 5px;
+        font-family: "dancing script", cursive;
+        overflow: hidden;
+        color: rgb( 121, 125, 127 );
+        letter-spacing: .5px;}
+
+    .hidden {
+        display: none;}
+
+    .inner {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 1s;
+        visibility: hidden;
+        }
+
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 60%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 0 1.5rem rgba(0, 0, 0, .5);
+        font-size: 1.3rem;}
+
+
+    .number::before {
+        content: "";
+        position: absolute;
+        top: -130px;
+        right: -30px;
+        width: 90px;
+        height: 180px;
+        background: var(--secondary-color);
+        transform: rotate(-45deg);
+        z-index: -1;
+        box-shadow: 0 0 .7rem rgba(0, 0, 0, .5);}
+
+    .number {
+        font-family: var(--sans);
+        position: absolute;
+        margin: 0;
+        top: 15px;
+        right: 15px;
+        color: fade-out(#fff, .3);}
+
+    .quote {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;}
+
+    .credit {
+        position: absolute;
+        top: 60%;
+        right: 5%;
+        font-family: var(--sans);
+        font-size: .8rem;
+        font-weight: 500;}
+
+    .credit::before {
+        content: "⸛ ";
+        vertical-align: middle;
+        font-size: 1.4rem;}
+
+    .fas {
+        font-size: 3.5rem;
+        position: absolute;
+        top: 12%;
+        left: 7%;
+        color: rgba(100, 58, 122, .2);}
+
+
+    .hidden input {
+        width: 100%;
+        transition: .3s;}
+
+    .button p {
+        background: #802BBC;
+        text-align: center;
+        color: #fff;
+        padding: 1rem 0;
+        width: 100%;
+        font-family: var(--sans);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        transition: .2s ease-out;}
+
+    .button p:hover {background: var(--secondary-color);cursor: pointer;}
+    #card-one:checked ~ .container .inner-one, #card-two:checked ~ .container .inner-two, #card-three:checked ~ .container .inner-three {opacity: 1;visibility: visible;}
+    #card-one:checked ~ .container .inner-two, #card-two:checked ~ .container .inner-three, #card-three:checked ~ .container .inner-one {transform: scale(.85);transform: scale(1) translate(-20rem);}
+
+
+
+        /* START MY CSS -------------------------------------------------------------------------------------------------------------------*/ 
+        body {
+            background-image: url("https://images.unsplash.com/photo-1614851099362-9adf73ccebe9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80"); /* url("https://www.isadora.com/globalassets/values/values_5-4.jpg?preset=lg");  */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;}
+
+
+        .h1{  
+            margin-top:0px ;
+            margin-left:15px;
+            font-size: 30px;
+            color: rgb(255, 255, 255);
+            font-weight: 400;
+            font-family: 'Trebuchet MS', sans-serif;}
+        
+        #slogan{
+            font-weight:400;
+            color: rgb(255, 255, 255);
+            font-family: 'Trebuchet MS', sans-serif;}    
+            
+        .header-btns-right input { 
+            width: 20;
+            background-color: transparent;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            border:transparent;
+           
+            color: linear-gradient(to right, #fab5f1 0%, #cab8ec 51%, #ffffff 100%);
+            font-size: 15px;
+            font-weight : bold;
+            text-align: center; 
+            font-weight:600;
+            font-family: 'Trebuchet MS', sans-serif;
+            
+            cursor:pointer;
+            float: right;}
+            
+        
+        .header-btns-right:after {
+            content: "";
+            clear: both;
+            display: table;}
+
+        .header-btns-right input:not(:last-child) {
+            border-right: none; /* Prevent double borders */}
+
+        .header-btns-right input:hover {
+            font-size: 16px;
+            color: linear-gradient(to left, #fab5f1 0%, #cab8ec 51%, #ffffff 100%);}
+          
+
+      
+        section {
+            float:right;
+            border-radius: 6px;
+            padding: 0px 0px;  
+            }
+
+        /* Clear floats after the columns */
+        section:after {
+            content: "";
+            display: table;
+            clear: both;} 
+
+        .textarea {
+            width: 70%;
+            height: 400px; 
+            margin:10px;
+            padding: 15px;
+            margin-right:20px;
+            /*border-style: solid;
+            border-color:rgb(255, 255, 255);
+            border-width: 2px;*/
+            text-align:center ;
+            align-content: center;}
+        
+        .textarea-decor {float:left;}
+
+        
+        .buttons {
+            margin: 10px;
+            margin-top:15px;
+            margin-right:0px;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            padding: 2px;
+            text-align: center;
+            display: block;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: #FFF;
+            box-shadow: 0 0 20px #eee;
+            border:0px;
+            width: 80px;
+            height: 25px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            cursor: pointer;}
+
+        .buttons:not(:last-child) {
+                    margin-top:40px;
+                    border-bottom: none; /* Prevent double borders */}
+
+        .buttons:hover{
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+            /*margin: 8px 10px 12px;*/}
+        
+        .button-w {
+            font-size: 10px;
+            background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;}
+
+        .button-m {background-image: linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%);
+            font-size: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;}
+
+        .button-anlz {background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+            font-size: 15px;
+            width: 110px;
+            height: 50px;
+            margin-top:40px;
+            margin-left:-0px;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;}
+
+        .button-m:hover { background-position: right center; }
+        .button-w:hover { background-position: right center; }   
+        .button-anlz:hover { background-position: right center; }
+
+        
+        #edittable { 
+            width: 400px;
+            height: 350px;
+            border: 2px #867979 solid;
+            padding: 12px;
+            margin-top: 30px;
+            margin-left:0px;
+            overflow: scroll;
+            text-align:start;
+            background-color: rgb(255, 255, 255);
+            font-size: 10;
+            font-weight: 100;
+            border-radius: 5px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            font-family: "Lucida Console", "Courier New", monospace;}
+       
+        
+            
+        #w-class{
+            text-decoration-color: #DD5E89;
+            text-decoration-thickness: 3px;}
+        #m-class{
+            text-decoration-color:#3538e9;
+            text-decoration-thickness: 3px;}
+        #n-class {
+            text-decoration-color: rgba(150, 34, 34, 0.3);
+            text-decoration-thickness: 3px;
+            text-decoration: none;}
+        #remove-under {
+            text-decoration: none;}
+        #KVINNA{
+            background-color:#e59abf;}
+        #MAN {
+            background-color: #6ea7e9;}
+        .u {
+            color:rgb(68, 57, 57);
+            font-family: "Arial ", Gadget, sans-serif;}
+
+        /* END CSS -------------------------------------------------------------------------------------------------------------------*/ 
+    </style>            
+                      <!-- ^     ^     ^     ^     ^     ^     ^     ^     -->
+                        
+                        <!--                    C   S   S                          -->       
+
+</head>
+<body> <!-- START HTML  --------------------------------------------------------------------------------------------------------->
+
+    <!-- MY HTML1 -->
+    <div class="header-btns-right">
+        <form action ="/signout" method="get">
+            <input type ="submit"id="username-btn" name ="username" value="-">
+            <input type="submit" id="logout-btn" name="signout" value="LOGGA UT">
+            <input type="submit" id="profile-btn" name="profile" value="DIN PROFIL">
+        </form> 
+    </div>
+    
+    <div class="header-name-left">  
+        <h1 class="u">CARPE COMPETENCE</h1>      
+    </div>
+
+    <!-- SLOGAN HTML  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <input id="card-one" class="hidden" type="radio" name="ok-button" checked>
+      <input id="card-two" class="hidden" type="radio" name="ok-button">
+      <input id="card-three" class="hidden" type="radio" name="ok-button">
+    
+    <div class="container">
+      
+      <div class="inner inner-one">
+        <div class="box">
+          <div class="triangle">
+          </div>
+          <p class="number">1</p>
+                <div class="text">
+                    <i class="start-quote fas fa-quote-left"></i>
+                    <p class="quote">Develop a passion for learning. If you do, you will never cease to grow.</p>
+                    <p class="credit">Anthony J. D'Angelo</p>
+                </div>
+          <label class="button" for="card-two">
+            <p>next</p>
+          </label>
+        </div>
+      </div>
+      
+      <div class="inner inner-two">
+        <div class="box">
+          <div class="triangle">
+          </div>
+          <p class="number">2</p>
+          <i class="start-quote fas fa-quote-left"></i>
+          <p class="quote">An investment in knowledge pays the best interest.</p>
+          <p class="credit"> Benjamin Franklin</p>
+          <label class="button" for="card-three">
+            <p>next</p>
+          </label>
+        </div>
+      </div>
+      
+      <div class="inner inner-three">
+        <div class="box">
+          <div class="triangle">
+          </div>
+          <p class="number">3</p>
+          <i class="start-quote fas fa-quote-left"></i>
+          <p class="quote">I have no special talent. I am only passionately curious.</p>
+          <p class="credit">Albert Einstein</p>
+          <label class="button" for="card-one">
+            <p>next</p>
+          </label>
+        </div>
+      </div>
+    </div>    
+        
+      <!--   <script src="https://100dayscss.com/codepen/js/jquery.min.js"></script>
+        <script src="https://codepen.io/fracturedNight/pen/exgzZg.js"></script>
+ -->
+   <!-- MY HTML2 -->
+    
+
+    <section class ="textarea">
+        <b class ="p" style="text-align:center;"></b>
+
+        <div class="textarea-decor"> 
+            <form action ="/targetaction" id ="target-post" method="post">
+              
+                <input type="submit" class="buttons button-m" name="target" id="MAN" value="MAN">
+                <input type = "submit" class="buttons button-w" name="target" id="KVINNA" value="KVINNA">
+            
+        </form></div>
+        
+        <div class="textarea-decor"> 
+            <div contenteditable="true"  id ="edittable" name = "description"></div>
+        </div>    
+                
+        <div class="textarea-decor">
+            <form action ="/analyzeaction" id ="analyze-area" method="post">
+                <input type="hidden" id="h-content" name="hidden" value="lala">
+                <div class="buttons">
+                <button type="submit" class="buttons button-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="SetHiddenDescription()">SKANNA</button>
+                </div>
+            </form>
+        </div>
+        <div id="a-status" class="p"> </div>   
+    </section>
+    <!-- END MY HTML --------------------------------------------------------------------------------------------------------->
+
+   
+
+         <!--                                  S  C  R  I  P  T                                          -->
+                
+        <!--                      ⬇    ⬇     ⬇    ⬇     ⬇    ⬇    ⬇     ⬇     ⬇                               -->
+
+    <script>
+        //START SCRIPT --------------------------------------------------------------------------------------------------------------------
+        let name;
+        let target;
+        let description;
+   
+        getUserParams();
+        
+    
+        function getUserParams() { 
+            const params = new URLSearchParams(location.search);
+            name = params.get('user');
+            //const textNode = document.createTextNode(name);
+            console.log(name);
+        
+            document.getElementById("username-btn").value = name; 
+            //button.textContent = name;
+          
+            //nameNode.appendChild(textNode);
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = " Här knappar du in din annons...";
+            document.getElementById("target-post").action += ":" + name;
+            console.log("In getUserparams:");
+            console.log(name);
+            
+
+            
+            if (params.has('target')) {
+            target = params.get('target');
+            if (target.includes("MAN")){
+                //document.getElementById("MAN").style.padding = "30px";
+                //document.getElementById("MAN").style.height = "30px";
+                document.getElementById("edittable").style.borderColor = "#3538e9";
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right, #73dd5e 0%, #53dac8 51%, #2427e4 100%)";
+                document.getElementById("analyze-btn").style.borderColor ="#6ea7e9";
+                document.getElementById("KVINNA").style.background ='#acacac'; //reset colour
+            }
+            if (target.includes("KVINNA")){
+               // document.getElementById("KVINNA").style.height = "30px";
+                document.getElementById("edittable").style.borderColor = "#DD5E89";
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,#DD5E89 0%, #F7BB97 51%, #DD5E89 100%)";
+                document.getElementById("analyze-btn").style.borderColor ="#e59abf";
+                document.getElementById("MAN").style.background ='#acacac'; //reset colour
+            }
+            
+            console.log(target);}
+
+            if (params.has('analyze')) {
+            const analyzestatus = params.get('analyze');
+                if (analyzestatus.includes("Not successful")){
+                    alert("Du måste välja en profil att anställa");}
+                else {
+                    const aDiv = document.getElementById("a-status");
+                    const textNode = document.createTextNode(analyzestatus);
+                    aDiv.appendChild(textNode);
+                    console.log(analyzestatus);}}
+
+            if (params.has('description')) {
+                tagAnalyzedDescription(params.get('description'), params.get('result'))}
+        }
+
+        function setSlogan(){
+            const sloganElement = document.getElementById("slogan");
+            console.log("sloganelement:");
+            console.log(sloganElement);
+
+            const slogan = ["ATTRAHERA", "KANDIDATER" , "MED" , "AI"]
+            const attr = document.createTextNode(slogan[0]);
+            const kand = document.createTextNode(slogan[1]);
+            const med = document.createTextNode(slogan[2]);
+            const AI = document.createTextNode(slogan[3]);
+
+            var spaceNode1 = document.createTextNode("  ");
+            var spaceNode2 = document.createTextNode("  ");
+            var spaceNode3 = document.createTextNode("  ");
+            var spaceElement1 = document.createElement('u');
+            var spaceElement2 = document.createElement('u');
+            var spaceElement3 = document.createElement('u');
+
+            spaceElement1.setAttribute("id", "remove-under");
+            spaceElement1.appendChild(spaceNode1);
+            spaceElement2.setAttribute("id", "remove-under");
+            spaceElement2.appendChild(spaceNode2);
+            spaceElement3.setAttribute("id", "remove-under");
+            spaceElement3.appendChild(spaceNode3);
+
+            const wordNode1 = document.createElement('u');
+            wordNode1.setAttribute("id", "w-class");
+            const wordNode2 = document.createElement('u');
+            wordNode2.setAttribute("id", "m-class");
+            const wordNode3 = document.createElement('u');
+            wordNode3.setAttribute("id", "w-class");
+            const wordNode4 = document.createElement('u');
+            wordNode4.setAttribute("id", "m-class");
+
+            wordNode1.appendChild(attr);
+            wordNode2.appendChild(kand);
+            wordNode3.appendChild(med);
+            wordNode4.appendChild(AI);
+        
+            sloganElement.appendChild(wordNode1);
+            sloganElement.appendChild(spaceElement1);
+            sloganElement.appendChild(wordNode2);
+            sloganElement.appendChild(spaceElement2);
+            sloganElement.appendChild(wordNode3);
+            sloganElement.appendChild(spaceElement3);
+            sloganElement.appendChild(wordNode4);
+
+        }
+
+        function tagAnalyzedDescription(description,result){
+            const textArea = document.getElementById("edittable");
+            textArea.textContent = "";
+
+            var result_by_word = result.split("{"); 
+            result_by_word = result_by_word.slice(1);
+            for (var i in result_by_word) { 
+                //Get result by word 
+                word_res = result_by_word[i].replace("}","");
+                word_res = word_res.split("[");
+                var word = word_res[1].replace("]","").trim();   
+                const g_class = word_res[2].replace("]","").trim(); 
+                const prob = word_res[3].replace("]","").trim(); 
+
+                //Create nodes for word   
+                var textNode = null;
+                var charNode = null;
+                var spaceNode = document.createTextNode(" ");
+                var charElement = null;
+                var spaceElement = document.createElement('u');
+                spaceElement.setAttribute("id", "remove-under");
+                spaceElement.appendChild(spaceNode);
+                const wordNode = document.createElement('u');
+
+                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+                var lastChar = word.charAt(word.length-1);
+                wordContainsChar = /[,.]/.test(lastChar);
+                if (wordContainsChar){
+                    //Adding tag without underline for commas. 
+                    console.log("WORD CONTAINS CHAR");
+                    var word_without_char = word.substring(0, word.length-1);
+                    textNode = document.createTextNode(word_without_char);
+                    console.log("cleanword:");
+                    console.log(word_without_char);       
+                    charNode = document.createTextNode(lastChar);
+                    charElement = document.createElement('u');
+                    charElement.setAttribute("id", "remove-under");
+                    charElement.appendChild(charNode);
+                }
+                else {
+                    //The whole word can be underlined. 
+                    textNode = document.createTextNode(word);
+                }    
+ 
+                //Set genderclass as ID for word
+                if (g_class.includes("n")) {
+                    console.log("n-class");
+                    wordNode.setAttribute("id", "n-class");}
+                if (g_class.includes("w")) {
+                    console.log("w-class");
+                    wordNode.setAttribute("id", "w-class");}
+                if (g_class.includes("m")) {
+                    console.log("m-class");
+                    wordNode.setAttribute("id", "m-class");}   
+                
+                //Add word to textArea     
+                wordNode.appendChild(textNode);
+                textArea.appendChild(wordNode);
+                if (wordContainsChar){ 
+                    textArea.appendChild(charElement)
+                }
+                textArea.appendChild(spaceElement);
+            }          
+        }
+         
+            
+        function SetHiddenDescription(){
+            console.log("GetinputText()")
+            console.log(name);
+            
+            const contentDiv = document.getElementById("edittable");
+            description = contentDiv.textContent;
+            document.getElementById("h-content").value = description;
+            console.log(description);
+            document.getElementById("analyze-area").action += ":" + name + ":" + target
+      
+        }
+        
+           // <img src="https://assets.codepen.io/3306515/IMG_2d025.jpg" />
+      </script>
+
+</body>
+</html>
+  
+
+
