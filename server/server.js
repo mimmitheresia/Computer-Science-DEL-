@@ -60,6 +60,7 @@ app.get("/logo.jpg", function(req, res){
   res.end("logo.jpg");
 })
 
+
 app.get('/userprofile*', (req, res) => {
   // if sessionid.correctPassword == true:
   //`Welcome ${req.query.user}!`
@@ -154,6 +155,7 @@ app.post('/targetaction*', (req, res) => {
 app.post('/analyzeaction*', (req, res) => {
   console.log("POST /analyzeaction")
   const username = (req.url).split(":")[1];
+  console.log(username);
   const target = users.getTarget(username);
   const des = req.body.hidden;
   if (target){
