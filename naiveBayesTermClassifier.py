@@ -1,6 +1,10 @@
 import json
 import spacy_udpipe
 import re
+import xml.etree.ElementTree as ET
+from termcolor import colored
+
+# ========================== Classes ===================================
 
 class POS:
     def __init__(self):
@@ -41,7 +45,7 @@ class OccupationMerge:
             #print("new description: " + str(self.description_by_occupation[label]))
 
 class GenderClass:
-    def __init__(self,gender): #print(token.text, token.lemma_, token.pos_, token.dep_)
+    def __init__(self,gender): 
         self.gender = gender
         self.total_nr = 0
         self.lemma_pos_freq = {} #lemma_pos_freq {lemma1: {word_class1:freq, word_class2:freq}}
@@ -163,26 +167,15 @@ class NaiveBayes:
 
 class POStags:
     def __init__(self):
-        self.noun = {}
-        self.adverb = {}
-        self.adjective = {}
-        self.verb = {}
         self.wordclass = {}
+
+# ============================== End of classes =================================
 
 """
 USED IN STEP 1&2
 """
 def extract_word_classes(token,gC,f):
-    #print(token.text, token.lemma_, token.pos_, token.dep_)
-    #if gC.total_nr == 1000:
-        #print("Extract:")
-        # print(gC.total_nr)
-        # print(gC.lemma_pos_freq) #lemma_pos_freq {lemma1: {word_class1:freq, word_class2:freq}}
-        # print(gC.lemma_text_freq) #lemma_word {lemma1: {word1:freq, word2:freq}}
-        # print(gC.text_lemma_freq) #word_lemma {word1: {lemma1:freq,lemma2:freq} }
-        # print(gC.lemma_count)
-        # print(gC.text_count) 
-       # return
+   
     special_char = '"-[@_!$%^&*().<>?/\|}{~:]#'
     if not any(c in special_char for c in token.text):
         if (token.pos_ == "NOUN") or (token.pos_ == "ADJ") or (token.pos_ == "ADV") or ((token.pos_ == "VERB")):
@@ -203,20 +196,16 @@ def extract_word_classes(token,gC,f):
                 gC.lemma_count +=1
                 if token.pos_ not in gC.lemma_pos_freq[token.lemma_]:
                     gC.lemma_pos_freq[token.lemma_][token.pos_] = 1 #pos_freq[token.pos_] = 1
-                    #print("LEMMA: " + str(token.lemma_) + " " + str(gC.lemma_pos_freq[token.lemma_]))
                 else:
                     gC.lemma_pos_freq[token.lemma_][token.pos_] += 1
-            # if token.text.lower() == "jag":
-            #         print(" ")
-            #         print("Checkelicheck lemma:")
-            #         print("lemma: " + str(token.lemma_) + "  " +  "pos: " + str(token.pos_))
-            #         print("GENDER: " + gC.gender)
-            #         print(str(token.lemma_) + ":" + str(gC.lemma_pos_freq[token.lemma_]))
-            #         print("--------")
+
+                if token.text not in gC.lemma_text_freq[token.lemma_]:
+                    gC.lemma_text_freq[token.lemma_][token.text] = 1 #text_freq[token.text] = 1
+                else:
+                    gC.lemma_text_freq[token.lemma_][token.text] += 1
 
             #CHECK WORD
             if token.text not in gC.text_lemma_freq:
-
                 gC.text_count +=1
                 lemma_freq = {}
                 lemma_freq[token.lemma_] = 1
@@ -225,17 +214,9 @@ def extract_word_classes(token,gC,f):
                 gC.text_count +=1
                 if token.lemma_ not in gC.text_lemma_freq[token.text]:
                     gC.text_lemma_freq[token.text][token.lemma_] = 1
-                    #print("TEXT: " + str(token.text) + " "+ str(gC.text_lemma_freq[token.text]))
                 else:
                     gC.text_lemma_freq[token.text][token.lemma_] += 1
-            
-            # if token.text.lower() == "jag":
-            #         print(" ")
-            #         print("Checkelicheck text:")
-            #         print("TEXT: " + str(token.text) + "  " +  "LEMMA: " + str(token.lemma_))
-            #         print("GENDER: " + gC.gender)
-            #         print(str(token.text) + ":" + str(gC.text_lemma_freq[token.text]))
-            #         print("--------")
+
                     
                
 """
@@ -273,7 +254,6 @@ def find_gender_occupation(occ,adv,classified_occupations):
             des_text = des_text.strip("\r\n")
             des_text = des_text.strip("\r")
             des_text = des_text.strip('\r\n\r\n\r\n')
-            #print(des_text)
             occ.add_ad_data(occ_label, des_text, headline.strip('\n').strip('\r'))
     else:
         valid = False
@@ -325,38 +305,7 @@ def read_classified_occupations(gender):
         classified_occupations[ad.strip("\n")] = True
     return classified_occupations
 
-"""
-USED IN STEP 2
-Goes through the POS-files and create token-objects (MANUAL_POS)
-"""
-def read_POS_terms(gC,gender,limit,year,POS_obj, use_sprakbanken_wordclasses):
-    if gender == "Women":
-        f = open("POS-" + str(year) + "-Women", "r", encoding = "utf-8")
-    if gender == "Men":
-        f = open("POS-" + str(year) + "-Men", "r", encoding = "utf-8")
-    
-    for row in f: 
-        term = row.split(" ")
-        if len(term) == 4:
-            if use_sprakbanken_wordclasses == True:
-                #----Change----
-                #Check if the term is in the POS_obj.wordclass-dict, i.e. from the new wordclass-dataset
-                if term[0].lower() in POS_obj.wordclass:
-                    POStag = max(POS_obj.wordclass.get(term[0].lower()), key=POS_obj.wordclass.get(term[0].lower()).get)
-                #if the term isn't available in the POS_obj.wordclass-dict, then we use the spacy_udpipe POStag
-                else:
-                    POStag = term[2]
-                #----End-of-change----
-            else:
-                POStag = term[2]
-            token = MANUAL_POS(term[0].lower(),term[1].lower(),POStag,term[3].strip('\n')) #change POStag to term[2] for older version
-            if limit == None:
-                extract_word_classes(token,gC,None)
-            if limit != None:
-                if gC.total_nr >= limit:
-                    return
-                else:
-                    extract_word_classes(token,gC,None)
+# ============================== "Extra"-functions to sort popular terms and get unique terms ======================
 
 def sort_popular_terms(gC):
     #Sort popular occupations in descending order
@@ -466,6 +415,9 @@ def extract_unique_gender_terms(gender_class_list):
     #     if term not in extreme_carpe_terms_c1 and class1.lemma_pos_freq.get(term) > 10:
     #         i+=1
             #print(str(i) + ". " + str(term) + " " + str(class1.lemma_pos_freq.get(term)) +" " + str(class1.word_class.get(term)))
+
+
+# ====================== Classify extreme terms and input ================================
     
 """
 USED IN STEP 2
@@ -493,77 +445,217 @@ def classify_extreme(nB,gender_class_list):
     for term in result_list:
         print(str(term)+ " " + str(result_list.get(term)))
 
+def classify_with_lemma(pos_list, use_sprakbanken_wordclasses, POS_obj, nB):
+    print("CLASSIFY WITH LEMMA: ")
+    result_list = {}
+    for term in pos_list:
+        if (use_sprakbanken_wordclasses == True) and (term.text in POS_obj.wordclass):
+            POStag = max(POS_obj.wordclass.get(term.text), key=POS_obj.wordclass.get(term.text).get)
+            P_1, P_2 = nB.classify_lemma(term.lemma_, POStag)
+        else:
+            P_1, P_2 = nB.classify_lemma(term.lemma_, term.pos_)
+
+        if (P_1 and P_2) == None: 
+            #print("The term '" +str(term) + "' cannot be classified.")
+            result_list[term.text] = None
+        elif P_1 > P_2: 
+            #print(str(term) + " = MEN  ")
+            result_list[term.text] = ["M", P_1,P_2] 
+        else:
+            #print(str(term) + " = WOMEN  ")
+            result_list[term.text] = ["W", P_1,P_2]
+
+    print(" ")
+    print("RESULT WITH LEMMA:")
+    print("term [Gender,P(M|term), P(W|term)]")
+    for term in result_list:
+        print(str(term)+  " " +str(result_list.get(term)))
+
+    return result_list
+
+def classify_with_text(pos_list, nB):
+    print("CLASSIFY WITH TEXT: ")
+    result_list = {}
+    for term in pos_list:
+        P_1, P_2 = nB.classify_text(term.text, term.lemma_)
+
+        if (P_1 and P_2) == None: 
+            result_list[term.text] = None
+        elif P_1 > P_2: 
+            result_list[term.text] = ["M", P_1,P_2] 
+        else:
+            result_list[term.text] = ["W", P_1,P_2]
+
+    print(" ")
+    print("RESULT WITH TEXT:")
+    print("term [Gender,P(M|term), P(W|term)]")
+    for term in result_list:
+        print(str(term)+  " " +str(result_list.get(term)))
+    
+    return result_list
+
+def get_synonyms(pos, POS_obj, nB, input_list):
+    tree = ET.parse('synpairs.xml')
+    root = tree.getroot()
+    synonym_list = {}
+    for term in input_list: 
+        synonyms = [] 
+        for word in root[2].findall('syn'):
+            if word[0].text == term:
+                synonyms.append(word[1].text)
+        synonym_list[term] = synonyms
+    
+    return synonym_list
+
 """
 USED IN STEP 2
 Classify the user-input from the terminal
 """ 
-def classify_input(pos,nB,POS_obj,use_sprakbanken_wordclasses):
+def classify_input(pos,nB,POS_obj,use_sprakbanken_wordclasses,lemma, text):
+    while True:
+        print("\nWhat gender would you like to target? (W/M)")
+        target_gender = input()
+        if target_gender != "W" and target_gender != "M":
+            print("You have to write either W or M")
+        else:
+            break
+
     while True:
         print(" ")
-        print("Type input text:") 
+        print(colored("Type input text:", attrs = ['underline', 'bold'])) 
         inp = input()
         terms  = inp.split()
         lower_terms = []
         for term in terms:
-            lower_terms.append(term.lower())
+            lower_terms.append(term.lower().strip('"-[@_!$%^&*().<>?/\|}{~:]#'))
         print(" ")
-        result_list = {}
         pos_list = pos.nlp(lower_terms)
 
-        #CLASSIFY WITH LEMMA
-        print("CLASSIFY WITH LEMMA: ")
-        for term in pos_list:
-            if (use_sprakbanken_wordclasses == True) and (term.text in POS_obj.wordclass):
-                POStag = max(POS_obj.wordclass.get(term.text), key=POS_obj.wordclass.get(term.text).get)
-                P_1, P_2 = nB.classify_lemma(term.lemma_, POStag)
-            else:
-                P_1, P_2 = nB.classify_lemma(term.lemma_, term.pos_)
-            print(term.text, term.lemma_, term.pos_, term.dep_, term.tag_)
+        #Classify input text based on lemma
+        if lemma:
+            lemma_results = classify_with_lemma(pos_list, use_sprakbanken_wordclasses, POS_obj, nB)
+            colored_text = ""
+            i = 0
+            for term in terms:
+                term = term.lower().strip('"-[@_!$%^&*().<>?/\|}{~:]#')
+                if lemma_results[term] == None:
+                    colored_text += terms[i] + " "
+                elif lemma_results[term][0] == "M":
+                    colored_text += colored(terms[i] + " ", 'blue')
+                elif lemma_results[term][0] == "W":
+                    colored_text += colored(terms[i] + " ", 'red')
+                i += 1
+            results = lemma_results
             
-    
-            if (P_1 and P_2) == None: 
-                #print("The term '" +str(term) + "' cannot be classified.")
-                result_list[term] = None
-            elif P_1 > P_2: 
-                #print(str(term) + " = MEN  ")
-                result_list[term] = ["M", P_1,P_2] 
-            else:
-                #print(str(term) + " = WOMEN  ")
-                result_list[term] = ["W", P_1,P_2]
-            #print("P(Men I " + str(term) + ") = " + str(P_1) + "   -   P(Women I " + str(term) + ") = " + str(P_2))
 
 
-        print(" ")
-        print("RESULT WITH LEMMA:")
-        print("term [Gender,P(M|term), P(W|term)]")
-        for term in result_list:
-            print(str(term)+  " " +str(result_list.get(term)))
-
-        print("-----")
-        #CLASSIFY WITH TEXT
-        for term in pos_list:
-            P_1, P_2 = nB.classify_text(term.text, term.lemma_)
-            print(term.text, term.lemma_, term.pos_, term.dep_, term.tag_)
+        #Classify input text based on text
+        if text:
+            text_results = classify_with_text(pos_list, nB)
+            colored_text = ""
+            i = 0
+            for term in terms:
+                term = term.lower().strip('"-[@_!$%^&*().<>?/\|}{~:]#')
+                if text_results[term] == None:
+                    colored_text += terms[i] + " "
+                elif text_results[term][0] == "M":
+                    colored_text += colored(terms[i] + " ", 'blue')
+                elif text_results[term][0] == "W":
+                    colored_text += colored(terms[i] + " ", 'red')
+                i += 1
+            results = text_results
             
-    
-            if (P_1 and P_2) == None: 
-                #print("The term '" +str(term) + "' cannot be classified.")
-                result_list[term] = None
-            elif P_1 > P_2: 
-                #print(str(term) + " = MEN  ")
-                result_list[term] = ["M", P_1,P_2] 
-            else:
-                #print(str(term) + " = WOMEN  ")
-                result_list[term] = ["W", P_1,P_2]
-            #print("P(Men I " + str(term) + ") = " + str(P_1) + "   -   P(Women I " + str(term) + ") = " + str(P_2))
-
-
+        #Get a dictionary with all words and their synonyms 
+        synonym_list = get_synonyms(pos, POS_obj, nB, lower_terms) #get all synonyms for all words
+        synonym_term_list = {}
+        for term in synonym_list: 
+            if term not in synonym_term_list:
+                synonym_pos_list = pos.nlp(synonym_list[term])
+                synonym_text_results = classify_with_text(synonym_pos_list, nB)
+                synonym_term_list[term] = synonym_text_results
+        # synonym_lemma_results = classify_with_lemma(synonym_pos_list, use_sprakbanken_wordclasses, POS_obj, nB)
+        
+        print("\n============================================\n")
+        print(colored("THIS IS YOUR RESULT: \n", attrs = ['bold','underline']))
+        print("\nRed words often attract more women, and blue words often attract more men.\n")
+        print(colored_text)
         print(" ")
-        print("RESULT WITH TEXT:")
-        print("term [Gender,P(M|term), P(W|term)]")
-        for term in result_list:
-            print(str(term)+  " " +str(result_list.get(term)))
 
+        if target_gender == "W":
+            gender = "WOMEN"
+            other_gender = "M"
+            color = 'blue'
+        elif target_gender == "M":
+            gender = "MEN"
+            other_gender = "W"
+            color = 'red'
+        
+        print(colored("Here are some examples of words that could be changed to target more " + gender + ":", attrs = ['bold']))
+
+        no_synonyms = {}
+        for term in results:
+            synonyms = []
+
+            if results[term] != None:
+                if results[term][0] == other_gender: #If the word is attracting the gender opposite to our target gender, we would like to find a synonym for that. 
+                    no_synonyms[term] = False #set this to False = the word has no synonyms
+                
+                    if (synonym_term_list.get(term) == {}):
+                        no_synonyms[term] = False
+                    else:
+                        for synonym in synonym_term_list.get(term): #for every synonym for the term
+                            if synonym_term_list.get(term)[synonym] != None and synonym_term_list.get(term)[synonym][0] == target_gender:
+                                synonyms.append(synonym)
+                                no_synonyms[term] = True
+
+
+            if (len(synonyms) > 0):
+                print(" ")
+                print("The word " + colored(str(term), color) + " could be changed to:")
+                print(*synonyms, sep = "\n")
+        
+        print("\nWe could not find any synonyms for the following words:")
+        for term in no_synonyms:
+            if no_synonyms[term] == False:
+                print(term)
+  
+            
+
+
+# ============================== Functions used in STEP 2 =====================================
+
+"""
+USED IN STEP 2
+Goes through the POS-files and create token-objects (MANUAL_POS)
+"""
+def read_POS_files(gC,gender,limit,year,POS_obj, use_sprakbanken_wordclasses):
+    if gender == "Women":
+        f = open("POS-" + str(year) + "-Women", "r", encoding = "utf-8")
+    if gender == "Men":
+        f = open("POS-" + str(year) + "-Men", "r", encoding = "utf-8")
+    
+    for row in f: 
+        term = row.split(" ")
+        if len(term) == 4:
+            if use_sprakbanken_wordclasses == True:
+                #----Change----
+                #Check if the term is in the POS_obj.wordclass-dict, i.e. from the new wordclass-dataset
+                if term[0].lower() in POS_obj.wordclass:
+                    POStag = max(POS_obj.wordclass.get(term[0].lower()), key=POS_obj.wordclass.get(term[0].lower()).get)
+                #if the term isn't available in the POS_obj.wordclass-dict, then we use the spacy_udpipe POStag
+                else:
+                    POStag = term[2]
+                #----End-of-change----
+            else:
+                POStag = term[2]
+            token = MANUAL_POS(term[0].lower(),term[1].lower(),POStag,term[3].strip('\n')) 
+            if limit == None:
+                extract_word_classes(token,gC,None)
+            if limit != None:
+                if gC.total_nr >= limit:
+                    return
+                else:
+                    extract_word_classes(token,gC,None)
 
 
 """
@@ -571,7 +663,7 @@ USED IN STEP 2
 Go through the new wordclass-dataset and extract the words and their wordclasses 
 This information is added to the POS_obj where the dict = {term1: {WORDCLASS1: Stats, WORDCLASS": Stats}}
 """
-def collect_POS_tags(POS_obj):
+def collect_new_POS_tags(POS_obj):
     f = open("export.csv", "r", encoding ="utf-8")
     for row in f:
         word_list = row.split(";")
@@ -608,6 +700,7 @@ def collect_POS_tags(POS_obj):
                 POS_obj.wordclass.get(term)[word_class] += stats     
 
 
+# ===================================== Main-functions ==================================
 """
 STEP 1: Write to POS files
 """
@@ -616,7 +709,7 @@ def step1_write_POS_to_file(g_list, nB, pos, limit):
         f = open("POS-2006-"+str(gender), "w", encoding ="utf-8")
         occ = OccupationMerge()
         gC = GenderClass(gender)
-        classified_occupations = read_classified_occupations(gender) #no men-file 
+        classified_occupations = read_classified_occupations(gender) 
         collect_all_ads(occ, classified_occupations,gender)
         POS_all_ads(pos,occ,gC,limit,f)
         nB.createClass(gC)
@@ -627,36 +720,40 @@ def step1_write_POS_to_file(g_list, nB, pos, limit):
 """
 STEP 2: Collect POStags from POS-files and classify
 """
-def step2_collect_POStags_and_classify(g_list, nB, pos, limit):
+def step2_collect_POStags_and_classify(g_list, nB, pos, limit, POS_obj):
     #List to be able to access the GenderClass-objects
     gender_class_list = []
 
-    #Read all POStags from the new wordclass-dataset and collect it in the POS_obj
-    POS_obj = POStags()
-    collect_POS_tags(POS_obj)
+    #Read all POStags from the new wordclass-dataset and gather it in the POS_obj
+    collect_new_POS_tags(POS_obj)
 
-    #Set this one to True if you want to use språkbankens dataset och False otherwise
+    #Set this one to True if you want to use språkbankens dataset and False if you want to use spacy_udpipes pos-tagger
     use_sprakbanken_wordclasses = True
     
     for gender in g_list:
         gC = GenderClass(gender)
         gender_class_list.append(gC)
         for year in range(2006, 2011):
-            read_POS_terms(gC,gender,limit, year, POS_obj, use_sprakbanken_wordclasses)
+            read_POS_files(gC,gender,limit, year, POS_obj, use_sprakbanken_wordclasses)
         nB.createClass(gC)
         limit = gC.total_nr
         #sort_popular_terms(gC)
-    #xtract_unique_gender_lemmas(gender_class_list)
+    #extract_unique_gender_lemmas(gender_class_list)
     #extract_unique_gender_terms(gender_class_list)
     #classify_extreme(nB, gender_class_list)
-    classify_input(pos,nB, POS_obj, use_sprakbanken_wordclasses)
+    calculate_with_lemma = True
+    calculate_with_text = False
+    classify_input(pos,nB, POS_obj, use_sprakbanken_wordclasses, calculate_with_lemma, calculate_with_text)
+
+
 
 def main():
     g_list = ["Men", "Women"]
     nB = NaiveBayes()
     pos = POS()
+    POS_obj = POStags()
     limit = None 
     #step1_write_POS_to_file(g_list, nB, pos, limit)
-    step2_collect_POStags_and_classify(g_list, nB, pos, limit)
+    step2_collect_POStags_and_classify(g_list, nB, pos, limit, POS_obj)
    
 main()
