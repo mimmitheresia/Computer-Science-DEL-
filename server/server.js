@@ -160,7 +160,7 @@ app.post('/analyzeaction*', (req, res) => {
   const des = req.body.hidden;
   if (target){
     if (des) {
-      const result = "{[Jag] [n] [0.5]} {[söker] [n] [0.5]} {[en] [n] [0.5]} {[redig,] [m] [0.8]} {[stark] [m] [0.9]} {[och] [n] [0.5]} {[vacker] [w] [0.9]} {[kollega.] [n] [0.5]}";
+      const result = "{[Jag] [n] [0.5] []} {[söker] [n] [0.5] []} {[en] [n] [0.5] []} {[redig,] [m] [0.8] [ambitiös,framåt]} {[stark] [m] [0.9] [uthållig]} {[och] [n] [0.5] []} {[vacker] [w] [0.9] []} {[kollega.] [n] [0.5] []}";
       res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Analyzing...&description=${des}&result=${result}`)
     }
     else {
@@ -173,3 +173,6 @@ app.post('/analyzeaction*', (req, res) => {
 app.listen(port, () => {
   console.info(`Listening on port ${port}!`);
 });
+
+
+
