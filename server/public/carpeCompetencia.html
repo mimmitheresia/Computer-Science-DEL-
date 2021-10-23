@@ -1,0 +1,559 @@
+<!DOCTYPE html> 
+<html lang="sv"> 
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style> 
+    
+
+    body {
+          /*   background-image: url("https://images.unsplash.com/photo-1614851099362-9adf73ccebe9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80");  */ /* url("https://www.isadora.com/globalassets/values/values_5-4.jpg?preset=lg");  */
+            /* background-image: linear-gradient(to right, #21e921 0%, #53dada 51%, #3b1ebe 100%, #cf3bd4 100%, #e72636 100% ); */
+            background-color: #ffa1a1;
+            /* background-repeat: no-repeat; */
+            background-size: 100% 100%;} 
+ 
+
+        /* START MY CSS -------------------------------------------------------------------------------------------------------------------*/ 
+        .top-header{
+            height:50%;
+            background-color: #d79ddf;}
+            
+        h1{  
+            margin-left:15px;
+            font-size: 30px;
+            color: rgb(9, 20, 70);
+            font-weight: 400;
+            font-weight : bold;
+            font-family: 'Trebuchet MS', sans-serif;}
+        
+        h1 .slogan{
+            font-weight:400;
+            color: rgb(255, 255, 255);
+            font-family: 'Trebuchet MS', sans-serif;} 
+        
+        .top-header input { 
+            height: 5%;
+            width: 30;
+            margin-right: 5px;      
+           
+            text-shadow:2px -2px 10px rgb(255, 255, 255);
+            border-radius: 15px;
+            background-color: white;
+            
+            color:#d79ddf;
+            font-size: 14px;
+            font-weight : bold;
+            text-align: center; 
+            font-weight:700;
+            font-family: 'Trebuchet MS', sans-serif;   
+            cursor:pointer;
+            float: right;} 
+
+        .top-header input:hover {font-size: 16px;color: linear-gradient(to left, #fab5f1 0%, #cab8ec 51%, #ffffff 100%);}          
+        .top-header input:after {content: "";clear: both;display: table;}
+        .top-header input:not(:last-child) { background-color: transparent;border:transparent;color:rgb(255, 255, 255);border-right: none; /* Prevent double borders */}
+        .top-header input:last-child {box-shadow: 0 0 20px #eee;}
+        
+        #username-btn{border:rgb(103, 109, 199);border-radius: 15px;}
+      
+        section {
+            float:left;
+            border-radius: 6px;
+            margin: 1%;
+            }
+
+        section:after {
+            content: "";
+            display: table;
+            clear: both;} 
+        
+        .section-1{
+            height: 100%;
+            background-color: #5edd7a;    
+        }
+
+        .section-2{
+            width:100%;
+            height: 100%;
+            background-color: #DD5E89;    
+        }
+
+        .section-2 .column{
+            float:right;
+        }
+
+
+    /* CENTER CSS  */
+      
+        .text-buttons {   
+            margin-top:12px;
+            color: #FFF;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            padding: 2px;
+            text-align: center;
+            display: block;
+            text-transform: uppercase;   
+            cursor: pointer;}
+        .text-buttons:first-child {
+            margin-top: 50%;
+            border-bottom: none; /* Prevent double borders */}
+
+        .text-buttons:hover{
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
+ 
+        .button-w {
+            font-weight: 300;
+            margin: 10px;
+            transition: 0.5s;
+            margin-right:0px;
+            width: 50px;
+            height: 20px;
+            font-size: 8px;
+            background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%);
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            background-size: 200% auto;            
+            box-shadow: 0 0 20px #eee;
+            border:0px;}
+
+        .button-premium {
+            margin: 10px;
+            transition: 0.5s;
+            margin-right:0px;
+            width: 50px;
+            height: 20px;
+            background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+            font-size: 8px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            background-size: 200% auto;            
+            box-shadow: 0 0 20px #eee;
+            border:0px;}
+
+        .button-anlz {
+            margin: 10px;
+            transition: 0.5s;
+            background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+            font-size: 15px;
+            width: 120px;
+            height: 40px;
+            margin-left:30%;
+            margin-top:15px;   
+            border-radius: 6px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            background-size: 200% auto;            
+            box-shadow: 0 0 20px #eee;
+            border:0px;}
+
+        .button-w:hover { background-position: right center; }
+        .button-blue:hover { background-position: right center; }
+        .button-green:hover { background-position: right center; }
+        .button-yellow:hover { background-position: right center; } 
+        .button-orange:hover { background-position: right center; }     
+        .button-anlz:hover { background-position: right center; }
+        
+        .textarea-decor{
+           float:left;
+   }
+        
+        #edittable { 
+            width: 450px;
+            height: 300px;
+            border: transparent; 
+            padding: 12px;
+            overflow: scroll;
+            text-align:start;
+            background-color: transparent;
+            font-size: 14px;
+            font-weight: 40;
+            color:#00000077;
+            border-radius: 5px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            font-family: "Lucida Console", "Courier New", monospace;}
+
+        .word-info {
+            background: #009cdc;
+            height: 100%;
+            width:50%;
+            border:#4360e2;
+            border-width: 3xp;
+        }
+        
+        /* TIP BOX  */
+
+        .tooltip {
+            display:inline-block;
+            position:relative;
+            border-bottom:1px dotted #666;
+            text-align:left;}
+
+        .tooltip h3 {margin:12px 0;}
+
+        .tooltip .top {
+            min-width:200px;
+            max-width:400px;
+            top:-20px;
+            left:50%;
+            transform:translate(-30%,-100%);
+            padding:10px 20px;
+            color:#ffffff;
+            background-color:#009cdc;
+            font-weight:normal;
+            font-size:14px;
+            border-radius:8px;
+            position:absolute;
+            z-index:99999999;
+            box-sizing:border-box;
+            box-shadow:0 1px 8px rgba(0,0,0,0.5);
+            display:none;
+        }
+
+        .tooltip:hover .top {
+            display:block;
+        }
+        .tooltip .top i {
+            position:absolute;
+            top:100%;
+            left:30%;
+            margin-left:-15px;
+            width:30px;
+            height:15px;
+            overflow:hidden;
+        }
+        .tooltip .top i::after {
+            content:'';
+            position:absolute;
+            width:15px;
+            height:15px;
+            left:50%;
+            transform:translate(-50%,-50%) rotate(45deg);
+            background-color:#009cdc;
+            box-shadow:0 1px 8px rgba(0,0,0,0.5);
+        }  
+        
+        
+        #w-class{
+            text-decoration-color: #DD5E89;
+            text-decoration-thickness: 3px;}
+        #w-class:hover { 
+            text-decoration-color: #fd3578;
+            text-decoration-thickness: 4px;
+        }
+        #m-class{
+            text-decoration-color:#3538e9;
+            text-decoration-thickness: 3px;}
+
+        #m-class:hover { 
+            text-decoration-color: #4360e2;
+            text-decoration-thickness: 4px;
+        }
+        #n-class {
+            text-decoration-color: rgba(150, 34, 34, 0.3);
+            text-decoration-thickness: 3px;
+            text-decoration: none;}
+        #remove-under {
+            text-decoration: none;}
+        #KVINNA{
+            background-color:#e59abf;}
+        #MAN {
+            background-color: #6ea7e9;}
+        .u {
+            color:rgb(68, 57, 57);
+            font-family: "Arial ", Gadget, sans-serif;}
+        
+
+        /* END CSS -------------------------------------------------------------------------------------------------------------------*/ 
+    </style>            
+                      <!-- ^     ^     ^     ^     ^     ^     ^     ^     -->
+                        
+                        <!--                    C   S   S                          -->       
+
+</head>
+<body> <!-- START HTML  --------------------------------------------------------------------------------------------------------->
+    <!-- <div class="tooltip">
+        Top
+        <div class="top">
+            <h3>Lorem Ipsum</h3>
+            <ul>
+            <li>Aliquam ac odio ut est</li>
+            <li>Cras porttitor orci</li>
+            </ul>
+            <i></i>
+        </div>
+    </div> -->
+    
+    <div class="top-header">
+        <form action ="/signout" method="get">
+            <input type="submit" id="logout-btn" name="signout" value="LOGGA UT">
+            <input type="submit" id="profile-btn" name="profile" value="DIN PROFIL">
+            <input type ="submit"id="username-btn" name ="username" value="-">
+            <h1>CARPE COMPETENCE<p class="slogan" id = "slogan">slogan</p></h1> 
+        </form> 
+    </div>
+    
+<div class = "section-1">Section 1 <p id="category ">SVÅRFÅNGAD KOMPETENS</p></div>    
+
+<div class = "section-2">Section 2 <div class = "column">Column 3 </div><div class = "column">Column 2 </div><div class = "column">Column 1 </div></div> 
+
+
+<div class="word-info" id="word-info"><p>WORD INFO</p></div>
+
+<div class="word-info" ><p>WORD INFO2</p></div>
+                
+                
+
+   <!--  
+   
+<div class="section--22" style="background-color: brown;">
+    <div class="textarea-decor"> 
+        <form action ="/targetaction" id ="target-post" method="post">
+             
+            <input type = "submit" class="text-buttons button-w" name="target" id=KÖN value="KVINNA">
+            <input type="submit" class="text-buttons button-premium" name="target" id=blue value="?">
+            <input type = "submit" class="text-buttons button-premium" name="target" id = green value="?">
+            <input type = "submit" class="text-buttons button-premium" name="target" id = yellow value="?">
+            <input type = "submit" class="text-buttons button-premium" name="target" id = orange value="?">        
+        </form>
+    </div>
+      
+    
+    <div class="textarea-decor"> 
+        <div type="hidden" contenteditable="true"  id ="edittable" name = "description"></div>
+        <form action ="/analyzeaction" id ="analyze-area" method="post">
+            <input type="hidden" id="h-content" style="width:0%; height: 0%;" name="hidden" value="lala">
+            <button type="submit" class="text-buttons button-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SKANNA</button>
+            <button type="submit" class="text-buttons button-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA</button>
+            <div id="a-status" class="p" style="font-family:Arial, Gadget, sans-serif; color:white;"> </div> 
+        </form>
+    </div>  
+</div> -->
+
+
+
+        
+   
+ 
+   
+    
+    <!-- END MY HTML --------------------------------------------------------------------------------------------------------->
+
+   
+
+         <!--                                  S  C  R  I  P  T                                          -->
+                
+        <!--                      ⬇    ⬇     ⬇    ⬇     ⬇    ⬇    ⬇     ⬇     ⬇                               -->
+
+    <script>
+        //START SCRIPT --------------------------------------------------------------------------------------------------------------------
+        let name;
+        let target;
+        let description;
+        let synonym_dict = {}
+   
+        getUserParams();
+
+    
+    
+        function getUserParams() { 
+            const params = new URLSearchParams(location.search);
+            name = params.get('user');
+            //const word_term = document.createTextNode(name);
+            console.log(name);
+        
+            document.getElementById("username-btn").value = name; 
+            //button.textContent = name;
+          
+            //nameNode.appendChild(word_term);
+            const EditTable = document.getElementById("edittable");
+            EditTable.textContent = " Här knappar du in din annons...";
+            document.getElementById("target-post").action += ":" + name;
+            console.log("In getUserparams:");
+            console.log(name);
+            
+
+            
+            if (params.has('target')) {
+            target = params.get('target');
+           
+            if (target.includes("KVINNA")){
+               // document.getElementById("KVINNA").style.height = "30px";
+                document.getElementById("edittable").style.borderColor = "#DD5E89";
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,#DD5E89 0%, #F7BB97 51%, #DD5E89 100%)";
+                document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
+                document.getElementById("blue").style.background ='#acacac'; //reset colour
+                document.getElementById("green").style.background ='#acacac'; //reset colour
+                document.getElementById("yellow").style.background ='#acacac'; //reset colour
+                document.getElementById("orange").style.background ='#acacac'; //reset colour
+            }
+            
+            console.log(target);}
+
+            if (params.has('analyze')) {
+            const analyzestatus = params.get('analyze');
+                if (analyzestatus.includes("Not successful")){
+                    alert("Du måste välja en profil att anställa");}
+                else {
+                    const aDiv = document.getElementById("a-status");
+                    const word_term = document.createTextNode(analyzestatus);
+                    aDiv.appendChild(word_term);
+                    console.log(analyzestatus);}}
+
+            if (params.has('description')) {
+               tag_ML_Result(params.get('description'), params.get('result'))}
+        }
+
+        function setSlogan(){
+            const sloganElement = document.getElementById("slogan");
+            console.log("sloganelement:");
+            console.log(sloganElement);
+
+            const slogan = ["ATTRAHERA", "KANDIDATER" , "MED" , "AI"]
+            const attr = document.createTextNode(slogan[0]);
+            const kand = document.createTextNode(slogan[1]);
+            const med = document.createTextNode(slogan[2]);
+            const AI = document.createTextNode(slogan[3]);
+
+            var space_term1 = document.createTextNode("  ");
+            var space_term2 = document.createTextNode("  ");
+            var space_term3 = document.createTextNode("  ");
+            var spaceElement1 = document.createElement('u');
+            var spaceElement2 = document.createElement('u');
+            var spaceElement3 = document.createElement('u');
+
+            spaceElement1.setAttribute("id", "remove-under");
+            spaceElement1.appendChild(space_term1);
+            spaceElement2.setAttribute("id", "remove-under");
+            spaceElement2.appendChild(space_term2);
+            spaceElement3.setAttribute("id", "remove-under");
+            spaceElement3.appendChild(space_term3);
+
+            const wordElement1 = document.createElement('u');
+            wordElement1.setAttribute("id", "w-class");
+            const wordElement2 = document.createElement('u');
+            wordElement2.setAttribute("id", "m-class");
+            const wordElement3 = document.createElement('u');
+            wordElement3.setAttribute("id", "w-class");
+            const wordElement4 = document.createElement('u');
+            wordElement4.setAttribute("id", "m-class");
+
+            wordElement1.appendChild(attr);
+            wordElement2.appendChild(kand);
+            wordElement3.appendChild(med);
+            wordElement4.appendChild(AI);
+        
+            sloganElement.appendChild(wordElement1);
+            sloganElement.appendChild(spaceElement1);
+            sloganElement.appendChild(wordElement2);
+            sloganElement.appendChild(spaceElement2);
+            sloganElement.appendChild(wordElement3);
+            sloganElement.appendChild(spaceElement3);
+            sloganElement.appendChild(wordElement4);
+
+        }
+
+        function tag_ML_Result(description,result){
+            const EditTable = document.getElementById("edittable");
+            EditTable.textContent = "";
+            var result_by_word = result.split("{").slice(1);
+       
+              //Get result by word  
+            for (var i in result_by_word) { 
+                var has_syn = false;  
+                word_res = result_by_word[i].replace("}","");
+                word_res = word_res.split("[");
+                var word = word_res[1].replace("]","").trim();   
+                const g_class = word_res[2].replace("]","").trim(); 
+                const prob = word_res[3].replace("]","").trim(); 
+                var synonyms =  word_res[4].replace("]","").trim(); // 
+                synonyms = synonyms.split(",");
+                if (synonyms.length === 1) {
+                    var is_it_syn = synonyms[0];
+                    if (is_it_syn === ""){
+                        has_syn = false;}
+                    else {
+                        has_syn = true;}}
+                if (synonyms.length > 1) {
+                    has_syn = true;}
+
+                //Create nodes         
+                var word_term = null;
+                var wordElement = document.createElement('u'); 
+            
+                var character_term = null;    
+                var characterElement = null;
+
+                var space_term = document.createTextNode(" ");
+                var spaceElement = document.createElement('u')
+                spaceElement.setAttribute("id", "remove-under");
+                spaceElement.appendChild(space_term);
+               
+
+                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+                var last_char = word.charAt(word.length-1);
+                wordContainsChar = /[,.]/.test(last_char);
+                if (wordContainsChar){ 
+                    characterElement = document.createElement('u');
+                    characterElement.setAttribute("id", "remove-under");
+                    var clean_term = word.substring(0, word.length-1);        
+                    word_term = document.createTextNode(clean_term);    
+                    character_term = document.createTextNode(last_char);
+                    characterElement.appendChild(character_term); }
+                else {      
+                    word_term = document.createTextNode(word);} //The whole word can be underlined.    
+                     
+                
+                    //Add synonyms to dict
+                if (has_syn) {
+                    synonym_dict[word] = []
+                    for (var t in synonyms){
+                    synonym_dict[word].push(synonyms[t].replace("]",""));}}
+               
+        
+                //Set Attribute at wordElement
+                if (g_class.includes("n")) {
+                    wordElement.setAttribute("id", "n-class");}
+                   
+                if (g_class.includes("w")) {   
+                    wordElement.setAttribute("id", "w-class");}
+                
+                if (g_class.includes("m")) {
+                    wordElement.setAttribute("id", "m-class");  
+                   }   
+                
+                //Add word to EditTable     
+                wordElement.appendChild(word_term);  
+                EditTable.appendChild(wordElement);
+                if (wordContainsChar){ 
+                    EditTable.appendChild(characterElement);     
+                }
+                
+                EditTable.appendChild(spaceElement);           
+            } 
+            console.log("SynonymDict");
+            for (t in synonym_dict){
+                console.log(t);
+                console.log(synonym_dict[t]);}         
+        }   
+            
+        function POSTHiddenDescription(){
+            console.log("POSTHiddenDescription()"); 
+            const contentDiv = document.getElementById("edittable");
+            description = contentDiv.textContent;
+            document.getElementById("h-content").value = description;
+            console.log(description);
+            document.getElementById("analyze-area").action += ":" + name + ":" + target }
+        
+      </script>
+
+</body>
+</html>
+  
+
+
