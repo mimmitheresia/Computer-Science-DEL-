@@ -1,4 +1,5 @@
 import json
+import sys
 import spacy_udpipe
 import re
 import xml.etree.ElementTree as ET
@@ -748,12 +749,23 @@ def step2_collect_POStags_and_classify(g_list, nB, pos, limit, POS_obj):
 
 
 def main():
+    #All kod här nedanför är för att testa få ihop programmet med server.js
+    if sys.argv[1] == "ARG1":
+        d = {"key1": 231, "key2": 4657}
+        dataToSendBack = json.dumps(d)
+        print("HAKLLLÅDASD")
+        print(dataToSendBack)
+        sys.stdout.flush()
+    else:
+        print(str(sys.argv[1].toString()))
+        sys.stdout.flush()
+    # ==================================
     g_list = ["Men", "Women"]
     nB = NaiveBayes()
     pos = POS()
     POS_obj = POStags()
     limit = None 
     #step1_write_POS_to_file(g_list, nB, pos, limit)
-    step2_collect_POStags_and_classify(g_list, nB, pos, limit, POS_obj)
+    #step2_collect_POStags_and_classify(g_list, nB, pos, limit, POS_obj) #Kommentera bort denna för att köra programmet 
    
 main()
