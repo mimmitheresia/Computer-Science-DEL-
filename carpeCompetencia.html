@@ -1,733 +1,178 @@
-<!DOCTYPE html> 
-<html lang="sv"> 
-<head> 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style> 
-
-    :root {
-        font-family:"Arial Black", Gadget, sans-serif;
-        text-decoration-color: white;
-        --carpe-color-dark: #006A63;
-        --carpe-color-light: #009D94;
-        --women-color: #80c780;
-        --red-color: rgb(204, 100, 100);}
-    
-    html,body{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
-
-    .top-header{height:250px; width:100%; }
-    .section-1{height:600px; width: 100%; }
-    .section-1 .column{height: 100%;float:right;}
-
-            img {max-width: 250px;height: auto; margin-left:0px; display: inline;}
-            
-            .slogan{
-            font-weight:300;
-            color: white;
-            margin-left: 40px;
-            margin-top:0px;
-            font-size: 25px;
-            font-family: "Arial Black", Gadget, sans-serif;} 
-        
-            .top-header input { 
-            height: 5%;
-            width: 30;
-            margin-right: 15px;       
-            text-shadow:2px -2px 10px rgb(255, 255, 255);
-            background: transparent;
-            border-radius: 15px;  
-            color:white;
-            font-size: 14px;
-            font-weight : bold;
-            text-align: center; 
-            font-weight:700;
-            font-family: var(--font); 
-            box-shadow: 0 0 20px #eee;  
-            cursor:pointer;
-            float: right;} 
-            .top-header input:hover {font-size: 16px;color: linear-gradient(to left, #fab5f1 0%, #cab8ec 51%, #ffffff 100%);}          
-            .top-header input:after {content: "";clear: both;display: table;}
-            .top-header input:not(:last-child) { background-color: transparent;border:transparent;color:rgb(255, 255, 255);border-right: none; /* Prevent double borders */} */
-            /* .top-header input:last-child {box-shadow: 0 0 20px #eee;}   */
-            /* #username-btn{border:rgb(103, 109, 199);border-radius: 15px;}     */
-    
-    /* Instruction table */
-    #instruction-table{width: 41%; align-content:center;border-style:solid; border-width: 1px; border-color:white;}
-    
-    /* Button table */
-    #button-table{width: 6%; padding-top: 12px;}        
-      
-            .competence-buttons {   
-            width: 70%;
-            height: 20px;
-            margin-left:30%;
-            margin-top:12px;
-            margin-bottom: 10px;  
-            padding: 2px;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;  
-            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            background-size: 200% auto;            
-            box-shadow: 0 0 20px #eee;
-            border:0px;
-            color: #FFF;
-            font-family: "Arial Black", Gadget, sans-serif; 
-            text-align: center;
-            font-weight: 300;
-            font-size: 8px;
-            display: block;
-            transition: 0.5s; 
-            cursor: pointer;}   
-            .competence-buttons:first-child {margin-top: 30%; /* Prevent double borders */}
-            .competence-buttons:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
-            .button-w {background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);} /* background-image: linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%); */
-            .button-premium {background-image: linear-gradient(to right, #4f4f50 20%, #adadad 51%, #a1a3a0 100%);}
-            .button-w:hover { background-position: right center; }
-            .button-premium:hover { background-position: right center; }
-
-     /* Input table */
-    #input-table{width:35%;}
-        #edittable { 
-            width: 95%;
-            height: 80%;
-            border: none; 
-            padding: 12px;
-            overflow: scroll;
-            text-align:start;
-            background-color: white;
-            font-size: 14px;
-            font-weight: 40;
-            color:#00000077;
-            border-radius: 5px;
-            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            font-family: "Lucida Console", "Courier New", monospace;}
-
-            .button-anlz {
-            margin: 8px;
-           
-            display:inline;
-            box-shadow: 0 0 20px #eee;
-            border:0px;
-            color: #FFF;
-            font-family: "Arial Black", Gadget, sans-serif; 
-            background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
-            font-size: 15px;
-            width: 110px;
-            height: 50px; 
-            border-radius: 3px;
-            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            background-size: 200% auto;            
-            border:0px;
-            transition: 0.5s; 
-            cursor: pointer}
-            .edit-buttons:first-child {margin-left:50px; /* Prevent double borders */}
-            .button-anlz:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); }
-            .button-anlz:hover { background-position: right center; }
-        
-
-        .popup-window {
-            display:inline-block;
-            margin-left:78%;
-            position:relative;
-            border-bottom:1px dotted #666;
-            text-align:left;}
-
-            .popup-window h3 {margin:12px 0;}
-
-
-            .popup-window .top {
-            min-width:200px;
-            max-width:400px;
-            top:-20px;
-            left:50%;
-            transform:translate(-30%,-100%);
-            transition: all 0.3s ease-out;
-            padding:10px 20px;
-            color:#ffffff;
-            background-color: var(--carpe-color-light);         
-            font-weight:normal;
-            font-size:14px;
-            border-radius:8px;
-            position:absolute;
-            z-index:99999999;
-            box-sizing:border-box;
-            box-shadow:0 1px 8px rgba(255, 255, 255, 0.5);
-            display: none;
-            }
-            .popup-window:hover .top {display:block;}
-        
-            .popup-window .top i {
-            position:absolute;
-            top:100%;
-            left:30%;
-            margin-left:-15px;
-            width:30px;
-            height:15px;
-            overflow:hidden;}
-        
-            .popup-window .top i::after {
-            content:'';
-            position:absolute;
-            width:15px;
-            height:15px;
-            left:50%;
-            transform:translate(-50%,-50%) rotate(45deg);
-            background-color:#009cdc;
-            box-shadow:0 1px 8px rgba(0,0,0,0.5);}  
-
-            .close {
-            background: #606061;
-            color: #FFFFFF;
-            line-height: 25px;
-            position: absolute;
-            right: -12px;
-            text-align: center;
-            top: -10px;
-            width: 24px;
-            text-decoration: none;
-            font-weight: bold;
-            -webkit-border-radius: 12px;
-            -moz-border-radius: 12px;
-            border-radius: 12px;
-            /* box-shadow: 0 0px 1px rgba(255, 255, 255, 0.966), 0 1px 2px rgb(255, 255, 255); */
-            transition: all 0.4s cubic-bezier(.25,.8,.25,1);}
-  
-            #hovered-rubric{
-                font-size: 15px;
-                font-weight: 500;}
-
-            #hovered-knowledge{
-                font-size: 13px;
-                font-weight: 10;}
-
-            #alt_button{
-                height:20px;
-                color: #FFF;
-                font-family: "Lucida Console", "Courier New", monospace;
-                text-align: center;
-                font-weight: bold;
-                font-size: 13px;
-                border-radius:10px;
-                border:transparent;      
-                margin: 3px;
-                background-image: linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%);
-
-            }
-
-    
-     
-    /* Result table */
-    #result-table{width:20%;}
-        .score-ring{
-        margin-left:70px;
-        position:absolute;
-        width: 200px;
-        height:200px;}
-
-        .percent1, .percent2, svg, circle {width: 100%;height:100%;}
-
-        circle {
-        position: absolute;
-        fill: none;
-        stroke-width: 10;
-        transform: translate(10px, 10px);
-        stroke-dasharray: 440;
-        stroke-linecap: round;}
-
-        circle:nth-child(1) {stroke-dashoffset: 0;stroke: #bbbbbb;}
-
-        .percent1 circle:nth-child(2) {
-        stroke-dashoffset: calc(440 - (440 * 75) / 100);
-        stroke: rgb(93, 148, 139);
-        animation: percent 1.5s linear;
-        animation-delay: 1s;}
-
-        .number { position: relative; bottom: 200px;right: -45px;color: #fff;} 
-        h2 {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
-        span {font-size: 24px;opacity: .7;}
-        .percent1 span {color: rgb(87, 173, 145);}
-        @keyframes percent {0% {stroke-dashoffset: 0;stroke-width: 0;}}
-
-
-        .result-scale {   
-            width: 20px;
-            height: 10px;
-            margin-bottom: 10px;  
-            border-radius: 3px;
-            background-image: linear-gradient(to right, #4f4f50 20%, #adadad 51%, #a1a3a0 100%);
-            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-            background-size: 200% auto;            
-            box-shadow: 0 0 20px #eee;
-            border:0px;
-            color: #FFF;
-            font-family: "Arial Black", Gadget, sans-serif; 
-            text-align: center;
-            font-weight: 300;
-            font-size: 8px;
-            display: block;
-            transition: 0.5s; 
-            cursor: pointer;}   
-
-       
-        #w-class{
-            text-decoration-color: var(--women-color);
-            text-decoration-thickness: 3px;}
-        /* #w-class:hover { 
-            text-decoration-color: #fd3578;
-            text-decoration-thickness: 4px;
-        } */
-        #m-class{
-            text-decoration-color:var(--red-color);
-            text-decoration-thickness: 3px;}
-
-       /*  #m-class:hover { 
-            text-decoration-color: #4360e2;
-            text-decoration-thickness: 4px;
-        } */
-        #n-class {
-            text-decoration-color: rgba(150, 34, 34, 0.3);
-            text-decoration-thickness: 3px;
-            text-decoration: none;}
-        #remove-under {
-            text-decoration: none;}
-        
-        #KVINNA{
-            background-color:#e59abf;}
-        #MAN {
-            background-color: #6ea7e9;}
-        .u {
-            color:rgb(255, 255, 255);
-            font-family: "Arial ", Gadget, sans-serif;}
-        #font { position:center;font-family: "Arial ", Gadget, sans-serif; color:white; text-align: left; font-weight: bold; font-size: 13px;}
-        #font-result { margin-left: 60px;font-family: "Arial ", Gadget, sans-serif; color:white; text-align: left; font-weight: bold; font-size: 30px;}
-
-
-     
-
-
-
-        
-
-        /* END CSS -------------------------------------------------------------------------------------------------------------------*/ 
-    </style>            
-                      <!-- ^     ^     ^     ^     ^     ^     ^     ^     -->
-                        
-                        <!--                    C   S   S                          -->       
-
-</head>
-<body> <!-- START HTML  --------------------------------------------------------------------------------------------------------->
-   
-    
-    <div class="top-header">
-        <form action ="/signout" method="get">
-            <input type="submit" id="logout-btn" name="signout" value="LOGGA UT">
-            <input type ="submit"id="username-btn" name ="username" value="-">
-            <img src= "https://i.ibb.co/W5hgPVx/Logga.png"> <p class="slogan" id = "slogan">Fånga kompetensen med AI</p>
-        </form> 
-    </div>
-     
-
-<div class = "section-1">
-    
-    <div class = "column" id = "result-table">
-        <p id="font-result">Carpe Score</p>
-        <div class="score-ring"><div class="percent1">
-            <svg><circle cx="70" cy="70" r="70"></circle><circle cx="70" cy="70" r="70"></circle></svg>
-            <div class="number"><h2>75<span>%</span></h2></div></div>     
-        </div>  
-        
-        
-        <input type = "submit" class="result-scale r1" value="" id=r1 >
-        <input type="submit" class="result-scale r2" value="" id=r2 >
-        <input type = "submit" class="result-scale r3" value="" id = r3 >
-        <input type = "submit" class="result-scale r4" value="" id = r4 >
-        <input type = "submit" class="result-scale r5" value=""id = r5 >
-        <input type = "submit" class="result-scale r6" value=""id = r6 >
-    </div>
-   
-
-    <div class = "column" id = "input-table"> 
-        <div class="popup-window" id = "popup-window">
-            <div class="top" id= "pop">
-            <a href="#close" id = "close-btn" title="Close" class="close">X</a>
-            <p id="hovered-rubric"></p>
-            <p id = "hovered-knowledge"></p>
-            <div id = "hovered-alternatives"></div></div>
-        </div>
-
-        <div contenteditable="true"  id ="edittable" name = "description"></div>
-            <form action ="/analyzeaction" id ="analyze-area" method="post">
-            <input type="hidden" id="h-content" style="width:0%; height: 0%;" name="hidden" value="hidden-content">
-            <button type="submit" class="edit-buttons button-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SKANNA</button>
-            <button type="submit" class="edit-buttons button-anlz" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA</button>
-            </form>
-        <div id="a-status" class="p" style="font-family:Arial, Gadget, sans-serif; color:white;"> </div>    
-    </div>
-    
-    
-    <div class = "column" id = "button-table">
-        <p id="font">Välj kompetens</p>
-        <form action ="/targetaction" id ="target-post" method="post">  
-            <input type = "submit" class="competence-buttons button-w" name="target" id=KÖN value="KVINNA">
-            <input type="submit" class="competence-buttons button-premium" name="target" id=blue value="LÄGG TILL">
-            <input type = "submit" class="competence-buttons button-premium" name="target" id = green value="LÄGG TILL">
-            <input type = "submit" class="competence-buttons button-premium" name="target" id = yellow value="LÄGG TILL">
-            <input type = "submit" class="competence-buttons button-premium" name="target" id = orange value="LÄGG TILL">        
-        </form>
-    </div>
-
-    <div class = "column" id = "instruction-table"></div>
-
-
-<div class="word-info" id="word-info"><p id = "popup-window">WORD INFO</p></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                         
-    <!-- END MY HTML --------------------------------------------------------------------------------------------------------->
-
-   
-
-         <!--                                  S  C  R  I  P  T                                          -->
-                
-        <!--                      ⬇    ⬇     ⬇    ⬇     ⬇    ⬇    ⬇     ⬇     ⬇                               -->
-
-    <script>
-        //START SCRIPT --------------------------------------------------------------------------------------------------------------------
-        let name;
-        let target;
-        let description;
-        var synonym_dict = {}
-        var word_class_dict = {};
-        var PopupTable_rubric = document.getElementById("hovered-rubric");
-        var PopupTable_text = document.getElementById("hovered-knowledge");
-        var PopupTable_btns = document.getElementById("hovered-alternatives");
-
-        var EditTable = document.getElementById("edittable");
-        var staticEditTable;
-        var mouse_on_red_node;
-        var mouse_on_red_word;
-        
-        // setSlogan();
-        getUserParams();
- 
-        function getUserParams() { 
-            const params = new URLSearchParams(location.search);
-            name = params.get('user');
-            console.log(name);
-            document.getElementById("username-btn").value = name; 
-            const EditTable = document.getElementById("edittable");   
-            EditTable.textContent = " Här knappar du in din annons...";
-            document.getElementById("target-post").action += ":" + name;
-            console.log("In getUserparams:");
-            console.log(name);
-     
-            if (params.has('target')) {
-                console.log("has target");
-                console.log(params);
-                target = params.get('target');
-                document.getElementById("edittable").style.borderColor = "#80c780"; 
-                document.getElementById("KÖN").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
-                document.getElementById("KÖN").style.height = "27px";
-                document.getElementById("KÖN").style.width= "75px";
-                document.getElementById("KÖN").style.fontSize = "15px"; 
-                document.getElementById("KÖN").style.marginLeft = "11%";
-
-
-                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
-                document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
-                document.getElementById("blue").style.background ='#acacac'; //reset colour
-                document.getElementById("green").style.background ='#acacac'; //reset colour
-                document.getElementById("yellow").style.background ='#acacac'; //reset colour
-                document.getElementById("orange").style.background ='#acacac'; //reset colour}
-                console.log(target);}
-
-            if (params.has('analyze')) {
-                const analyzestatus = params.get('analyze');
-                if (analyzestatus.includes("Not successful")){
-                    alert("Du måste välja en profil att anställa");}
-                else {
-                    const aDiv = document.getElementById("a-status");
-                    const word_term = document.createTextNode(analyzestatus);
-                    aDiv.appendChild(word_term);
-                    console.log(analyzestatus);}}
-
-            if (params.has('description')) {
-               tag_ML_Result(params.get('description'), params.get('result'))}}
-
-
-        function tag_ML_Result(description,result){
-            var result_by_word = result.split("{").slice(1);
-            var clean_term;
-            EditTable.textContent = "";
-           
-              //Get result by word  
-            for (var i in result_by_word) { 
-                var has_syn = false;  
-                word_res = result_by_word[i].replace("}","");
-                word_res = word_res.split("[");
-                var word = word_res[1].replace("]","").trim();   
-                const g_class = word_res[2].replace("]","").trim(); 
-                const prob = word_res[3].replace("]","").trim(); 
-                var synonyms =  word_res[4].replace("]","").trim(); // 
-                synonyms = synonyms.split(",");
-                if (synonyms.length === 1) {
-                    var is_it_syn = synonyms[0];
-                    if (is_it_syn === ""){
-                        has_syn = false;}
-                    else {
-                        has_syn = true;}}
-                if (synonyms.length > 1) {
-                    has_syn = true;}
-
-                //Create nodes         
-                var word_term = null;
-                var wordElement = document.createElement('u'); 
-            
-                var character_term = null;    
-                var characterElement = null;
-
-                var space_term = document.createTextNode(" ");
-                var spaceElement = document.createElement('u')
-                spaceElement.setAttribute("id", "remove-under");
-                spaceElement.appendChild(space_term);
-               
-
-                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
-                var last_char = word.charAt(word.length-1);
-                wordContainsChar = /[,.]/.test(last_char);
-                if (wordContainsChar){ 
-                    characterElement = document.createElement('u');
-                    characterElement.setAttribute("id", "remove-under");
-                    clean_term = word.substring(0, word.length-1);        
-                    word_term = document.createTextNode(clean_term);    
-                    character_term = document.createTextNode(last_char);
-                    characterElement.appendChild(character_term); }
-                else {  
-                    clean_term = word;       
-                    word_term = document.createTextNode(clean_term);} //The whole word can be underlined. 
-             
-                //Add synonyms to dict
-                if (has_syn) {
-                    synonym_dict[clean_term] = []
-                    for (var t in synonyms){
-                        var syn = synonyms[t].replace("]","");
-                        synonym_dict[clean_term].push(syn);}}
-                var syns_list = synonym_dict[clean_term];
-                
-               
-        
-                //Set Attribute at wordElement
-                wordElement.appendChild(word_term);   
-                if (g_class.includes("n")) {
-                    wordElement.setAttribute("id", "n-class");}
-                   
-                if (g_class.includes("w")) {   
-                    wordElement.setAttribute("id", "w-class");}
-                
-                if (g_class.includes("m")) {
-
-                    word_class_dict[clean_term] = "m-class";
-                    wordElement.setAttribute("id", "m-class"); 
-                    set_AlternativeTable(wordElement);
-                   }   
-                
-                //Add word to EditTable with listener    
-                EditTable.appendChild(wordElement);
-                if (wordContainsChar){ 
-                    EditTable.appendChild(characterElement);     
-                }
-                
-                EditTable.appendChild(spaceElement);           
-            } 
-            console.log("SynonymDict");
-            for (t in synonym_dict){
-                console.log(t);
-                console.log(synonym_dict[t]);}       
-        }   
-
-        function set_AlternativeTable(wordElement) {
-      
-
-            wordElement.addEventListener("mouseover", function( event ) {
-                document.getElementById("pop").style.display = "block";
-                mouse_on_red_node = event.target;
-                mouse_on_red_word =  event.target.textContent;
-                const unchanched_wordElements = EditTable.children; 
-                var unchanched_alternativeElements = null;
-                     
-                var info = "Detta ord riskerar att exkludera kvinnliga läsare. Byt ut till ett mer inkluderande ord för att öka ditt carpe score.";
-                var red_synonym_content = "Ordförslag:";
-                var red_word_node = document.createTextNode(mouse_on_red_word);
-                var info_node = document.createTextNode(info);
-                var syn_content_node = document.createTextNode(red_synonym_content);
-            
-                PopupTable_rubric.textContent ="";
-                PopupTable_text.textContent="";
-                PopupTable_btns.textContent = "";
-                
-                PopupTable_rubric.appendChild(document.createTextNode(mouse_on_red_word));
-                PopupTable_text.appendChild(document.createTextNode(info));
-                         
-                //Add alternative buttons for each synonyme
-                var syn_list = synonym_dict[mouse_on_red_word];
-                for (var s in syn_list) {
-                    var alt_btn = document.createElement("button");
-                    alt_btn.setAttribute("id", "alt_button");                
-                    alt_btn.innerHTML = syn_list[s];
-
-                    //Add alternative button to table
-                    PopupTable_btns.appendChild(alt_btn);
-                    
-                    // Add listener to alternative button  
-                    alt_btn.onclick = function (event) {
-                        var alternative_node = event.target;
-                        var alternative_word = event.target.textContent; 
-                        change_EditTable(alternative_word);
-                        change_AlternativeTable(alternative_node , alternative_word);}}});}
-
-        function change_EditTable(alternative_word){
-            console.log("change Edit_table");
-            var wordElements = EditTable.children;       
-                for(var i=0; i<wordElements.length; i++){
-                    var wordElement = wordElements[i];
-                    if (mouse_on_red_word.toLowerCase() === wordElement.textContent) {
-                        console.log("SAME");
-                        wordElement.textContent = alternative_word;
-                        console.log(wordElement.id);
-                        wordElement.id = "n-class";}}
-        }
-
-        function change_AlternativeTable(changed_node, changed_word) {
-        //Add undo button
-                PopupTable_rubric.textContent ="";
-                PopupTable_text.textContent="";
-                PopupTable_btns.textContent = "";
-                var info = "Du ändrade från " +mouse_on_red_word+ " till " + changed_word+".";
-                
-                var info_node = document.createTextNode(info);
-                var undo_btn = document.createElement("button");
-                undo_btn.setAttribute("id", "undo_btn");
-                undo_btn.innerHTML = "Ångra ändring";
-                PopupTable_text.appendChild(document.createTextNode(info));
-                PopupTable_btns.appendChild(undo_btn);
-
-                // If undo is chosen  
-                undo_btn.onclick = function (event) {
-                    console.log("Undo change");
-                    var wordElements = EditTable.children;
-                    for(var i=0; i<wordElements.length; i++){ 
-                        var wordElement = wordElements[i];
-                        if (wordElement.textContent === changed_word) {
-                            wordElement.textContent = mouse_on_red_word;
-                            wordElement.id = word_class_dict[mouse_on_red_word];}}};}
-            
-        function POSTHiddenDescription(){
-            console.log("POSTHiddenDescription()"); 
-            const contentDiv = document.getElementById("edittable");
-            description = contentDiv.textContent;
-            document.getElementById("h-content").value = description;
-            console.log(description);
-            document.getElementById("analyze-area").action += ":" + name + ":" + target }
-
-        var close_btn = document.getElementById("close-btn");
-        close_btn.onclick = function (event) {
-            document.getElementById("pop").style.display = "none"; };
-
-
-
-    
-
-
-function setSlogan(){
-    const sloganElement = document.getElementById("slogan");
-    console.log("sloganelement:");
-    console.log(sloganElement);
-
-    const slogan = ["ATTRAHERA", "KANDIDATER" , "MED" , "AI"]
-    const attr = document.createTextNode(slogan[0]);
-    const kand = document.createTextNode(slogan[1]);
-    const med = document.createTextNode(slogan[2]);
-    const AI = document.createTextNode(slogan[3]);
-
-    var space_term1 = document.createTextNode("  ");
-    var space_term2 = document.createTextNode("  ");
-    var space_term3 = document.createTextNode("  ");
-    var spaceElement1 = document.createElement('u');
-    var spaceElement2 = document.createElement('u');
-    var spaceElement3 = document.createElement('u');
-
-    spaceElement1.setAttribute("id", "remove-under");
-    spaceElement1.appendChild(space_term1);
-    spaceElement2.setAttribute("id", "remove-under");
-    spaceElement2.appendChild(space_term2);
-    spaceElement3.setAttribute("id", "remove-under");
-    spaceElement3.appendChild(space_term3);
-
-    const wordElement1 = document.createElement('u');
-    wordElement1.setAttribute("id", "w-class");
-    const wordElement2 = document.createElement('u');
-    wordElement2.setAttribute("id", "m-class");
-    const wordElement3 = document.createElement('u');
-    wordElement3.setAttribute("id", "w-class");
-    const wordElement4 = document.createElement('u');
-    wordElement4.setAttribute("id", "m-class");
-
-    wordElement1.appendChild(attr);
-    wordElement2.appendChild(kand);
-    wordElement3.appendChild(med);
-    wordElement4.appendChild(AI);
-
-    sloganElement.appendChild(wordElement1);
-    sloganElement.appendChild(spaceElement1);
-    sloganElement.appendChild(wordElement2);
-    sloganElement.appendChild(spaceElement2);
-    sloganElement.appendChild(wordElement3);
-    sloganElement.appendChild(spaceElement3);
-    sloganElement.appendChild(wordElement4);
+'use strict';
+
+class LoggedInUsers {
+  constructor() {
+    this.loggedIn = {};
+    this.targetButton = {};
+  }
+  addUser(username) {
+    this.loggedIn[username] = true;
+  }
+  setTarget(username,gender) {
+    console.log("in set target:");
+    console.log(gender)
+    this.targetButton[username] = gender;
+    console.log(JSON.stringify(this.targetButton));
+  }
+  getTarget(username) {
+    console.log("in getTarget:");
+    console.log(username);
+    console.log(this.targetButton[username])
+    if (username in this.targetButton) {
+      return this.targetButton[username]
+    } else {
+      return null;}
+  }
 }
 
+const path = require('path'); //  Helps resolve relative paths, into absolute baths, independent of operating system
+const express = require('express'); // Express is a very common webserver for Node.js
+const db = require('./database');
+const users = new LoggedInUsers();
+
+const port = 8989;
+const publicPath = path.join(__dirname, 'public');
+const app = express();
+
+// Register a custom middleware for logging incoming requests
+app.use((req, res, next) => {
+  // This is a middleware that logs all incoming requests.
+  const t = Date.now();
+  next();
+  console.log(`[${res.statusCode}] ${req.url} (${Date.now() - t}ms)`);
+});
+// Register a middleware that adds support for a URL encoded request body.
+// This is needed in order to send data to express using a FORM with a POST action.
+app.use(express.urlencoded({
+  extended: true,
+}));
+
+// Serve the login page if a GET request is sent to the root url.
+app.get('/', (req, res) => {
+  res.sendFile(
+    path.join(publicPath, 'login.html'),
+  );
+  console.log(req.head);
+});
+
+app.get("/logo.jpg", function(req, res){
+  res.writeHead(200, {'Content-Type': 'image/jpg'});
+  res.end("logo.jpg");
+})
+
+
+app.get('/userprofile*', (req, res) => {
+  // if sessionid.correctPassword == true:
+  //`Welcome ${req.query.user}!`
+  res.sendFile(
+    path.join(publicPath, 'carpeCompetencia.html'),
+  );
+  //res.redirect('/?registration= LALALAL' );  
+  console.log(req.head)
+});
+
+app.get('/signout', (req, res) => {
+  res.sendFile(
+    path.join(publicPath, 'login.html'),
+  );
+  console.log(req.head);
+});
 
 
 
+app.post('/authenticate', (req, res) => {
+  db.serialize(() => {
+    db.get('SELECT username, password FROM userInfo WHERE username=?', [req.body.username], (err, row) => {
+      if (err) {
+        throw new Error(err);
+      }
+      if (row) { // if userid exists
+        if (req.body.register) {
+          res.redirect('/?registration=not successful. Username already exists.');
+        } else if (req.body.login) {
+          if (req.body.password === row.password) { // check if password is correct
+            users.addUser(row.username)
+            res.redirect(`/userprofile?user=${row.username}`);
+          } else {
+            res.redirect('/?login= not succesful. Password is incorrect');
+          }
+        }
+      } else { // if userid do not exist
+        console.log('Row exists');
+        if (req.body.register) {
+          let usernameContainsDigit = true;
+          let usernameContainsLetter;
+          let passwordContainsDigit = true;
+          let passwordContainsLetter;
+          usernameContainsDigit = /\d/.test(req.body.username);
+          usernameContainsLetter = /[a-zA-Z]/.test(req.body.username);
+          passwordContainsDigit = /\d/.test(req.body.password);
+          passwordContainsLetter = /[a-zA-Z]/.test(req.body.password);
+          if (!(usernameContainsLetter)) {
+            if (req.body.username.toLowerCase().includes('å') || req.body.username.toLowerCase().includes('ä') || req.body.username.toLowerCase().includes('ö')) {
+              usernameContainsLetter = true;
+            }
+          }
+          if (!(passwordContainsLetter)) {
+            if (req.body.password.toLowerCase().includes('å') || req.body.password.toLowerCase().includes('ä') || req.body.password.toLowerCase().includes('ö')) {
+              passwordContainsLetter = true;
+            }
+          }
+          if ((req.body.username.length) < 5) {
+            res.redirect('/?registration= not successful. UserID needs to be at least 5 characters');
+          } else if (!(usernameContainsDigit) || !(usernameContainsLetter)) {
+            res.redirect('/?registration= not successful. UserID needs to contain at least one letter and one digit');
+          } else if ((req.body.password.length) < 5) {
+            res.redirect('/?registration= not successful. Password needs to be at least 5 characters');
+          } else if (!(passwordContainsDigit) || !(passwordContainsLetter)) {
+            res.redirect('/?registration= not successful. Password needs contain at least one letter and one digit');
+          } else {
+            const statement = db.prepare('INSERT INTO userInfo VALUES (?,?)');
+            statement.run(req.body.username, req.body.password);
+            statement.finalize();
+            res.redirect('/?registration=successful');
+          }
+        } else if (req.body.login) {
+          res.redirect('/?login=not successful. Username does not exist.');
+        }
+      }
+    });
+  });
+});
 
-// Create popup-element
-            // var popup_window = document.createElement("div");
-            //     popup_window.setAttribute("class", "tooltip");
-            //     var div2 = document.createElement("div");
-            //     div2.setAttribute("class", "top");
-            //     var h3 = document.createElement("h3");
-            //     h3.setAttribute("id", "hovered-word");
-            //     var ul = document.createElement("ul");
-            //     var li = document.createElement("li");
-            //     ul.appendChild(li);
-            //     div2.appendChild(h3);
-            //     div2.appendChild(ul);
-            //     popup_window.appendChild(div2);
-        
-      </script>
+app.post('/targetaction*', (req, res) => {
+  const username = (req.url).split(":")[1];
+  console.log("POST /targetaction")
+  console.log(username) 
+  if (req.body.target) {
+    console.log("Gender:")
+    console.log(req.body.target)
+    users.setTarget(username,req.body.target);
+    res.redirect(`/userprofile/?user=${username}&target=${req.body.target}`) 
+  }
+});
 
-</body>
-</html>
+app.post('/analyzeaction*', (req, res) => {
+  console.log("POST /analyzeaction")
+  const username = (req.url).split(":")[1];
+  console.log(username);
+  const target = users.getTarget(username);
+  const des = req.body.hidden;
+  if (target){
+    if (des) {
+      const result = "{[Jag] [n] [0.5] []} {[söker] [n] [0.5] []} {[en] [n] [0.5] []} {[redig,] [m] [0.8] [ambitiös,framåt]} {[stark] [m] [0.9] [uthållig]} {[och] [n] [0.5] []} {[vacker] [w] [0.9] []} {[kollega.] [n] [0.5] []}";
+      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Analyzing...&description=${des}&result=${result}`)
+    }
+    else {
+      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Not successful. No text to analyze.`)
+    }}
+  else {
+    res.redirect(`/userprofile/?user=${username}&analyze=Not successful. You have to choose a gender.&description=${des}`)
+  }});
+
+app.listen(port, () => {
+  console.info(`Listening on port ${port}!`);
+});
 
 
   
