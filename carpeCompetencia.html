@@ -1,179 +1,1146 @@
-'use strict';
+<!DOCTYPE html> 
+<html lang="sv"> 
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style> 
+       @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans:600');
 
-class LoggedInUsers {
-  constructor() {
-    this.loggedIn = {};
-    this.targetButton = {};
-  }
-  addUser(username) {
-    this.loggedIn[username] = true;
-  }
-  setTarget(username,gender) {
-    console.log("in set target:");
-    console.log(gender)
-    this.targetButton[username] = gender;
-    console.log(JSON.stringify(this.targetButton));
-  }
-  getTarget(username) {
-    console.log("in getTarget:");
-    console.log(username);
-    console.log(this.targetButton[username])
-    if (username in this.targetButton) {
-      return this.targetButton[username]
-    } else {
-      return null;}
-  }
-}
+    :root {
+        --main-color: #006A63;
+        --secondary-color: #009D94;
+        --sans: "Arial Black", Gadget, sans-serif;
+        font-family:"Arial Black", Gadget, sans-serif;
+        text-decoration-color: white;
+        --carpe-color-dark: #006A63;
+        --carpe-color-light: #009D94;
+        --women-color: #80c780;
+        --red-color: rgb(204, 100, 100);
+        --changed-color:#8e3fb3;} 
+    
+    html,body{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
 
-const path = require('path'); //  Helps resolve relative paths, into absolute baths, independent of operating system
-const express = require('express'); // Express is a very common webserver for Node.js
-const db = require('./database');
-const users = new LoggedInUsers();
+    .top-header{height:150px; width:100%; }
+    .section-1{height:50px; width: 100%; }
+    .section-2{height:470px; width: 100%; }
+    .section-2 .column{height: 100%;float:right;}
+    .section-2::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
 
-const port = 8989;
-const publicPath = path.join(__dirname, 'public');
-const app = express();
-
-// Register a custom middleware for logging incoming requests
-app.use((req, res, next) => {
-  // This is a middleware that logs all incoming requests.
-  const t = Date.now();
-  next();
-  console.log(`[${res.statusCode}] ${req.url} (${Date.now() - t}ms)`);
-});
-// Register a middleware that adds support for a URL encoded request body.
-// This is needed in order to send data to express using a FORM with a POST action.
-app.use(express.urlencoded({
-  extended: true,
-}));
-
-// Serve the login page if a GET request is sent to the root url.
-app.get('/', (req, res) => {
-  res.sendFile(
-    path.join(publicPath, 'login.html'),
-  );
-  console.log(req.head);
-});
-
-app.get("/logo.jpg", function(req, res){
-  res.writeHead(200, {'Content-Type': 'image/jpg'});
-  res.end("logo.jpg");
-})
+.section-2 .column::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+    .section-3{padding-left: 70%;height:100px; width: 100%; }
 
 
-app.get('/userprofile*', (req, res) => {
-  // if sessionid.correctPassword == true:
-  //`Welcome ${req.query.user}!`
-  res.sendFile(
-    path.join(publicPath, 'carpeCompetencia.html'),
-  );
-  //res.redirect('/?registration= LALALAL' );  
-  console.log(req.head)
-});
+            #logo {top:0; left:0; height:50px; width:70px;  display: inline;}
+            
+            .slogan{
+            margin-top:14px;
+            position:absolute;
+            font-weight:300;
+            top:0;
+            left:65px;
+            color: var(--carpe-color-light);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: "Avenir Heavy";} 
+        
+            .top-header input { 
+            height: 5%;
+            width: 30;
+            margin-right: 18px;       
+            text-shadow:2px -2px 10px rgb(255, 255, 255);
+            background: transparent;
+            border-radius: 15px;  
+            color:white;
+            font-size: 14px;
+            font-weight : bold;
+            text-align: center; 
+            font-weight:700;
+            font-family: var(--font); 
+            /* box-shadow: 0 0 20px #eee;  */ 
+            cursor:pointer;
+            float: right;} 
+            .top-header input:hover {font-size: 15px;}        
+            .top-header input:after {content: "";clear: both;display: table;}
+            .top-header input:not(:last-child) { background-color: transparent;border:transparent;color:rgb(255, 255, 255);border-right: none; /* Prevent double borders */} */
+            /* .top-header input:last-child {box-shadow: 0 0 20px #eee;}   */
+            /* #username-btn{border:rgb(103, 109, 199);border-radius: 15px;}     */
+    
+    /* Instruction table */
+    #Instruction-Table{background:green;width: 34%; }
 
-app.get('/signout', (req, res) => {
-  res.sendFile(
-    path.join(publicPath, 'login.html'),
-  );
-  console.log(req.head);
-});
 
-
-
-app.post('/authenticate', (req, res) => {
-  db.serialize(() => {
-    db.get('SELECT username, password FROM userInfo WHERE username=?', [req.body.username], (err, row) => {
-      if (err) {
-        throw new Error(err);
-      }
-      if (row) { // if userid exists
-        if (req.body.register) {
-          res.redirect('/?registration=not successful. Username already exists.');
-        } else if (req.body.login) {
-          if (req.body.password === row.password) { // check if password is correct
-            users.addUser(row.username)
-            res.redirect(`/userprofile?user=${row.username}`);
-          } else {
-            res.redirect('/?login= not succesful. Password is incorrect');
-          }
+        .container {
+        position: absolute;
+        top:10%;
+        left:0%;
+        width: 400px;
+        height: 750px;
+        background:transparent;
+        /* background: var(--main-color); */
+        border-radius: 5px;
+        font-family: var(--sans);
+        overflow: hidden;
+        color: rgb( 121, 125, 127 );
+        letter-spacing: .5px;
         }
-      } else { // if userid do not exist
-        console.log('Row exists');
-        if (req.body.register) {
-          let usernameContainsDigit = true;
-          let usernameContainsLetter;
-          let passwordContainsDigit = true;
-          let passwordContainsLetter;
-          usernameContainsDigit = /\d/.test(req.body.username);
-          usernameContainsLetter = /[a-zA-Z]/.test(req.body.username);
-          passwordContainsDigit = /\d/.test(req.body.password);
-          passwordContainsLetter = /[a-zA-Z]/.test(req.body.password);
-          if (!(usernameContainsLetter)) {
-            if (req.body.username.toLowerCase().includes('å') || req.body.username.toLowerCase().includes('ä') || req.body.username.toLowerCase().includes('ö')) {
-              usernameContainsLetter = true;
-            }
-          }
-          if (!(passwordContainsLetter)) {
-            if (req.body.password.toLowerCase().includes('å') || req.body.password.toLowerCase().includes('ä') || req.body.password.toLowerCase().includes('ö')) {
-              passwordContainsLetter = true;
-            }
-          }
-          if ((req.body.username.length) < 5) {
-            res.redirect('/?registration= not successful. UserID needs to be at least 5 characters');
-          } else if (!(usernameContainsDigit) || !(usernameContainsLetter)) {
-            res.redirect('/?registration= not successful. UserID needs to contain at least one letter and one digit');
-          } else if ((req.body.password.length) < 5) {
-            res.redirect('/?registration= not successful. Password needs to be at least 5 characters');
-          } else if (!(passwordContainsDigit) || !(passwordContainsLetter)) {
-            res.redirect('/?registration= not successful. Password needs contain at least one letter and one digit');
-          } else {
-            const statement = db.prepare('INSERT INTO userInfo VALUES (?,?)');
-            statement.run(req.body.username, req.body.password);
-            statement.finalize();
-            res.redirect('/?registration=successful');
-          }
-        } else if (req.body.login) {
-          res.redirect('/?login=not successful. Username does not exist.');
+
+        .hidden {
+        display: none;
         }
-      }
-    });
-  });
-});
 
-app.post('/targetaction*', (req, res) => {
-  const username = (req.url).split(":")[1];
-  console.log("POST /targetaction")
-  console.log(username) 
-  if (req.body.target) {
-    console.log("Gender:")
-    console.log(req.body.target)
-    users.setTarget(username,req.body.target);
-    res.redirect(`/userprofile/?user=${username}&target=${req.body.target}`) 
-  }
-});
+        .inner {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: 1s;
+        visibility: hidden;
+        }
 
-app.post('/analyzeaction*', (req, res) => {
-  console.log("POST /analyzeaction")
-  const username = (req.url).split(":")[1];
-  console.log(username);
-  const target = users.getTarget(username);
-  const des = req.body.hidden;
-  if (target){
-    if (des) {
-      const result = "{[Jag] [n] [0.5] []} {[söker] [n] [0.5] []} {[en] [n] [0.5] []} {[redig,] [m] [0.8] [ambitiös,framåt]} {[stark] [m] [0.9] [uthållig]} {[och] [n] [0.5] []} {[vacker] [w] [0.9] []} {[kollega.] [n] [0.5] []}";
-      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Analyzing...&description=${des}&result=${result}`)
-    }
-    else {
-      res.redirect(`/userprofile/?user=${username}&target=${target}&analyze= Not successful. No text to analyze.`)
-    }}
-  else {
-    res.redirect(`/userprofile/?user=${username}&analyze=Not successful. You have to choose a gender.&description=${des}`)
-  }});
+        .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+            height: 60%;
+            transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+            box-shadow: 0 0 1.5rem rgba(0, 0, 0, .5);
+            font-size: 1.3rem;
+        }
 
-app.listen(port, () => {
-  console.info(`Listening on port ${port}!`);
-});
 
+        .page-nr::before {
+        content: "";
+        position: absolute;
+        top: -130px;
+        right: -30px;
+        width: 90px;
+        height: 180px;
+        background: var(--secondary-color);
+        transform: rotate(-45deg);
+        z-index: -1;
+            box-shadow: 0 0 .7rem rgba(0, 0, 0, .5);
+        }
+
+        .page-nr {
+            font-family: var(--sans);
+        position: absolute;
+        margin: 0;
+        top: 15px;
+        right: 15px;
+        color: fade-out(#fff, .3);
+        }
+
+        .quote {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+        }
+
+        .credit {
+            position: absolute;
+            top: 70%;
+            right: 5%;
+            width:40px;
+            height:30px;
+           
+       
+        }
+            .credit::before {
+                content: "⸛ ";
+                vertical-align: middle;
+                font-size: 1.4rem;
+            }
+        
+
+        .fas {
+            font-size: 3.5rem;
+            position: absolute;
+            top: 12%;
+            left: 7%;
+            color: rgba(100, 58, 122, .2);
+        }
+
+       
+        #card-one{
+            width: 100%;
+        transition: .3s;
+
+        }
+        #card-two{
+            width: 100%;
+        transition: .3s;
+
+        }
+        #card-three{
+            width: 100%;
+        transition: .3s;
+
+        }
+
+
+        .i-btn p {
+        background: var(--carpe-color-light);
+        text-align: center;
+        color: #fff;
+            padding: 1rem 0;
+            width: 100%;
+            font-family: var(--sans);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            transition: .2s ease-out;
+        }
+
+        .i-btn p:hover {
+        background: var(--secondary-color);
+        cursor: pointer; 
+        }
+
+        #card-one:checked ~ .container .inner-one, 
+        #card-two:checked ~ .container .inner-two, 
+        #card-three:checked ~ .container .inner-three {
+        opacity: 1;
+        visibility: visible;
+        }
+
+        #card-one:checked ~ .container .inner-two, 
+        #card-two:checked ~ .container .inner-three, 
+        #card-three:checked ~ .container .inner-one {
+            transform: scale(.85);
+        transform: scale(1) translate(-20rem);
+        }
+
+
+
+
+
+
+
+    
+    /* Button table */
+    #Button-Table{width: 6%; padding-top: 7px; }  
+    
+        .result-info-välj{
+            font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; 
+            color:white;
+            font-size: 20px;
+            margin-top:-1px;
+            white-space:pre;
+            margin-left:23px;}
+
+            .result-info-kompetens{
+            font-family: "Arial ", Gadget, sans-serif;
+            color:white;  
+            font-weight: bold;
+            color:white;
+            word-spacing: 7px;
+            font-size: 14px;
+            margin-bottom:0px;
+            margin-top:-15px;
+            margin-left:6px;}
+
+      
+        .competence-buttons {   
+            width: 70%;
+            height: 20px;
+            margin-left:30%;
+            margin-top:12px;
+            margin-bottom: 10px;  
+            padding: 2px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;  
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            background-size: 200% auto;            
+            box-shadow: 0 0 20px #eee;
+            border:0px;
+            color: #FFF;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            text-align: center;
+            font-weight: 300;
+            font-size: 8px;
+            display: block;
+            transition: 0.5s; 
+            cursor: pointer;}   
+            .competence-buttons:first-child {margin-top: 30%; /* Prevent double borders */}
+            .competence-buttons:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); background-position: left center;}
+            .button-w {background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);} /* background-image: linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%); */
+            .button-premium {background-image: linear-gradient(to right, #4f4f50 20%, #adadad 51%, #a1a3a0 100%);}
+            
+
+     /* Input table */
+    #Input-Table{margin:0;width:33%;}
+        
+        /* Edit table */
+        #edit-table { 
+            width: 93%;
+            height: 90%;
+            border: none; 
+            padding: 12px;
+            overflow: scroll;
+            text-align:start;
+            background-color: white;
+            font-size: 14px;
+            font-weight: 40;
+            color:#00000077;
+            border-radius: 5px;
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            font-family: "Lucida Console", "Courier New", monospace;}
+         
+        /* Pop up window */        
+        .popup-window {
+            display:inline-block;
+            margin-left:78%;
+      
+            position:relative;
+            border-bottom:1px dotted #666;
+            text-align:left;}
+
+            .popup-window h3 {margin:12px 0;}
+
+            .popup-window .top {
+            position:absolute;
+            width:280px;
+            height: 180px;
+            top:-5px;
+            left:-100px;
+            transform:translate(-30%,-100%);
+            transition: all 0.3s ease-out;
+            padding:2px 7px;
+            color:#ffffff;
+            background-color: var(--carpe-color-light);  
+            overflow:"hidden";       
+            border-radius:8px;  
+            z-index:99999999;
+            box-sizing:border-box;
+            box-shadow:0 1px 8px rgba(255, 255, 255, 0.5);
+            display: none; }
+            .popup-window:hover .top {display:block;}
+         
+            .close {
+            background: #606061;
+            color: #FFFFFF;
+            line-height: 25px;
+            position: absolute;
+            right: -12px;
+            text-align: center;
+            top: -10px;
+            width: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            border-radius: 12px;
+            /* box-shadow: 0 0px 1px rgba(255, 255, 255, 0.966), 0 1px 2px rgb(255, 255, 255); */
+            transition: all 0.4s cubic-bezier(.25,.8,.25,1);}
+
+            #hovered-rubric{font-size: 15px;font-weight: 500;}
+            #hovered-knowledge{font-size: 12px;font-weight: 7;}
+            #syn-start{font-size: 13px;font-weight: 5;}
+
+            #alt-btn{
+            height:20px;
+            color: #FFF;
+            font-family: "Lucida Console", "Courier New", monospace;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius:10px;
+            border:transparent;      
+            margin: 3px;
+            background-image: linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%);}
+
+            #undo-btn{
+            height:20px;
+            color: #FFF;
+            font-family: "Lucida Console", "Courier New", monospace;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;
+            border-radius:10px;
+            border:transparent;      
+            margin: 3px;
+            background-image: linear-gradient(to right,  #cf2d35 0%, #e999a0 51%, #d61949 100%);}
+
+    
+     
+    /* Result table */
+    #Result-Table{width:20%; margin-bottom: 400px; }
+
+        /* Progress ring */
+        .score-ring{
+        position:absolute;
+        top:122px;
+        right:17px;   
+        width: 200px;
+        height:200px;}
+
+        .percent1, .percent2, svg, circle {width: 100%;height:100%;}
+
+        circle {
+        position: absolute;
+        fill: none;
+        stroke-width: 18;
+        transform: translate(10px, 10px);
+        
+        stroke-dasharray: 440;
+        stroke-linecap:square;}
+
+        circle:nth-child(1) {stroke-dashoffset: 0;stroke: #bbbbbb;}
+
+        .percent1 circle:nth-child(2) {/* circle id ="set-percent" cx="70" cy="70" r="70"></circle> */
+        
+        stroke: white;/* stroke: rgb(93, 148, 139); */
+        animation: percent 1.5s linear;
+        animation-delay: 1s;}
+
+        .number { position: relative; bottom: 80px;right: -45px;color: #fff;} 
+        h2 {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
+        span {position:absolute; left:45px;top:51px;font-size: 24px;opacity: .7;}
+        .percent1 span {color: rgb(87, 173, 145);}
+        /* @keyframes percent {0% {stroke-dashoffset: 0;stroke-width: 0;}} */
+
+        
+        /* Progress bars */
+        .progress-bars{
+        position:relative;
+          height: 340px; width: 400px;
+        }
+        .progress-bars .back-bar{
+            margin-top:300px;
+            }
+
+        .back-bar {
+        display:inline-block;
+        margin-right: -70px;
+        background: rgba(255,255,255,0.1); 
+        border-radius: 100px;
+        position: relative;
+        padding: 0 5px;    
+        -webkit-transform: rotate(-90deg); 
+        transform: rotate(-90deg);
+        height: 10px;
+        width: 130px;}
+
+        .progress-bar {
+       /*  animation: loadbar 2s normal forwards; */
+        box-shadow: 1px 1px 10px 0.5px rgb(250, 250, 250);
+        border-radius: 100px;
+        background: rgb(243, 243, 243);
+        height: 10px;    
+        width: 0;}
+
+        #red-bar{
+        background: rgb(192, 46, 46);box-shadow: 1px 1px 10px 0.5px rgb(165, 25, 25);
+        animation: loadbar-red 4s normal forwards;}
+        #green-bar{
+        background: rgb(60, 168, 60);box-shadow: 1px 1px 10px 0.5px rgb(169, 235, 177);
+        animation: loadbar-green 4s normal forwards;}
+        #purple-bar{
+        background: #8e3fb3;box-shadow: 1px 1px 10px 0.5px rgb(186, 150, 243);
+        animation: loadbar-purple 4s normal forwards;}
+/* 
+      @keyframes loadbar-red {0% { width: 0%; }100% { width: 50%; }}   */
+
+        /* Progress bars values */
+        .progress-bars-values{
+        position:absolute;
+        margin-left:23px;
+        margin-top:30px;}
+
+        .progress-bars-values .progress-value{
+        margin:21px;
+        float:left;
+        color:white;
+        font-weight: bold; 
+        font-size: 40px;
+        font-family: "Arial ", Gadget, sans-serif;}
+
+
+        /* Result info text */
+
+        .result-info-type{
+        position:relative;
+        font-family: "Arial ", Gadget, sans-serif;
+        color:white;  
+        font-weight: bold;
+        color:white;
+        word-spacing: 7px;
+        font-size: 14px;
+        margin-top:100px;
+    
+        margin-left:4px;}
+
+        #ofscore {position:absolute; font-size: 24px;opacity: .7; color: rgb(87, 173, 145) ;  margin-left:40px;
+        margin-top:0px;}
+
+        .result-info-ord{
+            opacity: .7; color: rgb(87, 173, 145) ;
+        font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; 
+    
+        font-size: 20px;
+        white-space:pre;
+        margin-left:40px;
+        margin-top:0px;}
+
+        #copy-btn{
+        margin-left:2px;
+        position:absolute;
+        bottom:41px;
+        right:40px;}
+
+        #save-btn{
+        margin-left:2px;
+        position:absolute;
+        bottom:41px;
+        right:140px;}
+
+        
+        #analyze-btn {
+        margin-left:17px;
+        margin-top:12px;
+        width: 120px;
+        height: 50px;
+        font-size: 13px;
+        }
+
+ /* -- Standard CSS  -- */        
+        /* Standard Button */
+        .big-button {  
+        width: 80px;
+        height: 35px;     
+        border:0px;
+        border-radius: 3px;
+        box-shadow: 0 0 20px #eee;
+        background-size: 200% auto; 
+        background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+        font-size: 10px;
+        color: #FFF;
+        font-family: "Arial Black", Gadget, sans-serif; 
+
+        box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: 0.5s; 
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+        cursor: pointer}
+        .big-button:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); background-position: right center;}
+
+       
+        /* Standard Classes */
+        #green-class{text-decoration-color: var(--women-color);text-decoration-thickness: 3px;}  
+        #red-class{text-decoration-color:var(--red-color);text-decoration-thickness: 3px;}
+        #purple-class{text-decoration-color: var(--changed-color);text-decoration-thickness: 3px;}  
+        #n-class {text-decoration-color: rgba(150, 34, 34, 0.3);text-decoration-thickness: 3px;text-decoration: none;}
+        #character-class {text-decoration: none;}
+       
+
+        /* Standard Text */ 
+        .u {color:rgb(255, 255, 255);font-family: "Arial ", Gadget, sans-serif;}
+        .font-info { position:center;  font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; font-size: 15px;}
+        .font-result { font-family: "Arial ", Gadget, sans-serif; color:white; text-align: left; font-weight: bold; font-size: 30px;}
+        #based_on{position:absolute; right:90px;bottom:370px;
+        }
+        
+        /* #green-class:hover { text-decoration-color: #fd3578;text-decoration-thickness: 4px;} *//*  #red-class:hover { text-decoration-color: #4360e2;text-decoration-thickness: 4px;} */
+        /* END CSS -------------------------------------------------------------------------------------------------------------------*/ 
+    </style>            
+                      <!-- ^     ^     ^     ^     ^     ^     ^     ^     -->
+                        
+                        <!--                    C   S   S                          -->       
+
+</head>
+<body> <!-- START HTML  --------------------------------------------------------------------------------------------------------->
+   
+    
+<div class="top-header">
+    <form action ="/signout" method="get">
+        <input type="submit" id="logout-btn" name="signout" value="LOGGA UT">
+        <input type ="submit"id="username-btn" name ="username" value="-">
+        <img id ="logo" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+        <p class="slogan" id = "slogan">Carpe Competence</p>
+        
+    </form> 
+</div>
+<p class="font-result" style="position:absolute; top:32px; right:45px;">Carpe Score</p>
+
+<div class = "section-1"></div> 
+     
+
+<div class = "section-2">
+    
+    <div class = "column" id = "Result-Table">
+              
+        <div class="score-ring"><div class="percent1">
+            <svg><circle cx="70" cy="70" r="70"></circle><circle id ="set-percent" cx="70" cy="70" r="70"></circle></svg>
+            <div class="number"><h2 id="carpe-score"></h2><span>/ 100</span></div></div>       
+        </div>  
+        <div class="font-info" id="based_on">Baserat på</div> 
+        <div class="progress-bars" >
+            <div class="back-bar"><div class="progress-bar" id = "red-bar"></div></div>
+            <div class="back-bar"><div class="progress-bar" id= "green-bar"></div></div>
+            <div class="back-bar"><div class="progress-bar" id ="purple-bar"></div></div>
+        </div>
+        
+        <div class = "progress-bars-values">
+            <div class="progress-value" id = "nr-red-words"></div>
+            <div  class="progress-value" id ="nr-green-words"></div>
+            <div class="progress-value" id="nr-changed-words" ></div>
+        </div>
+
+        <div class="result-info-type">
+            <a style="text-decoration-color: var(--red-color);text-decoration-thickness: 3px;">exkluderande</a>
+            <a style="text-decoration-color: #80c780;text-decoration-thickness: 3px;">attraherande</a>
+            <a style="text-decoration-color: var(--changed-color);text-decoration-thickness: 3px;">ändrade</a>
+        </div> 
+       
+        <p class="result-info-ord">ord      ord       ord</p>    
+    </div>
+   
+
+    <div class = "column" id = "Input-Table"> 
+        <div class="popup-window" id = "popup-window">
+            <div class="top" id= "pop">
+            <a href="#close" id = "close-btn" title="Close" class="close">X</a>
+            <p id="hovered-rubric"></p>
+            <p id = "hovered-knowledge"></p>
+            <p id = "syn-start"></p>
+            <div id = "hovered-alternatives"></div></div>
+        </div>
+        <img id="carpe-score" style="position:absolute;top:84px;right:-56px;width:393px;height:280px;"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU">  
+        <div contenteditable="true"  id ="edit-table" name = "description"></div>
+        <div id="a-status" class="p" style="font-family:Arial, Gadget, sans-serif; color:white;"> </div>   
+    </div>
+    
+    
+
+    <div class = "column" id = "Button-Table">
+        <p class="result-info-välj">VÄLJ</p>
+        <div class="result-info-kompetens">kompetens</div>
+        <form action ="/targetaction" id ="target-post" method="post">  
+            <input type = "submit" class="competence-buttons button-w" name="target" id=KÖN value="KVINNA">
+            <input type="submit" class="competence-buttons button-premium" name="target" id=blue value="LÄGG TILL">
+            <input type = "submit" class="competence-buttons button-premium" name="target" id = green value="LÄGG TILL">
+            <input type = "submit" class="competence-buttons button-premium" name="target" id = yellow value="LÄGG TILL">
+            <input type = "submit" class="competence-buttons button-premium" name="target" id = orange value="LÄGG TILL">        
+        </form>
+    </div>
+
+    <div class = "column" id = "Instruction-Table">
+
+
+        <input id="card-one" class="hidden" type="radio" name="ok-i-btn" checked>
+        <input id="card-two" class="hidden" type="radio" name="ok-i-btn">
+        <input id="card-three" class="hidden" type="radio" name="ok-i-btn">
+      
+      <div class="container">
+        
+        <div class="inner inner-one">
+          <div class="box">
+            <div class="triangle">
+            </div>
+            <p class="page-nr">1</p>
+                  <div class="text">
+                      <i class="start-quote fas fa-quote-left"></i>
+                      <p class="quote">Develop a passion for learning. If you do, you will never cease to grow.</p>
+                      <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+                  </div>
+            <label class="i-btn" for="card-two">
+              <p>next</p>
+            </label>
+          </div>
+        </div>
+        
+        <div class="inner inner-two">
+          <div class="box">
+            <div class="triangle">
+            </div>
+            <p class="page-nr">2</p>
+            <i class="start-quote fas fa-quote-left"></i>
+            <p class="quote">An investment in knowledge pays the best interest.</p>
+            <p class="credit"> Benjamin Franklin</p>
+            <label class="i-btn" for="card-three">
+              <p>next</p>
+            </label>
+          </div>
+        </div>
+        
+        <div class="inner inner-three">
+          <div class="box">
+            <div class="triangle">
+            </div>
+            <p class="page-nr">3</p>
+            <i class="start-quote fas fa-quote-left"></i>
+            <p class="quote">I have no special talent. I am only passionately curious.</p>
+            <p class="credit">Albert Einstein</p>
+            <label class="i-btn" for="card-one">
+              <p>next</p>
+            </label>
+          </div>
+        </div>
+      </div>    
+          
+    </div>
+
+</div> <!-- End of section-2 -->
+   
+<form action ="/analyzeaction" id ="analyze-area" method="post">
+    <input type="hidden" id="h-content" style="width:0%; height: 0%;" name="hidden" value="hidden-content">
+<!--      <button type="submit" class="edit-buttons big-button" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SKANNA</button> -->
+ 
+   
+<div class = "section-3">
+    <button type="submit" class="analyze-buttons big-button" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SKANNA ANNONS</button>
+</div>
+<button type="submit" class="result-buttons big-button" id = copy-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA ANNONS</button>
+<button type="submit" class="result-buttons big-button" id = save-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SPARA RESULTAT</button>
+
+<img style="top:20%;"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU">  
+<div class="word-info" id="word-info"><p id = "popup-window">WORD INFO</p></div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                         
+    <!-- END MY HTML --------------------------------------------------------------------------------------------------------->
+
+   
+
+         <!--                                  S  C  R  I  P  T                                          -->
+                
+        <!--                      ⬇    ⬇     ⬇    ⬇     ⬇    ⬇    ⬇     ⬇     ⬇                               -->
+
+    <script>
+        //START SCRIPT --------------------------------------------------------------------------------------------------------------------
+        let name;
+        let target;
+        let description;
+        var synonym_dict = {}
+        var word_class_dict = {};
+        var PopupTable = document.getElementById("pop");
+        var PopupTable_rubric = document.getElementById("hovered-rubric");
+        var PopupTable_text = document.getElementById("hovered-knowledge");
+        var PopupTable_syn_start= document.getElementById("syn-start");
+        var PopupTable_btns = document.getElementById("hovered-alternatives");
+        var close_btn = document.getElementById("close-btn");
+        close_btn.onclick = function (event) {
+            PopupTable.style.display = "none"; };
+
+        var EditTable = document.getElementById("edit-table");
+        var staticEditTable;
+        var mouse_on_red_word;
+        var mouse_on_green_word;
+        var mouse_on_purple_word;
+
+        var carpe_score = 0;
+        var first_nr_exkluding_words = 0;
+        var current_nr_exkluding_words = 0;
+        var nr_attractive_words = 0;
+        var nr_changed_words = 0;
+        var nr_of_words=0;
+      
+        var cS = document.getElementById("carpe-score");
+        var circle = document.getElementById("set-percent");
+        circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)';
+        var eW = document.getElementById("nr-red-words");
+        var aW = document.getElementById("nr-green-words");
+        var cW = document.getElementById("nr-changed-words");
+        var cS_node= document.createTextNode(carpe_score);
+        var eW_node= document.createTextNode(current_nr_exkluding_words);
+        var aW_node= document.createTextNode(nr_attractive_words);
+        var cW_node= document.createTextNode(nr_changed_words);
+        cS.appendChild(cS_node);
+        eW.appendChild(eW_node);
+        aW.appendChild(aW_node);
+        cW.appendChild(cW_node);
+
+    
+        getUserParams();
+
+        if (!target){
+        var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
+        var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width: 100%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
+        var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 100%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
+        console.log("LOADBAR-PURPLE if not target");
+        var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width: 100%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+        document.getElementsByTagName("style")[0].appendChild(keyFrames_circle); 
+        document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
+        document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
+        document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
+        }
+        
+      
+       
+
+        function getUserParams() { 
+            const params = new URLSearchParams(location.search);
+            name = params.get('user');
+            console.log(name);
+            document.getElementById("username-btn").value = name; 
+            const EditTable = document.getElementById("edit-table");   
+            EditTable.textContent = " Här knappar du in din annons...";
+            document.getElementById("target-post").action += ":" + name;
+            console.log("In getUserparams:");
+            console.log(name);
+     
+            if (params.has('target')) {
+                console.log("has target");
+                console.log(params);
+                target = params.get('target');
+                document.getElementById("edit-table").style.borderColor = "#80c780"; 
+                document.getElementById("KÖN").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
+                document.getElementById("KÖN").style.height = "27px";
+                document.getElementById("KÖN").style.width= "75px";
+                document.getElementById("KÖN").style.fontSize = "15px"; 
+                document.getElementById("KÖN").style.marginLeft = "13%";
+
+
+                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
+                document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
+                document.getElementById("blue").style.background ='#acacac'; //reset colour
+                document.getElementById("green").style.background ='#acacac'; //reset colour
+                document.getElementById("yellow").style.background ='#acacac'; //reset colour
+                document.getElementById("orange").style.background ='#acacac'; //reset colour}
+                console.log(target);}
+
+            if (params.has('analyze')) {
+                const analyzestatus = params.get('analyze');
+                if (analyzestatus.includes("Not successful")){
+                    alert("Du måste välja en profil att anställa");}
+                else {
+                    const aDiv = document.getElementById("a-status");
+                    const word_term = document.createTextNode(analyzestatus);
+                    aDiv.appendChild(word_term);
+                    console.log(analyzestatus);}}
+
+            if (params.has('description')) {
+               tag_ML_Result(params.get('description'), params.get('result'))}}
+
+
+        function tag_ML_Result(description,result){
+            var result_by_word = result.split("{").slice(1);
+            var clean_term;
+            EditTable.textContent = "";
+           
+              //Get result by word  
+            for (var i in result_by_word) { 
+                var has_syn = false;  
+                word_res = result_by_word[i].replace("}","");
+                word_res = word_res.split("[");
+                var word = word_res[1].replace("]","").trim();   
+                const g_class = word_res[2].replace("]","").trim(); 
+                const prob = word_res[3].replace("]","").trim(); 
+                var synonyms =  word_res[4].replace("]","").trim(); // 
+                synonyms = synonyms.split(",");
+                if (synonyms.length === 1) {
+                    var is_it_syn = synonyms[0];
+                    if (is_it_syn === ""){
+                        has_syn = false;}
+                    else {
+                        has_syn = true;}}
+                if (synonyms.length > 1) {
+                    has_syn = true;}
+
+                //Create nodes         
+                var word_term = null;
+                var wordElement = document.createElement('u'); 
+            
+                var character_term = null;    
+                var characterElement = null;
+
+                var space_term = document.createTextNode(" ");
+                var spaceElement = document.createElement('u')
+                spaceElement.setAttribute("id", "character-class");
+                spaceElement.appendChild(space_term);
+               
+
+                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+                var last_char = word.charAt(word.length-1);
+                wordContainsChar = /[,.]/.test(last_char);
+                if (wordContainsChar){ 
+                    characterElement = document.createElement('u');
+                    characterElement.setAttribute("id", "character-class");
+                    clean_term = word.substring(0, word.length-1);        
+                    word_term = document.createTextNode(clean_term);    
+                    character_term = document.createTextNode(last_char);
+                    characterElement.appendChild(character_term); }
+                else {  
+                    clean_term = word;       
+                    word_term = document.createTextNode(clean_term);} //The whole word can be underlined. 
+             
+                //Add synonyms to dict
+                if (has_syn) {
+                    synonym_dict[clean_term] = []
+                    for (var t in synonyms){
+                        var syn = synonyms[t].replace("]","");
+                        synonym_dict[clean_term].push(syn);}}
+                var syns_list = synonym_dict[clean_term];
+                
+               
+        
+                //Set Attribute at wordElement
+                wordElement.appendChild(word_term); 
+                nr_of_words+=1;  
+                if (g_class.includes("n")) {
+                    wordElement.setAttribute("id", "n-class");}
+                   
+                if (g_class.includes("w")) {  
+                    nr_attractive_words+=1;
+                    aW.textContent = nr_attractive_words; 
+                    wordElement.setAttribute("id", "green-class");
+                    set_PopupTable(wordElement); }
+            
+                  
+                if (g_class.includes("m")) {
+                    word_class_dict[clean_term] = "red-class";
+                    current_nr_exkluding_words+=1;
+                    first_nr_exkluding_words+=1;
+                    eW.textContent=current_nr_exkluding_words;
+                    console.log(nr_of_words);
+                    console.log(current_nr_exkluding_words/nr_of_words*100); 
+                    wordElement.setAttribute("id", "red-class"); 
+                    set_PopupTable(wordElement); 
+                   } 
+                 
+                
+                //Add word to EditTable with listener    
+                EditTable.appendChild(wordElement);
+                if (wordContainsChar){ 
+                    EditTable.appendChild(characterElement);     
+                }
+                
+                EditTable.appendChild(spaceElement);           
+            } 
+
+            for (t in synonym_dict){    
+                var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
+                var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width: 0%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
+                var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 0%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
+                console.log("LOADBAR-PURPLE IN EN OF TAG ML");
+                var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width: 0%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_circle); 
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_changed);}   
+
+        function set_PopupTable(wordElement) {
+
+            wordElement.addEventListener("mouseover", function( event ) {
+            
+            PopupTable_rubric.textContent ="";
+            PopupTable_text.textContent="";
+            PopupTable_syn_start.textContent="";
+            PopupTable_btns.textContent = "";
+            PopupTable.style.display = "block";
+
+            console.log("mouse over: ");
+            console.log(event.target.id);
+            console.log(event.target.textContent);
+
+            if (event.target.id === "red-class") { 
+                PopupTable.style.display = "block";
+                PopupTable.style.height ="200px";      
+                mouse_on_red_word =  event.target.textContent;        
+                
+                const unchanched_wordElements = EditTable.children; 
+                var unchanched_alternativeElements = null;
+                var red_underlined = mouse_on_red_word;          
+    
+                var nr_alternatives = synonym_dict[mouse_on_red_word].length;
+                console.log("nrm--")
+                console.log(nr_alternatives);
+                if (nr_alternatives === 0){
+                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                    var synonym_rubric = "Tyvärr hittade vi inte några lämpliga förslag. Testa dig fram på egen hand."
+                }
+                if (nr_alternatives ===1){
+                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                    var synonym_rubric = "Vårt ordförslag:"
+                }
+                if (nr_alternatives >1){
+                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                    var synonym_rubric = "Våra ordförslag:";
+                }
+        
+                var red_word_node = document.createElement('u');
+                red_word_node.setAttribute("id", "red-class");
+                red_word_node.appendChild(document.createTextNode(red_underlined));
+                var info_node = document.createTextNode(info);
+                var syn_content_node = document.createTextNode(synonym_rubric);
+               
+                PopupTable_rubric.appendChild(red_word_node);
+                PopupTable_text.appendChild(info_node);
+                PopupTable_syn_start.appendChild(syn_content_node);
+             
+                //Add alternative buttons for each synonyme
+                var syn_list = synonym_dict[mouse_on_red_word];
+
+                for (var s in syn_list) {
+                    var alt_btn = document.createElement("button");
+                    alt_btn.setAttribute("id", "alt-btn");                
+                    alt_btn.innerHTML = syn_list[s];
+
+                    //Add alternative button to table
+                    PopupTable_btns.appendChild(alt_btn);
+                
+                    // Add listener to alternative button  
+                    alt_btn.onclick = function (event) {
+                    var alternative_node = event.target;
+                    var alternative_word = event.target.textContent; 
+                    change_EditTable(alternative_word);
+                    change_PopupTable(alternative_node , alternative_word);}}} 
+            
+            if (event.target.id === "green-class") {  
+                PopupTable.style.display = "block";
+                PopupTable.style.height ="120px";      
+                mouse_on_green_word =  event.target.textContent;
+
+                var green_underlined = mouse_on_green_word;
+                var info = "Bra jobbat!  Du attraherar fler kvinnliga sökande med detta ord. Vi har höjt ditt Carpe Score!";
+
+                var green_word_node = document.createElement('u');
+                var info_node = document.createTextNode(info);
+                green_word_node.setAttribute("id", "green-class");
+                green_word_node.appendChild(document.createTextNode(green_underlined));       
+                
+                PopupTable_rubric.appendChild(green_word_node);
+                PopupTable_text.appendChild(info_node);}
+
+            if (event.target.id === "purple-class") {
+                PopupTable.style.display = "block";
+                PopupTable.style.height ="120px";   
+                mouse_on_purple_word =  event.target.textContent;
+
+                var purple_underlined = mouse_on_purple_word;
+                var info = "Bra jobbat!  Eftersom du ändrade ordet kommer du att attrahera fler kvinnliga sökande. Vi har höjt ditt Carpe Score.";
+                
+                var purple_word_node = document.createElement('u');
+                var info_node = document.createTextNode(info);     
+                purple_word_node.setAttribute("id", "purple-class");
+                purple_word_node.appendChild(document.createTextNode(purple_underlined));
+                    
+                PopupTable_rubric.appendChild(purple_word_node);
+                PopupTable_text.appendChild(info_node);}    
+                });}
+
+        function change_EditTable(alternative_word){
+            console.log("Change Edit_table");
+            var wordElements = EditTable.children;       
+                for(var i=0; i<wordElements.length; i++){
+                    var wordElement = wordElements[i];
+                    console.log(wordElement.textContent);
+                    console.log(wordElement.id);
+                    if (mouse_on_red_word.toLowerCase() === wordElement.textContent) {
+                        wordElement.textContent = alternative_word;
+                        var changing_words_before = nr_changed_words;
+                        var exkluding_words_before = current_nr_exkluding_words;
+                        
+                        console.log("first nr exkluding words:");
+                        console.log(first_nr_exkluding_words);
+                
+                        console.log("changing words before");
+                        console.log(changing_words_before);
+                        
+                        nr_changed_words+=1;
+
+                        console.log("changing word after");
+                        console.log(nr_changed_words);
+                        current_nr_exkluding_words-=1;
+                        cW.textContent=nr_changed_words;
+                        eW.textContent=current_nr_exkluding_words;
+                        var p_bar = document.getElementById("purple-bar");
+                        p_bar.style.animationDuration = '4s';
+                        console.log("LOADBAR-PURPLE IN CHANGE EDITTABLE");
+                        var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+                        document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
+                        var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
+                        document.getElementsByTagName("style")[0].appendChild(keyFrames_red);
+
+                        wordElement.id = "purple-class";}}
+        }
+
+        function change_PopupTable(changed_node, changed_word) {
+            //Change table and add undo button
+            PopupTable_rubric.textContent ="";
+            PopupTable_text.textContent="";
+            PopupTable_syn_start.textContent="";
+            PopupTable_btns.textContent = "";
+            var info = "Du ändrade från " +mouse_on_red_word+ " till " + changed_word+".";
+            
+            var info_node = document.createTextNode(info);
+            var undo_btn = document.createElement("button");
+            undo_btn.setAttribute("id", "undo-btn");
+            undo_btn.innerHTML = "Ångra ändring";
+            PopupTable_text.appendChild(document.createTextNode(info));
+            PopupTable_btns.appendChild(undo_btn);
+
+            // Undo change   
+            undo_btn.onclick = function (event) {
+                document.getElementById("pop").style.display = "none";
+                var changing_words_before = nr_changed_words;
+                var exkluding_words_before = current_nr_exkluding_words;
+
+                nr_changed_words-=1;
+                current_nr_exkluding_words+=1;
+                console.log("LOADBAR-PURPLE IN CHANGE ALTERNATIVETABLE IF UNDO BUTTON");
+                var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
+                var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
+                document.getElementsByTagName("style")[0].appendChild(keyFrames_red);
+                cW.textContent=nr_changed_words;
+                eW.textContent=current_nr_exkluding_words;
+                var wordElements = EditTable.children;
+                for(var i=0; i<wordElements.length; i++){ 
+                    var wordElement = wordElements[i];
+                    if (wordElement.textContent === changed_word) {
+                        wordElement.textContent = mouse_on_red_word;
+                        wordElement.id = word_class_dict[mouse_on_red_word];}}};}
+
+       
+        function POSTHiddenDescription(){
+            console.log("POSTHiddenDescription()"); 
+            const contentDiv = document.getElementById("edit-table");
+            description = contentDiv.textContent;
+            document.getElementById("h-content").value = description;
+            console.log(description);
+            document.getElementById("analyze-area").action += ":" + name + ":" + target }}
+
+        
+      </script>
+
+</body>
+</html>
 
   
 
