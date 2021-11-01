@@ -26,7 +26,7 @@
         background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
 
     .top-header{height:150px; width:100%; }
-    .section-1{height:50px; width: 100%; }
+/*     .section-1{height:50px; width: 100%; } */
     .section-2{height:470px; width: 100%; }
     .section-2 .column{height: 100%;float:right;}
     .section-2::after {
@@ -233,9 +233,6 @@
 
 
 
-
-
-
     
     /* Button table */
     #Button-Table{width: 6%; padding-top: 7px; }  
@@ -401,22 +398,33 @@
         position: absolute;
         fill: none;
         stroke-width: 18;
+        transform-origin: center;
+        transform-style: preserve-3D;
+
+  /*       -webkit-transform: rotate(90deg); 
+        transform: rotate(45deg); */
+        
         transform: translate(10px, 10px);
+
+       /*  transform: rotate(-90deg);  */
         
         stroke-dasharray: 440;
         stroke-linecap:square;}
 
-        circle:nth-child(1) {stroke-dashoffset: 0;stroke: #bbbbbb;}
+        circle:nth-child(1) {stroke-dashoffset: 0;}
 
         .percent1 circle:nth-child(2) {/* circle id ="set-percent" cx="70" cy="70" r="70"></circle> */
-        
-        stroke: white;/* stroke: rgb(93, 148, 139); */
-        animation: percent 1.5s linear;
+  /*       stroke:rgba(63, 100%, 46%, 0.525); */
+        stroke: rgb(66, 243, 104);
+        background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
+        /* stroke: hsla(hue, saturation, lightness, alpha) */
+        /* stroke: #91ff83; *//* stroke: rgb(93, 148, 139); */
+        animation: percent 1.0s linear;
         animation-delay: 1s;}
 
         .number { position: relative; bottom: 35px;right: -50px;color: #fff;} 
         #carpe-score {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
-        .span {position:absolute; left:45px;top:51px;font-size: 24px;opacity: .7;}
+        .span {position:absolute; left:45px;top:31px;font-size: 24px;opacity: .7;} /* left:45px */
         .percent1 .span {color: rgb(87, 173, 145);}
         /* @keyframes percent {0% {stroke-dashoffset: 0;stroke-width: 0;}} */
 
@@ -454,7 +462,7 @@
         background: rgb(192, 46, 46);box-shadow: 1px 1px 10px 0.5px rgb(165, 25, 25);
         animation: loadbar-red 4s normal forwards;}
         #green-bar{
-        background: rgb(60, 168, 60);box-shadow: 1px 1px 10px 0.5px rgb(169, 235, 177);
+        background: #58ca49;box-shadow: 1px 1px 10px 0.5px rgb(169, 235, 177);
         animation: loadbar-green 4s normal forwards;}
         #purple-bar{
         background: #8e3fb3;box-shadow: 1px 1px 10px 0.5px rgb(186, 150, 243);
@@ -466,7 +474,7 @@
         .progress-bars-values{
         -webkit-transform: rotate(-90deg); 
         transform: rotate(-90deg);
-        top:520px;
+        top:470px;
         margin-bottom:70px;
         position:absolute;
         margin-left:96px;
@@ -476,7 +484,7 @@
         .progress-bars-values .progress-value{
         -webkit-transform: rotate(-270deg); 
         transform: rotate(-270deg);
-        margin-left:30px;
+        margin-left:45px;
         margin-top:30px;
         /* float:left; */
         color:white;
@@ -520,7 +528,7 @@
         margin-left:35px;
         margin-top:-50px;}
         
-
+/* 
         #copy-btn{
         margin-left:2px;
         position:absolute;
@@ -531,7 +539,7 @@
         margin-left:2px;
         position:absolute;
         bottom:41px;
-        right:140px;}
+        right:140px;} */
 
         
         #analyze-btn {
@@ -576,7 +584,7 @@
         .u {color:rgb(255, 255, 255);font-family: "Arial ", Gadget, sans-serif;}
         .font-info { position:center;  font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; font-size: 15px;}
         .font-result { font-family: "Arial ", Gadget, sans-serif; color:white; text-align: left; font-weight: bold; font-size: 30px;}
-        #based_on{position:absolute; right:90px;bottom:370px;
+        #based_on{position:absolute; right:90px;bottom:410px;opacity: 0.7;
         }
         
         /* #green-class:hover { text-decoration-color: #fd3578;text-decoration-thickness: 4px;} *//*  #red-class:hover { text-decoration-color: #4360e2;text-decoration-thickness: 4px;} */
@@ -599,7 +607,7 @@
         
     </form> 
 </div>
-<p class="font-result" style="position:absolute; top:32px; right:45px;">Carpe Score</p>
+<p class="font-result" style="position:absolute; top:32px; right:75px;">Carpe Score</p> <!-- right:45px -->
 
 <div class = "section-1"></div> 
      
@@ -610,7 +618,7 @@
               
         <div class="score-ring"><div class="percent1">
             <svg><circle cx="70" cy="70" r="70"></circle><circle id ="set-percent" cx="70" cy="70" r="70"></circle></svg>
-            <div class="number"><a id="carpe-score"></a><a class="span">%</a></div></div>       
+            <div class="number"><a id="carpe-score"></a><a id = "percent" class="span">%</a></div></div>       
         </div>  
         <div class="font-info" id="based_on">Baserat på</div>  
         <div class="progress-bars" >
@@ -631,7 +639,9 @@
             <a style="text-decoration-color: var(--changed-color);text-decoration-thickness: 3px;">ändrade</a>
         </div> 
         <p class="result-info-slash">/            /            /</p>  
-        <p class="result-info-ord">ord ord ord</p>    
+        <p class="result-info-ord">ord ord ord</p> 
+        <button type="submit" class="big-button" id = copy-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA ANNONS</button>
+        <button type="submit" class="big-button" id = save-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SPARA RESULTAT</button>   
     </div>
    
 
@@ -655,7 +665,7 @@
         <p class="result-info-välj">VÄLJ</p>
         <div class="result-info-kompetens">kompetens</div>
         <form action ="/targetaction" id ="target-post" method="post">  
-            <input type = "submit" class="competence-buttons button-w" name="target" id=KÖN value="KVINNA">
+            <input type = "submit" class="competence-buttons button-w" name="target" id=w-btn value="KVINNA">
             <input type="submit" class="competence-buttons button-premium" name="target" id=blue value="LÄGG TILL">
             <input type = "submit" class="competence-buttons button-premium" name="target" id = green value="LÄGG TILL">
             <input type = "submit" class="competence-buttons button-premium" name="target" id = yellow value="LÄGG TILL">
@@ -730,11 +740,14 @@
     </div>
 
 </form>
-<button type="submit" class="result-buttons big-button" id = copy-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA ANNONS</button>
-<button type="submit" class="result-buttons big-button" id = save-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SPARA RESULTAT</button>
 
-<img style="top:20%;"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU">  
-<div class="word-info" id="word-info"><p id = "popup-window">WORD INFO</p></div>
+
+<!-- <img style="top:20%;right:30%;position:absolute;height:60%;width: 50%; opacity: .5"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU">   -->
+<!-- <div class="word-info" id="word-info"><p id = "popup-window">WORD INFO</p></div> -->
+
+
+
+
 
 
 
@@ -761,590 +774,525 @@
                 
         <!--                      ⬇    ⬇     ⬇    ⬇     ⬇    ⬇    ⬇     ⬇     ⬇                               -->
 
-    <script>
+<script>
         //START SCRIPT --------------------------------------------------------------------------------------------------------------------
-        ongoingGame = false;
-        
-        let name;
-        let target;
-        let description;
-        var synonym_dict = {}
-        var word_class_dict = {};
-        var term_prob_dict = {};
-        var current_terms_on_table = [];
-        var PopupTable = document.getElementById("pop");
-        var PopupTable_rubric = document.getElementById("hovered-rubric");
-        var PopupTable_text = document.getElementById("hovered-knowledge");
-        var PopupTable_syn_start= document.getElementById("syn-start");
-        var PopupTable_btns = document.getElementById("hovered-alternatives");
-        var close_btn = document.getElementById("close-btn");
-        close_btn.onclick = function (event) {
-        PopupTable.style.display = "none"; };
-
-        var EditTable = document.getElementById("edit-table");
-        var staticEditTable;
-        var mouse_on_red_word;
-        var mouse_on_green_word;
-        var mouse_on_purple_word;
-
-        var carpe_score = 0;
-        var first_nr_exkluding_words = 0;
-        var current_nr_exkluding_words = 0;
-        var exkluding_words_before = 0;
-        var nr_attractive_words = 0;
-        var nr_changed_words = 0;
-        var changing_words_before = 0;
-        var nr_of_words=0;
-        var cS = document.getElementById("carpe-score");
-        var circle = document.getElementById("set-percent");
-        circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)';
-        var eW = document.getElementById("nr-red-words");
-        var aW = document.getElementById("nr-green-words");
-        var cW = document.getElementById("nr-changed-words");
-        var cS_node= document.createTextNode(carpe_score);
-        var eW_node= document.createTextNode(current_nr_exkluding_words);
-        var aW_node= document.createTextNode(nr_attractive_words);
-        var cW_node= document.createTextNode(nr_changed_words);
-        cS.appendChild(cS_node);
-        eW.appendChild(eW_node);
-        aW.appendChild(aW_node);
-        cW.appendChild(cW_node);
-
+     
     
-        getUserParams();
+    var name;
+    var target;
+    var analyzestatus;
+    var description;
+    var ongoingGame;
 
-        if (!target){
+    var synonym_dict = {}
+    var word_class_dict = {};
+    var term_prob_dict = {};
+    var current_terms_on_table = [];
+
+    var PopupTable = document.getElementById("pop");
+    var PopupTable_rubric = document.getElementById("hovered-rubric");
+    var PopupTable_text = document.getElementById("hovered-knowledge");
+    var PopupTable_syn_start= document.getElementById("syn-start");
+    var PopupTable_btns = document.getElementById("hovered-alternatives");
+    var close_btn = document.getElementById("close-btn");close_btn.onclick = function (event) {PopupTable.style.display = "none"; };
+
+    var EditTable = document.getElementById("edit-table");
+    var staticEditTable;
+
+    var mouse_on_red_word;
+    var mouse_on_green_word;
+    var mouse_on_purple_word;
+
+    var carpe_score;
+    var first_nr_exkluding_words;
+    var nr_exkluding_words;
+    var exkluding_words_before;
+    var nr_attractive_words;
+    var nr_changed_words;
+    var changing_words_before;
+    var nr_of_words;
+    var cS = document.getElementById("carpe-score");
+    var circle = document.getElementById("set-percent");
+    var percent_sign = document.getElementById("percent");
+    var eW = document.getElementById("nr-red-words");
+    var aW = document.getElementById("nr-green-words");
+    var cW = document.getElementById("nr-changed-words");
+
+    inititateResultValues();
+    LoadResultTable();
+    getUserParams();
+    
+
+    function getUserParams() { 
+        const params = new URLSearchParams(location.search);
+        name = params.get('user');
+        document.getElementById("username-btn").value = name;   
+        EditTable.textContent = " Här knappar du in din annons...";
+        document.getElementById("target-post").action += ":" + name; 
+        console.log("User: " +name); 
+        if (EditTable.textContent === " Här knappar du in din annons..."){
+            ongoingGame = false;
+        }else {ongoingGame = true;}
+    
+        if (params.has('target')) {
+            target = params.get('target');
+            document.getElementById("edit-table").style.borderColor = "#80c780"; 
+            document.getElementById("w-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
+            document.getElementById("w-btn").style.height = "27px";
+            document.getElementById("w-btn").style.width= "75px";
+            document.getElementById("w-btn").style.fontSize = "15px"; 
+            document.getElementById("w-btn").style.marginLeft = "13%";
+            document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
+            document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
+            document.getElementById("blue").style.background ='#acacac'; //reset colour
+            document.getElementById("green").style.background ='#acacac'; //reset colour
+            document.getElementById("yellow").style.background ='#acacac'; //reset colour
+            document.getElementById("orange").style.background ='#acacac'; //reset colour}
+            console.log("Target: " + target);}
+
+        if (params.has('analyze')) { 
+            analyzestatus = params.get('analyze');
+            description = params.get('description');
+            result = params.get('result');
+            ongoingGame = params.get('ongoingGame');
+            if (analyzestatus.includes("Not successful")){
+                console.log("Du måste välja en kompetens som annonsen ska anpassas till.");
+                console.log(analyzestatus);}
+            else { /* Analyze status is successful */
+                const analyze_div = document.getElementById("a-status");
+                const anlz_message = document.createTextNode(analyzestatus);
+                analyze_div.appendChild(anlz_message);
+
+                if (ongoingGame === "false") {
+                    console.log("ongoing game : false: result: " + result);
+                    ongoingGame = false;
+                    inititateResultValues();
+                    getMLResult(result);
+                    first_nr_exkluding_words = nr_exkluding_words;
+                    updateResultTable(); 
+                    var big_analyze_button = document.getElementById("analyze-btn");
+                    big_analyze_button.style.innerHTML = "SKANNA IGEN";
+                    big_analyze_button.style.onclick = "POST_unclassified_description()"; 
+                    console.log("BUTOOOOOOOOOOOON : " + big_analyze_button.style.textContent  +   big_analyze_button.innerHTML); 
+                    ongoingGame = true;}
+
+                if (ongoingGame == "true"){
+                    ongoingGame = true;
+                    getMLResult(result);   
+                    first_nr_exkluding_words = params.get('first_nr_exkluding_words');
+                    nr_changed_words = params.get('nr_changed_words');
+                    console.log("TRUEEEEE----####################--first number exkluding:" + first_nr_exkluding_words + ": nr_changed_Words" + nr_changed_words);
+                    updateResultTable();
+                }
+            }
+        }}
+
+
+    function getMLResult(result){   
+        var result_by_word = result.split("{").slice(1);
+        var word; 
+        var has_syn;
+        var g_class;
+        var clean_term; 
+        var prob;
+        var synonyms;
+        EditTable.textContent = "";
+        console.log("ML Result: " + result);
+        
+        //Get result by word  
+        for (var i in result_by_word) { 
+            has_syn = false;  
+            word_res = result_by_word[i].replace("}","");
+            word_res = word_res.split("[");
+            console.log("word-res: " + word_res);
+            word = word_res[1].replace("]","").trim(); 
+            console.log("Word: " + word); 
+            g_class = word_res[2].replace("]","").trim().toLowerCase(); 
+            console.log("Gender class: " + g_class);
+            if (!(g_class.includes("w") || (g_class.includes("m")) || (g_class.includes("n")))){
+                console.log("g_class is manually set to n");
+                g_class = "n";
+            }
+            prob = word_res[3].replace("]","").trim(); 
+            console.log("Probability: " + prob);
+            synonyms =  word_res[4].replace("]","").trim(); // 
+            
+            synonyms = synonyms.split(",");
+            console.log("Synonyms: " + synonyms);
+            if (synonyms.length === 1) {
+                var is_it_syn = synonyms[0];
+                if (is_it_syn === ""){
+                    has_syn = false;}
+                else {
+                    has_syn = true;}}
+            if (synonyms.length > 1) {
+                has_syn = true;}
+
+            //Create nodes         
+            var word_term = null;
+            var wordElement = document.createElement('u'); 
+        
+            var character_term = null;    
+            var characterElement = null;
+
+            var space_term = document.createTextNode(" ");
+            var spaceElement = document.createElement('u')
+            spaceElement.setAttribute("id", "space-class");
+            spaceElement.appendChild(space_term);
+            
+
+            //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
+            var last_char = word.charAt(word.length-1);
+            wordContainsChar = /[,.!]/.test(last_char);
+            if (wordContainsChar){ 
+                characterElement = document.createElement('u');
+                characterElement.setAttribute("id", "character-class");
+                clean_term = word.substring(0, word.length-1);       
+                word_term = document.createTextNode(clean_term);    
+                character_term = document.createTextNode(last_char);
+                characterElement.appendChild(character_term); }
+            else {  
+                clean_term = word;           
+                word_term = document.createTextNode(clean_term);} //The whole word can be underlined. 
+            
+            console.log("Clean term: " + clean_term);
+            //Add synonyms to dict
+            if (has_syn) {
+                console.log("The word has syn! - ");
+                synonym_dict[clean_term] = []
+                for (var t in synonyms){
+                    var syn_object = synonyms[t].split(";");
+                    console.log(syn_object);
+                    var syn_prob = syn_object[1];
+                    var syn = syn_object[0].replace("]","");
+                    console.log(" - Syn: " + syn + " Probability: " + syn_prob);
+                    term_prob_dict[syn] = parseFloat(syn_prob); 
+                    synonym_dict[clean_term].push(syn);}}
+            var syns_list = synonym_dict[clean_term];
+                   
+    
+            //Set Attribute at wordElement
+            console.log("ADDING WORD ELEMENT:");
+            wordElement.appendChild(word_term); 
+            console.log(word_term);
+            current_terms_on_table.push(clean_term);
+            nr_of_words+=1;  
+            console.log("nmr of words: ");
+            console.log(nr_of_words);
+            if (g_class.includes("n")) {
+                wordElement.setAttribute("id", "n-class");
+                word_class_dict[clean_term] = "n-class";
+                term_prob_dict[clean_term] = parseFloat(prob);}
+                
+            if (g_class.includes("w")) { 
+                wordElement.setAttribute("id", "green-class"); 
+                word_class_dict[clean_term] = "green-class";
+                term_prob_dict[clean_term] = parseFloat(prob); 
+                nr_attractive_words+=1;
+                aW.textContent = nr_attractive_words; 
+                wordElement.addEventListener("mouseover" , function( event ) {
+                    set_PopupTable(event); });}
+                    
+            if (g_class.includes("m")) {
+                wordElement.setAttribute("id", "red-class"); 
+                word_class_dict[clean_term] = "red-class";
+                term_prob_dict[clean_term] = -parseFloat(prob); 
+                nr_exkluding_words+=1;
+                eW.textContent=nr_exkluding_words;     
+                wordElement.addEventListener("mouseover", function( event ) {
+                    set_PopupTable(event); });}           
+                
+            EditTable.appendChild(wordElement);
+            if (wordContainsChar){EditTable.appendChild(characterElement);}   
+            EditTable.appendChild(spaceElement);
+
+        console.log("------------------"); /* End of input term  */
+    } 
+             
+        console.log(ongoingGame);
+        console.log("END OF getMLResult");}  
+
+    function set_PopupTable(event) {    
+        PopupTable_rubric.textContent ="";
+        PopupTable_text.textContent="";
+        PopupTable_syn_start.textContent="";
+        PopupTable_btns.textContent = "";
+        PopupTable.style.display = "block";
+
+        console.log("mouse over: ");
+        console.log(event.target.id);
+        console.log(event.target.textContent);
+
+        if (event.target.id === "red-class") { 
+            PopupTable.style.display = "block";
+            PopupTable.style.height ="200px";      
+            mouse_on_red_word =  event.target.textContent;        
+            
+            const unchanched_wordElements = EditTable.children; 
+            var unchanched_alternativeElements = null;
+            var red_underlined = mouse_on_red_word;          
+            
+            if (mouse_on_red_word in synonym_dict) {
+                var nr_alternatives = synonym_dict[mouse_on_red_word].length;}
+
+            else {
+                var nr_alternatives = 0;}
+            
+            
+            if (nr_alternatives === 0){
+                var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                var synonym_rubric = "Tyvärr hittade vi inte några lämpliga förslag. Testa dig fram på egen hand."}
+            if (nr_alternatives ===1){
+                var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                var synonym_rubric = "Vårt ordförslag:"}
+            if (nr_alternatives >1){
+                var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
+                var synonym_rubric = "Våra ordförslag:";}
+    
+            
+            var red_word_node = document.createElement('u');
+            red_word_node.setAttribute("id", "red-class");
+            red_word_node.appendChild(document.createTextNode(red_underlined));
+            var info_node = document.createTextNode(info);
+            var syn_content_node = document.createTextNode(synonym_rubric);
+            
+            PopupTable_rubric.appendChild(red_word_node);
+            PopupTable_text.appendChild(info_node);
+            PopupTable_syn_start.appendChild(syn_content_node);
+            
+            //Add alternative buttons for each synonyme
+            var syn_list = synonym_dict[mouse_on_red_word];
+
+            for (var s in syn_list) {
+                var alt_btn = document.createElement("button");
+                alt_btn.setAttribute("id", "alt-btn");                
+                alt_btn.innerHTML = syn_list[s];
+
+                //Add alternative button to table
+                PopupTable_btns.appendChild(alt_btn);
+            
+                // Add listener to alternative button  
+                alt_btn.onclick = function (event) {
+                    console.log("ALTERNATIVE BUTTON IS CLICKED");
+                    var alternative_node = event.target;
+                    var alternative_word = event.target.textContent; 
+                    console.log(alternative_node);
+                updateEditTable(alternative_word);
+                updatePopupTable(alternative_node , alternative_word);
+                updateResultTable();}}} 
+        
+        if (event.target.id === "green-class") {  
+            PopupTable.style.display = "block";
+            PopupTable.style.height ="120px";      
+            mouse_on_green_word =  event.target.textContent;
+
+            var green_underlined = mouse_on_green_word;
+            var info = "Bra jobbat!  Du attraherar fler kvinnliga sökande med detta ord. Vi har höjt ditt Carpe Score!";
+
+            var green_word_node = document.createElement('u');
+            var info_node = document.createTextNode(info);
+            green_word_node.setAttribute("id", "green-class");
+            green_word_node.appendChild(document.createTextNode(green_underlined));       
+            
+            PopupTable_rubric.appendChild(green_word_node);
+            PopupTable_text.appendChild(info_node);}
+
+        if (event.target.id === "purple-class") {
+            PopupTable.style.display = "block";
+            PopupTable.style.height ="120px";   
+            mouse_on_purple_word =  event.target.textContent;
+
+            var purple_underlined = mouse_on_purple_word;
+            var info = "Bra jobbat!  Eftersom du ändrade ordet kommer du att attrahera fler kvinnliga sökande. Vi har höjt ditt Carpe Score.";
+            
+            var purple_word_node = document.createElement('u');
+            var info_node = document.createTextNode(info);     
+            purple_word_node.setAttribute("id", "purple-class");
+            purple_word_node.appendChild(document.createTextNode(purple_underlined));
+                
+            PopupTable_rubric.appendChild(purple_word_node);
+            PopupTable_text.appendChild(info_node);};}
+
+
+    function updateEditTable(alternative_word){
+        console.log("Change Edit_table");
+        
+        console.log("Terms in current_term_on_table BEFORE change: ");   
+        for (var i=0; i < current_terms_on_table.length; i++) {
+            console.log(current_terms_on_table[i]);}
+
+        console.log("Terms in EditTable BEFORE change: "); 
+        var wordElements = EditTable.children; 
+        for(var i=0; i<wordElements.length; i++){
+            var wordElement = wordElements[i];
+            console.log(wordElement.textContent);
+            console.log(wordElement.id);}
+
+
+        var wordElements = EditTable.children;       
+        for(var i=0; i<wordElements.length; i++){
+            var wordElement = wordElements[i];
+            if (mouse_on_red_word.toLowerCase() === wordElement.textContent) {
+                wordElement.textContent = alternative_word;
+                wordElement.id = "purple-class";
+                var index = current_terms_on_table.indexOf(mouse_on_red_word.toLowerCase());
+                current_terms_on_table[index] = alternative_word;
+                exkluding_words_before = nr_exkluding_words;
+                changing_words_before = nr_changed_words;
+                            
+                console.log("First nr exkluding words:");
+                console.log(first_nr_exkluding_words);
+        
+                console.log("Changing words before");
+                console.log(changing_words_before);
+                
+                nr_exkluding_words-=1;
+                nr_changed_words+=1;
+
+                console.log("Changing word after");
+                console.log(nr_changed_words);
+                
+                eW.textContent=nr_exkluding_words;
+                cW.textContent=nr_changed_words;}}
+                
+
+        console.log("Terms current_terms_on_table AFTER CHANGE: ");  
+        for (var i=0; i < current_terms_on_table.length; i++) {
+            console.log(current_terms_on_table[i]);}
+    }
+
+    function updatePopupTable(changed_node, changed_word) {
+        console.log("Update PopupTable");
+        //Change table and add undo button
+        PopupTable_rubric.textContent ="";
+        PopupTable_text.textContent="";
+        PopupTable_syn_start.textContent="";
+        PopupTable_btns.textContent = "";
+        var info = "Du ändrade från " +mouse_on_red_word+ " till " + changed_word+".";
+        
+        var info_node = document.createTextNode(info);
+        var undo_btn = document.createElement("button");
+        undo_btn.setAttribute("id", "undo-btn");
+        undo_btn.innerHTML = "Ångra ändring";
+        PopupTable_text.appendChild(document.createTextNode(info));
+        PopupTable_btns.appendChild(undo_btn);
+
+        // Undo change   
+        undo_btn.onclick = function (event) {
+            document.getElementById("pop").style.display = "none";
+            exkluding_words_before = nr_exkluding_words;
+            changing_words_before = nr_changed_words;
+
+            nr_changed_words-=1;
+            nr_exkluding_words+=1;
+            console.log("LOADBAR-PURPLE IN CHANGE ALTERNATIVETABLE IF UNDO BUTTON");
+            var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+            document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
+            var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
+            document.getElementsByTagName("style")[0].appendChild(keyFrames_red);
+            cW.textContent=nr_changed_words;
+            eW.textContent=nr_exkluding_words;
+            var wordElements = EditTable.children;
+            for(var i=0; i<wordElements.length; i++){ 
+                var wordElement = wordElements[i];
+                if (wordElement.textContent === changed_word) {
+                    wordElement.textContent = mouse_on_red_word;
+                    wordElement.id = word_class_dict[mouse_on_red_word];}}};}
+
+    function updateResultTable(){
+
+        /* Update Carpe Score */
+
+        console.log("Calculate carpe_score of current terms on table:")
+        var numerator =0;
+        for (var i=0; i < current_terms_on_table.length; i++) {
+            console.log(current_terms_on_table[i]);
+            var current_term = current_terms_on_table[i];
+            console.log("Term prob:");
+            console.log(term_prob_dict[current_term]);
+            numerator += term_prob_dict[current_term];
+        }
+        carpe_score = (100*(numerator/current_terms_on_table.length)) | 0;
+        cS.textContent=carpe_score;
+
+        console.log("Numerator:");
+        console.log(numerator);
+        console.log("Number of terms on table:");
+        console.log(current_terms_on_table.length);
+        console.log("Score:");
+        console.log(carpe_score);
+        if (carpe_score > 9){percent_sign.style.left = "65px;"} else {percent_sign.style.left="45px;"}
+        console.log("left: "+ percent_sign.style.left)
+    
+        /* Update result table */
+
+        cS.textContent = carpe_score;
+        eW.textContent = nr_exkluding_words;
+        aW.textContent = nr_attractive_words;
+        cW.textContent = nr_changed_words;
+
+        /* var p_bar = document.getElementById("purple-bar");
+        p_bar.style.animationDuration = '4s'; */
+        circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)'; 
         var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
-        var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width: 100%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
-        var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 100%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
-        console.log("LOADBAR-PURPLE if not target");
-        var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width: 100%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+        var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
+        var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 0%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
+        var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
         document.getElementsByTagName("style")[0].appendChild(keyFrames_circle); 
         document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
         document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
-        document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
-        }
+        document.getElementsByTagName("style")[0].appendChild(keyFrames_changed);
+    }
+
+    function POST_unclassified_description(){
+        const contentDiv = document.getElementById("edit-table");
+        description = contentDiv.textContent;
+        document.getElementById("h-content").value = description;
+        document.getElementById("analyze-area").action += ":" + name + ":" + target +":" + ongoingGame+ ":"+ carpe_score+  ":" + first_nr_exkluding_words +":" + nr_exkluding_words +":" + exkluding_words_before + ":" + nr_attractive_words + ":" + nr_changed_words + ":" +changing_words_before + ":" + nr_of_words; }    
         
+    function POST_classified_description(){
+        document.getElementById("analyze-area").action += ":" + name + ":" + target +":" + ongoingGame+ ":"+ carpe_score+  ":" + first_nr_exkluding_words +":" + nr_exkluding_words +":" + ":" + exkluding_words_before + ":" + nr_attractive_words + ":" + nr_changed_words + ":" +changing_words_before + ":" + nr_of_words; }    
       
-       
-
-        function getUserParams() { 
-            const params = new URLSearchParams(location.search);
-            name = params.get('user');
-            console.log(name);
-            document.getElementById("username-btn").value = name; 
-            const EditTable = document.getElementById("edit-table");   
-            EditTable.textContent = " Här knappar du in din annons...";
-            document.getElementById("target-post").action += ":" + name;
-            console.log("In getUserparams:");
-            console.log(name);
-     
-            if (params.has('target')) {
-                console.log("has target");
-                console.log(params);
-                target = params.get('target');
-                document.getElementById("edit-table").style.borderColor = "#80c780"; 
-                document.getElementById("KÖN").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
-                document.getElementById("KÖN").style.height = "27px";
-                document.getElementById("KÖN").style.width= "75px";
-                document.getElementById("KÖN").style.fontSize = "15px"; 
-                document.getElementById("KÖN").style.marginLeft = "13%";
+    function inititateResultValues(){
+        carpe_score = 0;
+        first_nr_exkluding_words = 0;
+        nr_exkluding_words = 0;
+        exkluding_words_before = 0;
+        nr_attractive_words = 0;
+        nr_changed_words = 0;
+        changing_words_before = 0;
+        nr_of_words=0;}
 
 
-                document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
-                document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
-                document.getElementById("blue").style.background ='#acacac'; //reset colour
-                document.getElementById("green").style.background ='#acacac'; //reset colour
-                document.getElementById("yellow").style.background ='#acacac'; //reset colour
-                document.getElementById("orange").style.background ='#acacac'; //reset colour}
-                console.log(target);}
-
-            if (params.has('analyze')) {
-                const analyzestatus = params.get('analyze');
-                if (analyzestatus.includes("Not successful")){
-                    console.log("Du måste välja en kompetens som annonsen ska anpassas till.");
-                    console.log(analyzestatus);}
-                else {
-                    const aDiv = document.getElementById("a-status");
-                    const word_term = document.createTextNode(analyzestatus);
-                    aDiv.appendChild(word_term);
-                    console.log(analyzestatus);}}
-
-            if (params.has('description')) {
-               tag_ML_Result(params.get('description'), params.get('result'))}}
-
-
-        function tag_ML_Result(description,result){
-            ongoingGame = true;
-            var big_analyze_button = document.getElementById("analyze-btn");
-            console.log("BUTOOOOOOOOOOOON : " + big_analyze_button.style.textContent  +   big_analyze_button.innerHTML);
-            big_analyze_button.style.innerHTML = "SKANNA IGEN";
-            big_analyze_button.style.onclick = "POST_unclassified_description()";
-            var result_by_word = result.split("{").slice(1);
-            var clean_term;
-            EditTable.textContent = "";
-
-            console.log("TAG ML RESULT");
-           
-              //Get result by word  
-            for (var i in result_by_word) { 
-                var has_syn = false;  
-                word_res = result_by_word[i].replace("}","");
-                word_res = word_res.split("[");
-                var word = word_res[1].replace("]","").trim();
-                console.log(word_res);   
-                var g_class = word_res[2].replace("]","").trim().toLowerCase(); 
-                console.log(g_class);
-                if (!(g_class.includes("w") || (g_class.includes("m")) || (g_class.includes("n")))){
-                    console.log("g_class is manually set to n");
-                    g_class = "n";
-                }
-                const prob = word_res[3].replace("]","").trim(); 
-                console.log(prob);
-                var synonyms =  word_res[4].replace("]","").trim(); // 
-                
-                synonyms = synonyms.split(",");
-                console.log(synonyms);
-                if (synonyms.length === 1) {
-                    var is_it_syn = synonyms[0];
-                    if (is_it_syn === ""){
-                        has_syn = false;}
-                    else {
-                        has_syn = true;}}
-                if (synonyms.length > 1) {
-                    has_syn = true;}
-
-                //Create nodes         
-                var word_term = null;
-                var wordElement = document.createElement('u'); 
-            
-                var character_term = null;    
-                var characterElement = null;
-
-                var space_term = document.createTextNode(" ");
-                var spaceElement = document.createElement('u')
-                spaceElement.setAttribute("id", "space-class");
-                spaceElement.appendChild(space_term);
-               
-
-                //Check if last char of word is a comma or punctation (Add tagNodes without underlines for those characters.)
-                var last_char = word.charAt(word.length-1);
-                wordContainsChar = /[,.!]/.test(last_char);
-                if (wordContainsChar){ 
-                    characterElement = document.createElement('u');
-                    characterElement.setAttribute("id", "character-class");
-                    clean_term = word.substring(0, word.length-1);       
-                    word_term = document.createTextNode(clean_term);    
-                    character_term = document.createTextNode(last_char);
-                    characterElement.appendChild(character_term); }
-                else {  
-                    clean_term = word;
-                           
-                    word_term = document.createTextNode(clean_term);} //The whole word can be underlined. 
-                console.log("Clean term: ");
-                console.log(clean_term);
-                //Add synonyms to dict
-                if (has_syn) {
-                    console.log("has syn: ");
-
-                    synonym_dict[clean_term] = []
-                    for (var t in synonyms){
-                        var syn_object = synonyms[t].split(";");
-                        console.log(syn_object);
-                        var syn_prob = syn_object[1];
-                        var syn = syn_object[0].replace("]","");
-                        console.log("syn prob:");
-                        console.log(syn_prob);
-                        console.log("syn");
-                        console.log(syn);
-                        term_prob_dict[syn] = parseFloat(syn_prob); 
-                        synonym_dict[clean_term].push(syn);}}
-                var syns_list = synonym_dict[clean_term];
-                
-               
-        
-                //Set Attribute at wordElement
-                console.log("ADDING WORD ELEMENT:");
-                wordElement.appendChild(word_term); 
-                console.log(word_term);
-                current_terms_on_table.push(clean_term);
-                nr_of_words+=1;  
-                console.log("nmr of words: ");
-                console.log(nr_of_words);
-                if (g_class.includes("n")) {
-                    wordElement.setAttribute("id", "n-class");
-                    word_class_dict[clean_term] = "n-class";
-                    term_prob_dict[clean_term] = parseFloat(prob); 
-                    }
-                   
-                if (g_class.includes("w")) { 
-                    wordElement.setAttribute("id", "green-class"); 
-                    word_class_dict[clean_term] = "green-class";
-                    term_prob_dict[clean_term] = parseFloat(prob); 
-                    nr_attractive_words+=1;
-                    aW.textContent = nr_attractive_words;       
-                    wordElement.onclick = function( event ) {
-                        set_PopupTable(event); };}
-                       
-                if (g_class.includes("m")) {
-                    wordElement.setAttribute("id", "red-class"); 
-                    word_class_dict[clean_term] = "red-class";
-                    term_prob_dict[clean_term] = -parseFloat(prob); 
-                    current_nr_exkluding_words+=1;
-                    first_nr_exkluding_words+=1;
-                    eW.textContent=current_nr_exkluding_words;     
-                    wordElement.onclick = function( event ) {
-                        set_PopupTable(event); };
-                   } 
-                 
-                   
-                EditTable.appendChild(wordElement);
-                if (wordContainsChar){ 
-                    EditTable.appendChild(characterElement);}   
-                EditTable.appendChild(spaceElement);
-
-            console.log("------------------"); /* End of input term  */
-        } 
-            
-            console.log("Term_prob_dict:");
-            for (i in term_prob_dict){
-                console.log(i);
-                console.log(term_prob_dict[i]);}
-               
-            updateResultTable(); 
-            console.log(ongoingGame);
-            console.log("END OF TAG_ML_RESULT");}  
-
-        function set_PopupTable(event) {    
-            PopupTable_rubric.textContent ="";
-            PopupTable_text.textContent="";
-            PopupTable_syn_start.textContent="";
-            PopupTable_btns.textContent = "";
-            PopupTable.style.display = "block";
-
-            console.log("mouse over: ");
-            console.log(event.target.id);
-            console.log(event.target.textContent);
-
-            if (event.target.id === "red-class") { 
-                PopupTable.style.display = "block";
-                PopupTable.style.height ="200px";      
-                mouse_on_red_word =  event.target.textContent;        
-                
-                const unchanched_wordElements = EditTable.children; 
-                var unchanched_alternativeElements = null;
-                var red_underlined = mouse_on_red_word;          
-                
-                if (mouse_on_red_word in synonym_dict) {
-                    var nr_alternatives = synonym_dict[mouse_on_red_word].length;}
-
-                else {
-                    var nr_alternatives = 0;}
-                
-               
-                if (nr_alternatives === 0){
-                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
-                    var synonym_rubric = "Tyvärr hittade vi inte några lämpliga förslag. Testa dig fram på egen hand."}
-                if (nr_alternatives ===1){
-                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
-                    var synonym_rubric = "Vårt ordförslag:"}
-                if (nr_alternatives >1){
-                    var info = "Oj då!  Du riskerar att minska antalet kvinnliga sökande med detta ord. För att öka ditt carpe score bör det bytas ut till ett mer attraherande ord.";
-                    var synonym_rubric = "Våra ordförslag:";}
-        
-                
-                var red_word_node = document.createElement('u');
-                red_word_node.setAttribute("id", "red-class");
-                red_word_node.appendChild(document.createTextNode(red_underlined));
-                var info_node = document.createTextNode(info);
-                var syn_content_node = document.createTextNode(synonym_rubric);
-               
-                PopupTable_rubric.appendChild(red_word_node);
-                PopupTable_text.appendChild(info_node);
-                PopupTable_syn_start.appendChild(syn_content_node);
-             
-                //Add alternative buttons for each synonyme
-                var syn_list = synonym_dict[mouse_on_red_word];
-
-                for (var s in syn_list) {
-                    var alt_btn = document.createElement("button");
-                    alt_btn.setAttribute("id", "alt-btn");                
-                    alt_btn.innerHTML = syn_list[s];
-
-                    //Add alternative button to table
-                    PopupTable_btns.appendChild(alt_btn);
-                
-                    // Add listener to alternative button  
-                    alt_btn.onclick = function (event) {
-                        console.log("ALTERNATIVE BUTTON IS CLICKED");
-                        var alternative_node = event.target;
-                        var alternative_word = event.target.textContent; 
-                        console.log(alternative_node);
-                    updateEditTable(alternative_word);
-                    updatePopupTable(alternative_node , alternative_word);
-                    updateResultTable();}}} 
-            
-            if (event.target.id === "green-class") {  
-                PopupTable.style.display = "block";
-                PopupTable.style.height ="120px";      
-                mouse_on_green_word =  event.target.textContent;
-
-                var green_underlined = mouse_on_green_word;
-                var info = "Bra jobbat!  Du attraherar fler kvinnliga sökande med detta ord. Vi har höjt ditt Carpe Score!";
-
-                var green_word_node = document.createElement('u');
-                var info_node = document.createTextNode(info);
-                green_word_node.setAttribute("id", "green-class");
-                green_word_node.appendChild(document.createTextNode(green_underlined));       
-                
-                PopupTable_rubric.appendChild(green_word_node);
-                PopupTable_text.appendChild(info_node);}
-
-            if (event.target.id === "purple-class") {
-                PopupTable.style.display = "block";
-                PopupTable.style.height ="120px";   
-                mouse_on_purple_word =  event.target.textContent;
-
-                var purple_underlined = mouse_on_purple_word;
-                var info = "Bra jobbat!  Eftersom du ändrade ordet kommer du att attrahera fler kvinnliga sökande. Vi har höjt ditt Carpe Score.";
-                
-                var purple_word_node = document.createElement('u');
-                var info_node = document.createTextNode(info);     
-                purple_word_node.setAttribute("id", "purple-class");
-                purple_word_node.appendChild(document.createTextNode(purple_underlined));
-                    
-                PopupTable_rubric.appendChild(purple_word_node);
-                PopupTable_text.appendChild(info_node);};}
-
-
-        function updateEditTable(alternative_word){
-            console.log("Change Edit_table");
-            
-            console.log("Terms in current_term_on_table BEFORE change: ");   
-            for (var i=0; i < current_terms_on_table.length; i++) {
-                console.log(current_terms_on_table[i]);}
-
-            console.log("Terms in EditTable BEFORE change: "); 
-            var wordElements = EditTable.children; 
-            for(var i=0; i<wordElements.length; i++){
-                var wordElement = wordElements[i];
-                console.log(wordElement.textContent);
-                console.log(wordElement.id);}
-
-
-            var wordElements = EditTable.children;       
-            for(var i=0; i<wordElements.length; i++){
-                var wordElement = wordElements[i];
-                if (mouse_on_red_word.toLowerCase() === wordElement.textContent) {
-                    wordElement.textContent = alternative_word;
-                    wordElement.id = "purple-class";
-                    var index = current_terms_on_table.indexOf(mouse_on_red_word.toLowerCase());
-                    current_terms_on_table[index] = alternative_word;
-                    exkluding_words_before = current_nr_exkluding_words;
-                    changing_words_before = nr_changed_words;
-                               
-                    console.log("First nr exkluding words:");
-                    console.log(first_nr_exkluding_words);
-            
-                    console.log("Changing words before");
-                    console.log(changing_words_before);
-                    
-                    current_nr_exkluding_words-=1;
-                    nr_changed_words+=1;
-
-                    console.log("Changing word after");
-                    console.log(nr_changed_words);
-                    
-                    eW.textContent=current_nr_exkluding_words;
-                    cW.textContent=nr_changed_words;}}
-                    
-
-            console.log("Terms current_terms_on_table AFTER CHANGE: ");  
-            for (var i=0; i < current_terms_on_table.length; i++) {
-                console.log(current_terms_on_table[i]);}
-        }
-
-        function updatePopupTable(changed_node, changed_word) {
-            console.log("Update PopupTable");
-            //Change table and add undo button
-            PopupTable_rubric.textContent ="";
-            PopupTable_text.textContent="";
-            PopupTable_syn_start.textContent="";
-            PopupTable_btns.textContent = "";
-            var info = "Du ändrade från " +mouse_on_red_word+ " till " + changed_word+".";
-            
-            var info_node = document.createTextNode(info);
-            var undo_btn = document.createElement("button");
-            undo_btn.setAttribute("id", "undo-btn");
-            undo_btn.innerHTML = "Ångra ändring";
-            PopupTable_text.appendChild(document.createTextNode(info));
-            PopupTable_btns.appendChild(undo_btn);
-
-            // Undo change   
-            undo_btn.onclick = function (event) {
-                document.getElementById("pop").style.display = "none";
-                exkluding_words_before = current_nr_exkluding_words;
-                changing_words_before = nr_changed_words;
-
-                nr_changed_words-=1;
-                current_nr_exkluding_words+=1;
-                console.log("LOADBAR-PURPLE IN CHANGE ALTERNATIVETABLE IF UNDO BUTTON");
-                var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
-                document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); 
-                var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
-                document.getElementsByTagName("style")[0].appendChild(keyFrames_red);
-                cW.textContent=nr_changed_words;
-                eW.textContent=current_nr_exkluding_words;
-                var wordElements = EditTable.children;
-                for(var i=0; i<wordElements.length; i++){ 
-                    var wordElement = wordElements[i];
-                    if (wordElement.textContent === changed_word) {
-                        wordElement.textContent = mouse_on_red_word;
-                        wordElement.id = word_class_dict[mouse_on_red_word];}}};}
-
-        function updateResultTable(){
-
-            /* Update Carpe Score */
-            console.log("Calculate carpe_score of current terms on table:")
-            var numerator =0;
-            for (var i=0; i < current_terms_on_table.length; i++) {
-                console.log(current_terms_on_table[i]);
-                var current_term = current_terms_on_table[i];
-                console.log("Term prob:");
-                console.log(term_prob_dict[current_term]);
-                numerator += term_prob_dict[current_term];
-            }
-            carpe_score = (100*(numerator/current_terms_on_table.length)) | 0;
-            cS.textContent=carpe_score;
-
-            console.log("Numerator:");
-            console.log(numerator);
-            console.log("Number of terms on table:");
-            console.log(current_terms_on_table.length);
-            console.log("Score:");
-            console.log(carpe_score);
-
-
-          
-
-            /* Update result table */
-            var p_bar = document.getElementById("purple-bar");
-            p_bar.style.animationDuration = '4s';
-            circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)'; 
-            var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
-            var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+current_nr_exkluding_words/nr_of_words*100+'%; }}');
-            var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 0%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
-            var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+    function LoadResultTable(){
+      
+        if (!target){
+            var cS_node= document.createTextNode(carpe_score);
+            var eW_node= document.createTextNode(nr_exkluding_words);
+            var aW_node= document.createTextNode(nr_attractive_words);
+            var cW_node= document.createTextNode(nr_changed_words);
+            cS.appendChild(cS_node);
+            eW.appendChild(eW_node);
+            aW.appendChild(aW_node);
+            cW.appendChild(cW_node);
+            var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';}}');
+            var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width: 100%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
+            var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 100%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
+            var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width: 100%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
+            circle.style.strokeDashoffset =  'calc(440 - (440 * ' +carpe_score+') / 100)';
             document.getElementsByTagName("style")[0].appendChild(keyFrames_circle); 
             document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
             document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
-            document.getElementsByTagName("style")[0].appendChild(keyFrames_changed);
-        }
+            document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); }}
 
-       
-        function POST_unclassified_description(){
-            alert("POST_unclassified_description()"); 
-            const contentDiv = document.getElementById("edit-table");
-            description = contentDiv.textContent;
-            document.getElementById("h-content").value = description;
-            document.getElementById("analyze-area").action += ":" + name + ":" + target +":" + ongoingGame; }
-           
-        function POST_classified_description(){
-            alert("POST CLASSIFIED");
-            document.getElementById("analyze-area").action += ":" + name + ":" + target +":" + ongoingGame; 
-            console.log("Terms in current_term_on_table BEFORE change: ");
-            var element_is_a_WORD = true;
-            var element_is_old_word = false; 
-            var element_is_changed_word = false;      
-            var element_before_was_char = false;   
-             
-            var classified_description = ""; //{[redig,] [M] [1.0] [förträfflig;1.0,ordentlig;0.8344370860927153]}
-            var editElements = EditTable.children;
-            alert("before editElement loop: " + editElements.length + ":" + editElement[0].textContent);
-            for(var i=0; i<editElements.length; i++){
-                
-                editTerm = editElement[i].textContent;
-                alert("loop: " + editTerm);
-                var index = current_terms_on_table.indexOf(editTerm.toLowerCase());
-                if (editTerm === current_terms_on_table[index].toLowerCase()){
-                    alert(editTerm);
-                    console.log("The editelement has already been classified.");
-                }
-                else {
-                    ElementIsChar = /[,.!]/.test(editTerm);
-                    ElementIsSpace = (editTerm === " ");
-                    if (!(ElementIsChar || ElementIsSpace)){
-                        editElement.id = "undefined"; //the element has not been classified. 
-                        alert(editElement.textContent);
-                    }
-                    
-                }
-            
-        }}
-              /*   if element_is_a_WORD{
-                    classified_description += " {[";
-                    var index = current_terms_on_table.indexOf(editElement);
-                    if (editElement === current_terms_on_table[index]){
-                        classified_description+= editElement;
-                        if (!element_before_was_char){
-                            classified_description+= "]";
-                        }
-                    }  
-                }     */   
-
-/* 
-                ElementIsChar = /[,.!]/.test(editElement);
-                ElementIsSpace = (editElement === " ");
-            
-                if (ElementIsChar) {
-                    classified_description += editElement;
-                }
-                else {
-                    var index = current_terms_on_table.indexOf(editElement);
-                    if (editElement === current_terms_on_table[index]){
-                        classified_description += editElement;
-
-                    }
-
-
-               
-                console.log(editElement.id);}  
-           
-            edit_word_list = editString.split(" ");
-            alert(edit_word_list);
-            old_terms = " ";
-            for (var i=0; i < edit_word_list.length; i++) {
-                edit_word = edit_word_list[i];
-                before_change_word = current_terms_on_table[i];
-
- */
-                /* Reduce end characters */
-               /*  var last_char = edit_word.charAt(edit_word.length-1);
-                wordContainsChar = /[,.!]/.test(last_char);
-                if (wordContainsChar){ 
-                    clean_edit_word = word.substring(0, word.length-1);}
-                else {  
-                    clean_edit_word = edit_word;}
-                
-                alert(clean_edit_word);
-                
-                alert(index);
-              
-                if (clean_edit_word === current_terms_on_table[index]){
-                    old_terms += ": "+ current_terms_on_table[index];
-                    }
-                else {
-                    alert("Dismatched term" +  clean_edit_word);
-                    var user_changed_term = clean_edit_word;
-                    
-                     */
-             
+                   
          
-        
-      </script>
+</script>
 
 </body>
 </html>
+
+
   
 
 
