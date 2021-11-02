@@ -84,16 +84,16 @@
 
         .container {
         position: absolute;
-        top:10%;
+        top:4%;
         left:0%;
         width: 400px;
-        height: 750px;
+        height: 748px;
         background:transparent;
         /* background: var(--main-color); */
         border-radius: 5px;
         font-family: var(--sans);
         overflow: hidden;
-        color: rgb( 121, 125, 127 );
+        color: rgb(159, 164, 167);
         letter-spacing: .5px;
         }
 
@@ -115,13 +115,13 @@
         top: 50%;
         left: 50%;
         width: 70%;
-            height: 60%;
-            transform: translate(-50%, -50%);
+        height: 60%;
+        transform: translate(-50%, -50%);
         background: #fff;
         border-radius: 5px;
         overflow: hidden;
-            box-shadow: 0 0 1.5rem rgba(0, 0, 0, .5);
-            font-size: 1.3rem;
+        /* box-shadow: 0 0 1.5rem rgb(83, 204, 119); */
+        font-size: 1.3rem;
         }
 
 
@@ -139,71 +139,90 @@
         }
 
         .page-nr {
-            font-family: var(--sans);
+        font-family: var(--sans);
         position: absolute;
         margin: 0;
         top: 15px;
         right: 15px;
-        color: fade-out(#fff, .3);
+        color:white;
+        }
+
+        .step-nr {
+            margin-left: 95px;
+            color: var(--carpe-color-dark);
         }
 
         .quote {
             position: absolute;
-            top: 35%;
+            top: 20%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
-        }
+            color: var(--carpe-color-light);
+            font-size: 20px;   
+            font-family:"Arial Black", Gadget, sans-serif; font-weight: bold;}
+
+        .step {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+            width: 90%;
+            font-size: 13px;
+            font-weight: 50;    
+            font-family:"Arial Black", Gadget, sans-serif;}
 
         .credit {
             position: absolute;
-            top: 70%;
-            right: 5%;
+            top: 80%;
+            right: 1%;
             width:40px;
-            height:30px;
-           
-       
-        }
-            .credit::before {
-                content: "⸛ ";
-                vertical-align: middle;
-                font-size: 1.4rem;
-            }
-        
+            height:30px;}
+            
 
         .fas {
             font-size: 3.5rem;
             position: absolute;
             top: 12%;
             left: 7%;
-            color: rgba(100, 58, 122, .2);
-        }
+            color: rgba(100, 58, 122, .2);}
 
        
         #card-one{
-            width: 100%;
+        width: 100%;
         transition: .3s;
 
         }
         #card-two{
-            width: 100%;
+        width: 100%;
         transition: .3s;
 
         }
         #card-three{
-            width: 100%;
+        width: 100%;
+        transition: .3s;
+
+        }
+        #card-four{
+        width: 100%;
         transition: .3s;
 
         }
 
 
         .i-btn p {
-        background: var(--carpe-color-light);
-        text-align: center;
-        color: #fff;
+          
+       /*  background: var(--carpe-color-light);  */
+        background-image: linear-gradient(to right,  #59ada2 0%, #78cfc4 51%, #146e53 100%);
+            text-align: center;
+            color: #fff;
             padding: 1rem 0;
             width: 100%;
-            font-family: var(--sans);
+
+            color: #FFF;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            font-size: 13px;
             position: absolute;
             bottom: 0;
             left: 0;
@@ -212,21 +231,24 @@
         }
 
         .i-btn p:hover {
-        background: var(--secondary-color);
+        /* background: var(--secondary-color); */
+        background-image: linear-gradient(to left,  #59ada2 0%, #78cfc4 51%, #146e53 100%);
         cursor: pointer; 
         }
 
         #card-one:checked ~ .container .inner-one, 
         #card-two:checked ~ .container .inner-two, 
-        #card-three:checked ~ .container .inner-three {
+        #card-three:checked ~ .container .inner-three, 
+        #card-four:checked ~ .container .inner-four{
         opacity: 1;
         visibility: visible;
         }
 
         #card-one:checked ~ .container .inner-two, 
         #card-two:checked ~ .container .inner-three, 
-        #card-three:checked ~ .container .inner-one {
-            transform: scale(.85);
+        #card-three:checked ~ .container .inner-four,
+        #card-four:checked ~ .container .inner-one {
+        transform: scale(.85);
         transform: scale(1) translate(-20rem);
         }
 
@@ -424,7 +446,7 @@
 
         .number { position: relative; bottom: 35px;right: -50px;color: #fff;} 
         #carpe-score {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
-        .span {position:absolute; left:45px;top:31px;font-size: 24px;opacity: .7;} /* left:45px */
+        .span {position:absolute; left:65px;top:31px;font-size: 24px;opacity: .7;} /* left:45px */
         .percent1 .span {color: rgb(87, 173, 145);}
         /* @keyframes percent {0% {stroke-dashoffset: 0;stroke-width: 0;}} */
 
@@ -550,6 +572,45 @@
         font-size: 13px;
         }
 
+        #kvinnlig-btn{
+        font-family: "Arial Black", Gadget, sans-serif; 
+        font-size: 10px;
+        border:0px;
+        border-radius: 12px;
+        color:#FFF;text-align:center;
+        font-weight:300;
+        background-image:linear-gradient(to right, #80c780 0%, #78cfc4 51%, #80c780 100%);}
+
+        #laggtill-btn{
+        font-family: "Arial Black", Gadget, sans-serif; 
+        font-size: 12px;
+        border:0px;
+        border-radius: 10px;
+        color:#FFF;text-align:center;
+        font-weight:300;
+        background-image:linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);}
+
+        #skannaannons-btn{
+ 
+        font-family: "Arial Black", Gadget, sans-serif; 
+        font-size: 12px;
+        border:0px;
+        border-radius: 3px;
+        color:#FFF;text-align:center;
+        font-weight:300;
+        background-image:linear-gradient(to right, #80c780 0%, #78cfc4 51%, #80c780 100%);}
+
+        #spararesultat-btn{
+       
+        font-family: "Arial Black", Gadget, sans-serif; 
+        font-size: 12px;
+        border:0px;
+        border-radius: 3px;
+        color:#FFF;text-align:center;
+        font-weight:300;
+        background-image:linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);}
+        
+
  /* -- Standard CSS  -- */        
         /* Standard Button */
         .big-button {  
@@ -665,7 +726,7 @@
         <p class="result-info-välj">VÄLJ</p>
         <div class="result-info-kompetens">kompetens</div>
         <form action ="/targetaction" id ="target-post" method="post">  
-            <input type = "submit" class="competence-buttons button-w" name="target" id=w-btn value="KVINNA">
+            <input type = "submit" class="competence-buttons button-w" name="target" id=w-btn value="KVINNLIG">
             <input type="submit" class="competence-buttons button-premium" name="target" id=blue value="LÄGG TILL">
             <input type = "submit" class="competence-buttons button-premium" name="target" id = green value="LÄGG TILL">
             <input type = "submit" class="competence-buttons button-premium" name="target" id = yellow value="LÄGG TILL">
@@ -679,6 +740,7 @@
         <input id="card-one" class="hidden" type="radio" name="ok-i-btn" checked>
         <input id="card-two" class="hidden" type="radio" name="ok-i-btn">
         <input id="card-three" class="hidden" type="radio" name="ok-i-btn">
+        <input id="card-four" class="hidden" type="radio" name="ok-i-btn">
       
       <div class="container">
         
@@ -686,14 +748,18 @@
           <div class="box">
             <div class="triangle">
             </div>
-            <p class="page-nr">1</p>
+            <p class="page-nr"></p>
                   <div class="text">
                       <i class="start-quote fas fa-quote-left"></i>
-                      <p class="quote">Develop a passion for learning. If you do, you will never cease to grow.</p>
+                      <p class="step-nr">STEG 1</p>
+                      <p class="quote">Vilken svårfångad kompetens vill du rekrytera? </p>
+                      <p class="step">Tryck på den kompetens du vill anpassa din annons till.  
+                        <button type="submit" id ="kvinnlig-btn">Kvinnlig</button> kompetens ingår alltid som grundval. 
+                        Kontakta oss om du vill <button type="submit" id = "laggtill-btn" >lägga till</button> och anpassa ditt verktyg till fler kompetenser. </p>
                       <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
                   </div>
             <label class="i-btn" for="card-two">
-              <p>next</p>
+              <p>NÄSTA STEG</p>
             </label>
           </div>
         </div>
@@ -702,29 +768,46 @@
           <div class="box">
             <div class="triangle">
             </div>
-            <p class="page-nr">2</p>
-            <i class="start-quote fas fa-quote-left"></i>
-            <p class="quote">An investment in knowledge pays the best interest.</p>
-            <p class="credit"> Benjamin Franklin</p>
-            <label class="i-btn" for="card-three">
-              <p>next</p>
+            <p class="page-nr"></p>
+                <div class="text">
+                    <i class="start-quote fas fa-quote-left"></i>
+                    <p class="step-nr">STEG 2</p>
+                    <p class="quote">Hur vill du att din annons ska se ut? </p>
+                    <p class="step">Skriv din annonstext i textrutan. När du trycker på <button type="submit" id="skannaannons-btn" >SKANNA ANNONS</button> kommer AI-verktyget hjälpa dig att attrahera ditt kompetensval genom att färgmarkera <u id = "green-class" >attraherande</u> och <u id="red-class" >icke-attraherande</u> ord i din annons. Verktyget kommer också räkna ut ett Carpe Score baserat på hur attraherande ord annonsen har. </p>
+                    <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+                </div>
+                <label class="i-btn" for="card-three">
+              <p>NÄSTA STEG</p>
             </label>
           </div>
         </div>
         
         <div class="inner inner-three">
-          <div class="box">
-            <div class="triangle">
+          <div class="box"><div class="triangle"></div><p class="page-nr"></p>
+            <div class="text">
+                <i class="start-quote fas fa-quote-left"></i>
+                <p class="step-nr">STEG 3</p>
+                <p class="quote">Hur högt Carpe Score kan du få? </p>
+                <p class="step">Om du håller pekaren över ett <u id= "red-class" >rödmarkerat</u> ord hjälper vi dig att byta ut det till ett ord som attraherar ditt kompetensval. Om du ändrar till vårt ordförslag kommer du att öka ditt Carpe Score. Ditt Carpe Score kan också ökas på egen hand, genom att du lyckas träffa in fler <u id="green-class" >grönmarkerade</u> ord.</p>
+                <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
             </div>
-            <p class="page-nr">3</p>
-            <i class="start-quote fas fa-quote-left"></i>
-            <p class="quote">I have no special talent. I am only passionately curious.</p>
-            <p class="credit">Albert Einstein</p>
-            <label class="i-btn" for="card-one">
-              <p>next</p>
-            </label>
+            <label class="i-btn" for="card-four"><p>NÄSTA STEG</p></label>
           </div>
         </div>
+
+
+        <div class="inner inner-four">
+            <div class="box"><div class="triangle"></div><p class="page-nr"></p>
+              <div class="text">
+                  <i class="start-quote fas fa-quote-left"></i>
+                  <p class="step-nr">STEG 4</p>
+                  <p class="quote">Vill du spara statistik i din profil? </p>
+                  <p class="step">När du är nöjd med ditt Carpe Score kan du trycka på <button type="submit" id="spararesultat-btn" >SPARA RESULTAT</button>. Din annons och dina poäng kommer då att lagras så att vi kan följa upp din utveckling.</p>
+                  <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+              </div>
+              <label class="i-btn" for="card-one"><p>BÖRJA OM </p></label>
+            </div>
+          </div>
       </div>    
           
     </div>
@@ -839,9 +922,9 @@
             document.getElementById("edit-table").style.borderColor = "#80c780"; 
             document.getElementById("w-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
             document.getElementById("w-btn").style.height = "27px";
-            document.getElementById("w-btn").style.width= "75px";
+            document.getElementById("w-btn").style.width= "87px";
             document.getElementById("w-btn").style.fontSize = "15px"; 
-            document.getElementById("w-btn").style.marginLeft = "13%";
+            document.getElementById("w-btn").style.marginLeft = "0%";
             document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
             document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
             document.getElementById("blue").style.background ='#acacac'; //reset colour
@@ -861,7 +944,7 @@
             else { /* Analyze status is successful */
                 const analyze_div = document.getElementById("a-status");
                 const anlz_message = document.createTextNode(analyzestatus);
-                analyze_div.appendChild(anlz_message);
+                /* analyze_div.appendChild(anlz_message); */
 
                 if (ongoingGame === "false") {
                     console.log("ongoing game : false: result: " + result);
@@ -1294,5 +1377,4 @@
 
 
   
-
 
