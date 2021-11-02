@@ -5,27 +5,126 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+
+:root {
+        --main-color: #006A63;
+        --secondary-color: #009D94;
+        --sans: "Arial Black", Gadget, sans-serif;
+        font-family:"Arial Black", Gadget, sans-serif;
+        text-decoration-color: white;
+        --carpe-color-dark: #006A63;
+        --carpe-color-light: #009D94;
+        --women-color: #80c780;
+        --red-color: rgb(204, 100, 100);
+        --changed-color:#8e3fb3;} 
+
+  html,body{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
+
+      .top-header{height:150px; width:100%; }
+      #logo {top:0; left:0; height:50px; width:70px;  display: inline;}
+            
+            .slogan{
+
+            margin-top:14px;
+            position:absolute;
+            font-weight:300;
+            top:0;
+            left:65px;
+            color: var(--carpe-color-light);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: "Avenir Heavy";} 
+
+      .input-buttons {   
+            width: 50px;
+            height: 30px;         
+            padding: 2px;
+            margin:2px;
+            border-radius: 5px; 
+            box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            background-size: 200% auto;            
+            box-shadow: 0 0 20px #eee;
+            border:0px;
+            color: #FFF;
+            font-family: "Arial Black", Gadget, sans-serif; 
+            background-image: linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%);
+            text-align: center;
+            font-weight: 300;
+            font-size: 12px;
+            transition: 0.5s; 
+            cursor: pointer;}  
+            
+            .input-buttons:nth-child(1) {margin-left: 60px;}
+
+            #loggain{
+            left:40px;
+            width: 70px;
+            height: 30px;
+            }
+
+            #registrera{
+            width: 90px;
+            height: 30px;
+            }
+
+            .input-buttons:hover{box-shadow: 0 10px 20px rgb(255, 255, 255)55, 0.19), 0 6px 6px rgba(0,0,0,0.23); background-position: left center;}
+        
+            #text{
+              font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; 
+            }
+
+
+            .input-field{
+              border: 0px;
+              height: 30px;
+              border-radius: 4px;
+              font-family:"Arial Black", Gadget, sans-serif; 
+              color:#006A63;
+            }
+            #input2{
+              margin-left: 8px;
+            }
+
+
+
+
+  </style>
 </head>
 <body>
+
+  <div class="top-header">
+        <img id ="logo" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+        <p class="slogan" id = "slogan">Carpe Competence</p>
+        
+    </form> 
+</div>
+  
   <!-- The center tag is generally frowned upon, but it works for this simple page -->
-  <h1>Carpe Competence</h1>
-  <img src="logo.jpg" alt="carpeCompetence">
   <center>
     <form action="/authenticate" method="post">
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username">
+      <label id ="text" for="username" >Användare: </label>
+      <input class = "input-field" id ="input1" type="text" name="username" id="username">
       <br><br>
       
-      <label for="password">Password: </label>
-      <input type="password" name="password" id="password">
+      <label id = "text" for="password">Lösenord: </label>
+      <input class= "input-field" id = "input2" type="password" name="password" id="password">
       <br><br>
 
-      <input type="submit" value="Login" name="login">
-      <input type="submit" value="Register" name="register">
+      <input class = "input-buttons" id="loggain" type="submit" value="LOGGA IN" name="login">
+      <input class = "input-buttons" id ="registrera" type="submit" value="REGISTRERA" name="register">
     </form>
     <br>
     <div id="registrationStatus"></div>
   </center>
+
+  <img  style="position:absolute;top:-30px;right:-130px;width:60%;height:70%;opacity:0.6;"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
+
   
   <script>
     const params = new URLSearchParams(location.search);
