@@ -281,7 +281,6 @@ function mergeResultOfOld_New_Terms(uO){
 
 
 function classify(des, ongoingGame){
-    console.log(des);
     
     var exec = require("child_process").execSync;
     var resu = exec(`python3 /Users/ewelynstrandberg/Desktop/KTH/DEL/DEL/analyzeInput.py ${des}`);
@@ -297,21 +296,23 @@ function classify(des, ongoingGame){
         useLemma = false
         var split_word_and_lemma = word_lemma_pairs[index].split(" ");
         var word = split_word_and_lemma[0];
+        var wordcopy = word.toLowerCase()
+        wordcopy.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '')
         var lemma = split_word_and_lemma[1];
-        var prob = python_data.probabilities[word.toLowerCase()];
+        var prob = python_data.probabilities[wordcopy];
       
     
         if (typeof prob == ('undefined' || null)){
             prob = python_data.probabilities[lemma];
             useLemma = true
             if (typeof prob == 'undefined'){
-                gender = "u"
-                prob = 0.5
+                gender = "u";
+                prob = 0.5;
             }else if (prob > 0.65){
                 gender = "w";
                 } else if (prob < 0.35){
                 gender = "m";
-                prob = 1-prob
+                prob = 1-prob;
                 }else{
                 gender = "n";
             }
@@ -319,20 +320,21 @@ function classify(des, ongoingGame){
         gender = "w";
         } else if (prob < 0.35){
         gender = "m";
-        prob = 1-prob
+        prob = 1-prob;
         }else{
         gender = "n";
         }
+       
         result += "{[" + word + "] [" + gender + "] [" + prob.toString() + "] [";
-
+        
         var synonyms;
         var term;
         if (useLemma){
             synonyms = python_data.synonyms[lemma];
             term = lemma;
         }else {
-            synonyms = python_data.synonyms[word.toLowerCase()]
-            term = word.toLowerCase()
+            synonyms = python_data.synonyms[wordcopy];
+            term = wordcopy;
         }
         
         var formatted_synonyms = "";
