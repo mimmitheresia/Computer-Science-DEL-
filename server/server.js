@@ -2,9 +2,9 @@
 
 class PythonData {
   constructor() {
-    this.probabilities = {};
-    this.synonyms = {};
-  }
+    this.probabilities = {};
+    this.synonyms = {};
+  }
 }
 
 class LoggedInUsers {
@@ -281,88 +281,112 @@ function mergeResultOfOld_New_Terms(uO){
 
 
 function classify(des, ongoingGame){
+    console.log(des);
     
-  var exec = require("child_process").execSync;
-  var resu = exec(`python3 /Users/ewelynstrandberg/Desktop/KTH/DEL/DEL/analyzeInput.py ${des}`);
-  console.log(resu.toString("utf8"));
-  var prel_result = resu.toString("utf8");
-  var no_vinge = prel_result.substring(3,prel_result.length-1);
-  var word_lemma_pairs = no_vinge.split("|");
+    var exec = require("child_process").execSync;
+    var resu = exec(`python3 /Users/ewelynstrandberg/Desktop/KTH/DEL/DEL/analyzeInput.py ${des}`);
+    console.log(resu.toString("utf8"));
+    var prel_result = resu.toString("utf8");
+    var no_vinge = prel_result.substring(3,prel_result.length-1);
+    var word_lemma_pairs = no_vinge.split("|");
 
-  var result = "";
-  var gender
-  for (let index in word_lemma_pairs){
-    var split_word_and_lemma = word_lemma_pairs[index].split(" ");
-    var word = split_word_and_lemma[0];
-    var lemma = split_word_and_lemma[1];
-    var prob = python_data.probabilities[lemma];
-   
-    if (typeof prob == 'undefined'){
-      gender = "u"
-      prob = "u"
-    }
-    else if (prob > 0.65){
-      gender = "w";
-    } else if (prob < 0.35){
-      gender = "m";
-    }else{
-      gender = "n";
-    }
-    result += "{[" + word + "] [" + gender + "] [" + prob.toString() + "] [";
+    var result = "";
+    var gender;
+    var useLemma;
+    for (let index in word_lemma_pairs){
+        useLemma = false
+        var split_word_and_lemma = word_lemma_pairs[index].split(" ");
+        var word = split_word_and_lemma[0];
+        var lemma = split_word_and_lemma[1];
+        var prob = python_data.probabilities[word.toLowerCase()];
+      
+    
+        if (typeof prob == ('undefined' || null)){
+            prob = python_data.probabilities[lemma];
+            useLemma = true
+            if (typeof prob == 'undefined'){
+                gender = "u"
+                prob = 0.5
+            }else if (prob > 0.65){
+                gender = "w";
+                } else if (prob < 0.35){
+                gender = "m";
+                prob = 1-prob
+                }else{
+                gender = "n";
+            }
+        } else if (prob > 0.65){
+        gender = "w";
+        } else if (prob < 0.35){
+        gender = "m";
+        prob = 1-prob
+        }else{
+        gender = "n";
+        }
+        result += "{[" + word + "] [" + gender + "] [" + prob.toString() + "] [";
 
-    const synonyms = python_data.synonyms[lemma]
-    var formatted_synonyms = "";
-    if (gender != "u"){
-      for (let index2 in Object.keys(synonyms)){
-        const synonym = Object.keys(synonyms)[index2];
-        const value = python_data.synonyms[lemma][synonym];
-        formatted_synonyms += synonym + ";" + value.toString() + ",";
-      }
-    }  
-    const synonyms_str = formatted_synonyms.substring(0,formatted_synonyms.length-1) + "]}";
-    result += synonyms_str;
-  }
-  result += "}";
-  console.log(result);
+        var synonyms;
+        var term;
+        if (useLemma){
+            synonyms = python_data.synonyms[lemma];
+            term = lemma;
+        }else {
+            synonyms = python_data.synonyms[word.toLowerCase()]
+            term = word.toLowerCase()
+        }
+        
+        var formatted_synonyms = "";
+        if (gender != "u"){
+        for (let index2 in Object.keys(synonyms)){
+            const synonym = Object.keys(synonyms)[index2];
+            const value = python_data.synonyms[term][synonym];
+            formatted_synonyms += synonym + ";" + value.toString() + ",";
+        }
+        }  
+        const synonyms_str = formatted_synonyms.substring(0,formatted_synonyms.length-1) + "]}";
+        result += synonyms_str;
+    }
+    result += "}";
+    console.log(result);
     return result;}
 
 
 function handleFiles() {
-    var startTime = performance.now()
-    const readLine = require('readline');
-    const f = require('fs');
-    var file = '/Users/ewelynstrandberg/Desktop/KTH/DEL/DEL/All_information.txt';
-    var rl = readLine.createInterface({
-        input : f.createReadStream(file),
-        output : process.stdout,
-        terminal: false
-    });
-    rl.on('line', function (text) {
-      const lemma = text.split("[")[0].substring(1,text.split("[")[0].length)
-      const leftover_line = text.split("[")[1]
-      const end_of_prob_index = leftover_line.indexOf(",");
-      const lemma_probability = leftover_line.substring(0,end_of_prob_index);
-      python_data.probabilities[lemma] = parseFloat(lemma_probability);
-      const synonym_start = leftover_line.indexOf("{");
-      if (leftover_line.charAt(synonym_start+2)!="}") {
-        const merge_syns_and_probs = leftover_line.substring(synonym_start+1,leftover_line.length-3);
-        const syns_and_probs = merge_syns_and_probs.split(",");
-        var syndict = {};
-        for (let index in syns_and_probs) {
-          const split_syn_and_prob = syns_and_probs[index].split(":");
-          const syn = split_syn_and_prob[0];
-          const prob = parseFloat(split_syn_and_prob[1]);
-          syndict[syn] = prob;
+    var startTime = performance.now()
+    const readLine = require('readline');
+    const f = require('fs');
+    var file = '/Users/ewelynstrandberg/Desktop/KTH/DEL/DEL/All_information.txt';
+    var rl = readLine.createInterface({
+        input : f.createReadStream(file),
+        output : process.stdout,
+        terminal: false
+    });
+    rl.on('line', function (text) {
+      const lemma = text.split("[")[0].substring(1,text.split("[")[0].length)
+      const leftover_line = text.split("[")[1]
+      const end_of_prob_index = leftover_line.indexOf(",");
+      const lemma_probability = leftover_line.substring(0,end_of_prob_index);
+      python_data.probabilities[lemma] = parseFloat(lemma_probability);
+      const synonym_start = leftover_line.indexOf("{");
+      if (leftover_line.charAt(synonym_start+2)!="}") {
+        const merge_syns_and_probs = leftover_line.substring(synonym_start+1,leftover_line.length-3);
+        const syns_and_probs = merge_syns_and_probs.split(",");
+        var syndict = {};
+        for (let index in syns_and_probs) {
+          const split_syn_and_prob = syns_and_probs[index].split(":");
+          const syn = split_syn_and_prob[0];
+          const prob = parseFloat(split_syn_and_prob[1]);
+          syndict[syn] = prob;
   
-        }
-        python_data.synonyms[lemma] = syndict;
-      } else {
-        python_data.synonyms[lemma] = {};
-      }
-    }).on("close", function() {
-      var endTime = performance.now()
-      console.log(`End of file, it took ${(endTime - startTime)/1000} seconds to complete`);
-    });
+        }
+        python_data.synonyms[lemma] = syndict;
+      } else {
+        python_data.synonyms[lemma] = {};
+      }
+    }).on("close", function() {
+      var endTime = performance.now()
+      console.log(`End of file, it took ${(endTime - startTime)/1000} seconds to complete`);
+    });
   }
 
 
@@ -370,5 +394,3 @@ app.listen(port, () => {
   handleFiles();
   console.info(`Listening on port ${port}!`);
 });
-
-
