@@ -4,83 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+
     <style> 
-       @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans:600');
+    @import url('https://fonts.googleapis.com/css?family=Dancing+Script|Josefin+Sans:600');
 
-    :root {
-        --main-color: #006A63;
-        --secondary-color: #009D94;
-        --sans: "Arial Black", Gadget, sans-serif;
-        font-family:"Arial Black", Gadget, sans-serif;
-        text-decoration-color: white;
-        --carpe-color-dark: #006A63;
-        --carpe-color-light: #009D94;
-        --women-color: #80c780;
-        --red-color: rgb(204, 100, 100);
-        --changed-color:#8e3fb3;} 
+    :root {--main-color: #006A63;--secondary-color: #009D94;--sans: "Arial Black", Gadget, sans-serif;font-family:"Arial Black", Gadget, sans-serif;text-decoration-color: white;--carpe-color-dark: #006A63;--carpe-color-light: #009D94;--women-color: #54bd54;--red-color: rgb(204, 100, 100);--changed-color:#8e3fb3;}  
+    html,body{width: 100%;height: 100%;overflow: hidden;background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
     
-    html,body{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        background-image:linear-gradient(45deg, #80c780 0%, #ffffff 20%, #78cfc4 71%, #80c780 100%);} 
-
     .top-header{height:150px; width:100%; }
-/*     .section-1{height:50px; width: 100%; } */
+    .section-1{height:50px; width: 100%; } 
     .section-2{height:470px; width: 100%; }
     .section-2 .column{height: 100%;float:right;}
-    .section-2::after {
-  content: "";
-  clear: both;
-  display: table;
-} 
-
-.section-2 .column::after {
-  content: "";
-  clear: both;
-  display: table;
-} 
+    .section-2::after {content: "";clear: both;display: table;} 
+    .section-2 .column::after {content: "";clear: both;display: table;} 
     .section-3{padding-left: 70%;height:100px; width: 100%; }
 
-
-            #logo {top:0; left:0; height:50px; width:70px;  display: inline;}
+    #logo {top:0; left:0; height:50px; width:70px;  display: inline;}
             
-            .slogan{
-            margin-top:14px;
-            position:absolute;
-            font-weight:300;
-            top:0;
-            left:65px;
-            color: var(--carpe-color-light);
-            font-size: 20px;
-            font-weight: bold;
-            font-family: "Avenir Heavy";} 
-        
-            .top-header input { 
-            height: 5%;
-            width: 30;
-            margin-right: 18px;       
-            text-shadow:2px -2px 10px rgb(255, 255, 255);
-            background: transparent;
-            border-radius: 15px;  
-            color:white;
-            font-size: 14px;
-            font-weight : bold;
-            text-align: center; 
-            font-weight:700;
-            font-family: var(--font); 
-            /* box-shadow: 0 0 20px #eee;  */ 
-            cursor:pointer;
-            float: right;} 
-            .top-header input:hover {font-size: 15px;}        
-            .top-header input:after {content: "";clear: both;display: table;}
-            .top-header input:not(:last-child) { background-color: transparent;border:transparent;color:rgb(255, 255, 255);border-right: none; /* Prevent double borders */} */
-            /* .top-header input:last-child {box-shadow: 0 0 20px #eee;}   */
-            /* #username-btn{border:rgb(103, 109, 199);border-radius: 15px;}     */
+        .slogan{
+        margin-top:14px;
+        position:absolute;
+        font-weight:300;
+        top:0;
+        left:65px;
+        color: var(--carpe-color-light);
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "Avenir Heavy";} 
+    
+        .top-header input { 
+        height: 5%;
+        width: 30;
+        margin-right: 18px;       
+        text-shadow:2px -2px 10px rgb(255, 255, 255);
+        background: transparent;
+        border-radius: 15px;  
+        color:white;
+        font-size: 14px;
+        font-weight : bold;
+        text-align: center; 
+        font-weight:700;
+        font-family: var(--font); 
+        cursor:pointer;
+        float: right;} 
+        .top-header input:hover {font-size: 15px;}        
+        .top-header input:after {content: "";clear: both;display: table;}
+        .top-header input:not(:last-child) { background-color: transparent;border:transparent;color:rgb(255, 255, 255);border-right: none; /* Prevent double borders */} */
+        /* .top-header input:last-child {box-shadow: 0 0 20px #eee;}   */
+        /* #username-btn{border:rgb(103, 109, 199);border-radius: 15px;}     */
     
     /* Instruction table */
     #Instruction-Table{background:green;width: 34%; }
-
 
         .container {
         position: absolute;
@@ -89,17 +64,13 @@
         width: 400px;
         height: 748px;
         background:transparent;
-        /* background: var(--main-color); */
         border-radius: 5px;
         font-family: var(--sans);
         overflow: hidden;
         color: rgb(159, 164, 167);
-        letter-spacing: .5px;
-        }
+        letter-spacing: .5px;}
 
-        .hidden {
-        display: none;
-        }
+        .hidden {display: none;}
 
         .inner {
         position: absolute;
@@ -107,8 +78,7 @@
         width: 100%;
         opacity: 0;
         transition: 1s;
-        visibility: hidden;
-        }
+        visibility: hidden; }
 
         .box {
         position: absolute;
@@ -120,10 +90,7 @@
         background: #fff;
         border-radius: 5px;
         overflow: hidden;
-        /* box-shadow: 0 0 1.5rem rgb(83, 204, 119); */
-        font-size: 1.3rem;
-        }
-
+        font-size: 1.3rem;}
 
         .page-nr::before {
         content: "";
@@ -135,8 +102,7 @@
         background: var(--secondary-color);
         transform: rotate(-45deg);
         z-index: -1;
-            box-shadow: 0 0 .7rem rgba(0, 0, 0, .5);
-        }
+        box-shadow: 0 0 .7rem rgba(0, 0, 0, .5);}
 
         .page-nr {
         font-family: var(--sans);
@@ -144,114 +110,54 @@
         margin: 0;
         top: 15px;
         right: 15px;
-        color:white;
-        }
+        color:white;}
 
-        .step-nr {
-            margin-left: 95px;
-            color: var(--carpe-color-dark);
-        }
+        .step-nr {margin-left: 95px;color: var(--carpe-color-dark); }
 
         .quote {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            color: var(--carpe-color-light);
-            font-size: 20px;   
-            font-family:"Arial Black", Gadget, sans-serif; font-weight: bold;}
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        color: var(--carpe-color-light);
+        font-size: 20px;   
+        font-family:"Arial Black", Gadget, sans-serif; font-weight: bold;}
 
         .step {
-            position: absolute;
-            top: 55%;
-            left: 50%;
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        font-size: 14px;
+        font-weight: 50; 
+        font-weight: bold;   
+        font-family:"Arial", Gadget, sans-serif;}
 
-            transform: translate(-50%, -50%);
-            width: 90%;
-            font-size: 13px;
-            font-weight: 50;    
-            font-family:"Arial Black", Gadget, sans-serif;}
-
-        .credit {
-            position: absolute;
-            top: 80%;
-            right: 1%;
-            width:40px;
-            height:30px;}
-            
-
-        .fas {
-            font-size: 3.5rem;
-            position: absolute;
-            top: 12%;
-            left: 7%;
-            color: rgba(100, 58, 122, .2);}
-
-       
-        #card-one{
-        width: 100%;
-        transition: .3s;
-
-        }
-        #card-two{
-        width: 100%;
-        transition: .3s;
-
-        }
-        #card-three{
-        width: 100%;
-        transition: .3s;
-
-        }
-        #card-four{
-        width: 100%;
-        transition: .3s;
-
-        }
-
-
-        .i-btn p {
-          
-       /*  background: var(--carpe-color-light);  */
+        .credit {position: absolute;top: 80%;right: 1%;width:40px;height:30px;}
+        .fas {font-size: 3.5rem;position: absolute;top: 12%; left: 7%;color: rgba(100, 58, 122, .2);}  
+        #card-one{width: 100%;transition: .3s;}
+        #card-two{width: 100%;transition: .3s;}
+        #card-three{width: 100%;transition: .3s;}
+        #card-four{width: 100%;transition: .3s;}
+        
+        .i-btn p {  
         background-image: linear-gradient(to right,  #59ada2 0%, #78cfc4 51%, #146e53 100%);
-            text-align: center;
-            color: #fff;
-            padding: 1rem 0;
-            width: 100%;
-
-            color: #FFF;
-            font-family: "Arial Black", Gadget, sans-serif; 
-            font-size: 13px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin: 0;
-            transition: .2s ease-out;
-        }
-
-        .i-btn p:hover {
-        /* background: var(--secondary-color); */
-        background-image: linear-gradient(to left,  #59ada2 0%, #78cfc4 51%, #146e53 100%);
-        cursor: pointer; 
-        }
-
-        #card-one:checked ~ .container .inner-one, 
-        #card-two:checked ~ .container .inner-two, 
-        #card-three:checked ~ .container .inner-three, 
-        #card-four:checked ~ .container .inner-four{
-        opacity: 1;
-        visibility: visible;
-        }
-
-        #card-one:checked ~ .container .inner-two, 
-        #card-two:checked ~ .container .inner-three, 
-        #card-three:checked ~ .container .inner-four,
-        #card-four:checked ~ .container .inner-one {
-        transform: scale(.85);
-        transform: scale(1) translate(-20rem);
-        }
-
+        text-align: center;
+        color: #fff;
+        padding: 1rem 0;
+        width: 100%;
+        color: #FFF;
+        font-family: "Arial Black", Gadget, sans-serif; 
+        font-size: 13px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+        transition: .2s ease-out;}
+        .i-btn p:hover {background-image: linear-gradient(to left,  #59ada2 0%, #78cfc4 51%, #146e53 100%);cursor: pointer;  }
+        #card-one:checked ~ .container .inner-one,#card-two:checked ~ .container .inner-two, #card-three:checked ~ .container .inner-three, #card-four:checked ~ .container .inner-four{ opacity: 1;visibility: visible;}#card-one:checked ~ .container .inner-two, #card-two:checked ~ .container .inner-three, #card-three:checked ~ .container .inner-four,#card-four:checked ~ .container .inner-one {transform: scale(.85);transform: scale(1) translate(-20rem);}
 
 
 
@@ -259,7 +165,7 @@
     /* Button table */
     #Button-Table{width: 6%; padding-top: 7px; }  
     
-        .result-info-välj{
+            .result-info-välj{
             font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; 
             color:white;
             font-size: 20px;
@@ -279,7 +185,7 @@
             margin-left:6px;}
 
       
-        .competence-buttons {   
+            .competence-buttons {   
             width: 70%;
             height: 20px;
             margin-left:30%;
@@ -325,6 +231,7 @@
             border-radius: 5px;
             box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
             font-family: "Lucida Console", "Courier New", monospace;}
+
          
         /* Pop up window */        
         .popup-window {
@@ -339,7 +246,7 @@
 
             .popup-window .top {
             position:absolute;
-            width:280px;
+            width:300px;
             height: 180px;
             top:-5px;
             left:-100px;
@@ -408,175 +315,123 @@
 
         /* Progress ring */
         .score-ring{
-        position:absolute;
-        top:122px;
-        right:17px;   
-        width: 200px;
-        height:200px;}
+            position:absolute;
+            top:122px;
+            right:17px;   
+            width: 200px;
+            height:200px;}
 
-        .percent1, .percent2, svg, circle {width: 100%;height:100%;}
+            circle {
+            position: absolute;
+            fill: none;
+            stroke-width: 18;
+            transform-origin: center;
+            transform-style: preserve-3D;
+            transform: translate(10px, 10px);        
+            stroke-dasharray: 440;
+            stroke-linecap:square;}
 
-        circle {
-        position: absolute;
-        fill: none;
-        stroke-width: 18;
-        transform-origin: center;
-        transform-style: preserve-3D;
+            circle:nth-child(1) {stroke-dashoffset: 0;}
+            .percent1, .percent2, svg, circle {width: 100%;height:100%;}
+            .percent1 circle:nth-child(2) {stroke: #42f368;background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);animation: percent 1.0s 1;}
+            .number { position: relative; bottom: 35px;right: -50px;color: #fff;} 
+            #carpe-score {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
+            #percent {position:absolute; left:65px;top:33px;font-size: 20px; margin-left:4px;opacity: .7;} 
+            .percent1 #percent {color: rgb(87, 173, 145);}
+      
 
-  /*       -webkit-transform: rotate(90deg); 
-        transform: rotate(45deg); */
-        
-        transform: translate(10px, 10px);
-
-       /*  transform: rotate(-90deg);  */
-        
-        stroke-dasharray: 440;
-        stroke-linecap:square;}
-
-        circle:nth-child(1) {stroke-dashoffset: 0;}
-
-        .percent1 circle:nth-child(2) {/* circle id ="set-percent" cx="70" cy="70" r="70"></circle> */
-  /*       stroke:rgba(63, 100%, 46%, 0.525); */
-        stroke: rgb(66, 243, 104);
-        background-image: linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);
-        /* stroke: hsla(hue, saturation, lightness, alpha) */
-        /* stroke: #91ff83; *//* stroke: rgb(93, 148, 139); */
-        animation: percent 1.0s linear;
-        animation-delay: 1s;}
-
-        .number { position: relative; bottom: 35px;right: -50px;color: #fff;} 
-        #carpe-score {font-size: 48px;text-shadow:0.5px -0.5px 5px rgb(255, 255, 255);}
-        .span {position:absolute; left:65px;top:31px;font-size: 24px;opacity: .7;} /* left:45px */
-        .percent1 .span {color: rgb(87, 173, 145);}
-        /* @keyframes percent {0% {stroke-dashoffset: 0;stroke-width: 0;}} */
-
-        
+  
         /* Progress bars */
-        .progress-bars{
-        position:relative;
-          height: 340px; width: 400px;
-        }
-        .progress-bars .back-bar{
-            margin-top:300px;
-            }
+        .progress-bars{position:relative;height: 340px; width: 400px;}
+        
+            .progress-bars .back-bar{margin-top:300px;}
 
-        .back-bar {
-        display:inline-block;
-        margin-right: -70px;
-        background: rgba(255,255,255,0.1); 
-        border-radius: 100px;
-        position: relative;
-        padding: 0 5px;    
-        -webkit-transform: rotate(-90deg); 
-        transform: rotate(-90deg);
-        height: 10px;
-        width: 130px;}
+            .back-bar {
+            display:inline-block;
+            margin-right: -70px;
+            background: rgba(255,255,255,0.1); 
+            border-radius: 100px;
+            position: relative;
+            padding: 0 5px;    
+            -webkit-transform: rotate(-90deg); 
+            transform: rotate(-90deg);
+            height: 10px;
+            width: 130px;}
 
-        .progress-bar {
-       /*  animation: loadbar 2s normal forwards; */
-        box-shadow: 1px 1px 10px 0.5px rgb(250, 250, 250);
-        border-radius: 100px;
-        background: rgb(243, 243, 243);
-        height: 10px;    
-        width: 0;}
+            .progress-bar {
+            box-shadow: 1px 1px 10px 0.5px rgb(250, 250, 250);
+            border-radius: 100px;
+            background: rgb(243, 243, 243);
+            height: 10px;    
+            width: 0;}
 
-        #red-bar{
-        background: rgb(192, 46, 46);box-shadow: 1px 1px 10px 0.5px rgb(165, 25, 25);
-        animation: loadbar-red 4s normal forwards;}
-        #green-bar{
-        background: #58ca49;box-shadow: 1px 1px 10px 0.5px rgb(169, 235, 177);
-        animation: loadbar-green 4s normal forwards;}
-        #purple-bar{
-        background: #8e3fb3;box-shadow: 1px 1px 10px 0.5px rgb(186, 150, 243);
-        animation: loadbar-purple 4s normal forwards;}
-/* 
-      @keyframes loadbar-red {0% { width: 0%; }100% { width: 50%; }}   */
+            #red-bar{
+            background: rgb(192, 46, 46);box-shadow: 1px 1px 10px 0.5px rgb(165, 25, 25);
+            animation: loadbar-red 4s normal forwards;}
+            #green-bar{
+            background: #58ca49;box-shadow: 1px 1px 10px 0.5px rgb(169, 235, 177);
+            animation: loadbar-green 4s normal forwards;}
+            #purple-bar{
+            background: #8e3fb3;box-shadow: 1px 1px 10px 0.5px rgb(186, 150, 243);
+            animation: loadbar-purple 4s normal forwards;}    
+
 
         /* Progress bars values */
         .progress-bars-values{
-        -webkit-transform: rotate(-90deg); 
-        transform: rotate(-90deg);
-        top:470px;
-        margin-bottom:70px;
-        position:absolute;
-        margin-left:96px;
-  
-        margin-right:100px;}
+            -webkit-transform: rotate(-90deg); 
+            transform: rotate(-90deg);
+            top:520px;
+            margin-bottom:70px;
+            position:absolute;
+            margin-left:96px;
 
-        .progress-bars-values .progress-value{
-        -webkit-transform: rotate(-270deg); 
-        transform: rotate(-270deg);
-        margin-left:45px;
-        margin-top:30px;
-        /* float:left; */
-        color:white;
-        font-weight: bold; 
-        font-size: 37px;
-        font-family: "Arial ", Gadget, sans-serif;}
+            margin-right:100px;}
+
+            .progress-bars-values .progress-value{
+            -webkit-transform: rotate(-270deg); 
+            transform: rotate(-270deg);
+            margin-left:45px;
+            margin-top:30px;
+            /* float:left; */
+            color:white;
+            font-weight: bold; 
+            font-size: 37px;
+            font-family: "Arial ", Gadget, sans-serif;}
 
 
         /* Result info text */
-
         .result-info-type{
-        position:relative;
-        font-family: "Arial ", Gadget, sans-serif;
-        color:white;  
-        font-weight: bold;
-        color:white;
-        word-spacing: 7px;
-        font-size: 14px;
-        margin-top:100px;
-    
-        margin-left:4px;}
+            position:relative;
+            font-family: "Arial ", Gadget, sans-serif;
+            color:white;  
+            font-weight: bold;
+            color:white;
+            word-spacing: 7px;
+            font-size: 14px;
+            margin-top:100px;
+            margin-left:4px;}
 
-        #ofscore {position:absolute; font-size: 24px;opacity: .7; color: rgb(87, 173, 145) ;  margin-left:40px;
-        margin-top:0px;}
+            #ofscore {position:absolute; font-size: 24px;opacity: .7; color: rgb(87, 173, 145) ;  margin-left:40px;margin-top:0px;}
 
-        .result-info-slash{
-        opacity: .7; color: rgb(87, 173, 145) ;
-        font-family:"Arial Black", Gadget, sans-serif; font-weight: bold; 
-    
-        font-size: 20px;
-        white-space:pre;
-        margin-left:30px;
-        margin-top:0px;}
-        
-
-        .result-info-ord{
-        opacity: .7; color: rgb(87, 173, 145) ;
-        font-family:"Arial Black", Gadget, sans-serif; font-weight: bold; 
-        font-size: 20px;
-        word-spacing: 45px;
-        margin-left:35px;
-        margin-top:-50px;}
-        
-/* 
-        #copy-btn{
-        margin-left:2px;
-        position:absolute;
-        bottom:41px;
-        right:40px;}
-
-        #save-btn{
-        margin-left:2px;
-        position:absolute;
-        bottom:41px;
-        right:140px;} */
+            .result-info-slash{opacity: .7; color: rgb(87, 173, 145);font-family:"Arial Black", Gadget, sans-serif; font-weight: bold; 
+            font-size: 20px;
+            white-space:pre;
+            margin-left:30px;
+            margin-top:0px;}
+            
+            .result-info-ord{opacity: .7; color: rgb(87, 173, 145);font-family:"Arial Black", Gadget, sans-serif; font-weight: bold; 
+            font-size: 20px;
+            word-spacing: 45px;
+            margin-left:35px;
+            margin-top:-50px;}
 
         
-        #analyze-btn {
-        margin-left:17px;
-        margin-top:12px;
-        width: 120px;
-        height: 50px;
-        font-size: 13px;
-        }
-
+        /* Buttons in instruction table */
         #kvinnlig-btn{
         font-family: "Arial Black", Gadget, sans-serif; 
-        font-size: 10px;
+        font-size: 12px;
         border:0px;
-        border-radius: 12px;
+        border-radius: 10px;
         color:#FFF;text-align:center;
         font-weight:300;
         background-image:linear-gradient(to right, #80c780 0%, #78cfc4 51%, #80c780 100%);}
@@ -591,9 +446,12 @@
         background-image:linear-gradient(to right, #4f4f50 0%, #adadad 51%, #a1a3a0 100%);}
 
         #skannaannons-btn{
- 
         font-family: "Arial Black", Gadget, sans-serif; 
-        font-size: 12px;
+        font-size: 10px;
+        height: 40px;
+        width: 80px;
+        padding: 2px;
+
         border:0px;
         border-radius: 3px;
         color:#FFF;text-align:center;
@@ -601,9 +459,10 @@
         background-image:linear-gradient(to right, #80c780 0%, #78cfc4 51%, #80c780 100%);}
 
         #spararesultat-btn{
-       
         font-family: "Arial Black", Gadget, sans-serif; 
-        font-size: 12px;
+        font-size: 10px;
+        height: 40px;
+        width: 80px;
         border:0px;
         border-radius: 3px;
         color:#FFF;text-align:center;
@@ -614,7 +473,10 @@
  /* -- Standard CSS  -- */        
         /* Standard Button */
         .big-button {  
-        width: 80px;
+        position:absolute;
+        top: 690px;
+        margin:5px;
+        width: 75px;
         height: 35px;     
         border:0px;
         border-radius: 3px;
@@ -624,12 +486,29 @@
         font-size: 10px;
         color: #FFF;
         font-family: "Arial Black", Gadget, sans-serif; 
-
         box-shadow: 0 0px 1px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         transition: 0.5s; 
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
         cursor: pointer}
-        .big-button:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); background-position: right center;}
+        .big-button:hover{box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); background-position: right center;}   
+        #analyze-btn {
+        margin-left:16px;
+        margin-right:25px;
+        width: 120px;
+        height: 50px;
+        font-size: 13px;}
+        
+        #copy-btn{
+        margin-left:0px;
+        }
+        #save-btn{
+            margin-left:80px; 
+        }
+        #reset-btn{
+            display: none;
+            margin-left:160px;
+            background-image:linear-gradient(to right, #c52424 0%, #fca1b8 51%, #f51f55 100%);
+        }
 
        
         /* Standard Classes */
@@ -645,10 +524,87 @@
         .u {color:rgb(255, 255, 255);font-family: "Arial ", Gadget, sans-serif;}
         .font-info { position:center;  font-family:"Arial Black", Gadget, sans-serif; color:white; font-weight: bold; font-size: 15px;}
         .font-result { font-family: "Arial ", Gadget, sans-serif; color:white; text-align: left; font-weight: bold; font-size: 30px;}
-        #based_on{position:absolute; right:90px;bottom:410px;opacity: 0.7;
-        }
-        
-        /* #green-class:hover { text-decoration-color: #fd3578;text-decoration-thickness: 4px;} *//*  #red-class:hover { text-decoration-color: #4360e2;text-decoration-thickness: 4px;} */
+        #based_on{position:absolute; right:90px;bottom:360px;opacity: 0.7;        }
+        #button-status{font-size: 14px; font-weight:bold; margin-left: 11px; margin-top:6px;font-family: "Arial ", Gadget, sans-serif; color:white;}
+
+
+    .wrapper {
+        display:none;
+        justify-content: center;
+        align-items: center;
+        background-color:transparent;}
+
+        .checkmark__circle {
+        stroke-dasharray: 166;
+        stroke-dashoffset: 166;
+        stroke-width: 2;
+        stroke-miterlimit: 10;
+        box-shadow: inset 4px 4px 4px #ffffff;
+        stroke: transparent;
+        fill: none;
+        animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards}
+
+        .checkmark {
+        margin-top: 5px;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        display: block;
+        stroke-width: 5;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        margin: 10% auto; 
+        animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both}
+
+        .checkmark__check { transform-origin: 50% 50%; stroke-dasharray: 48;stroke-dashoffset: 48;animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards}
+        @keyframes stroke {100% {stroke-dashoffset: 0}}
+        @keyframes scale {0%,100% {transform: none}50% {transform: scale3d(1.1, 1.1, 1)}}
+        @keyframes fill { 100% { box-shadow: inset 0px 0px 0px 30px #5bcf74;}}
+
+    
+    .wrapper2 {
+        position:absolute;
+        display: none;
+        top:700px;
+        right:30px;
+        justify-content: center;
+        align-items: center;
+        background-color:transparent;}
+
+        .checkmark__circle2 {
+        stroke-dasharray: 166;
+        stroke-dashoffset: 166;
+        stroke-width: 4;
+        stroke-miterlimit: 10;
+        box-shadow: 2 2 20px #eee;
+     /*    box-shadow: inset 4px 4px 4px #ffffff; */
+        stroke: transparent;
+        fill: none;
+        animation: stroke2 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards}
+
+        .checkmark2 {
+        margin-top: 1px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        display: block;
+        stroke-width: 5;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        margin: 10% auto;
+       
+        animation: fill2 .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both}
+
+        .checkmark__check2 {
+        transform-origin: 50% 50%;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: stroke2 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards}
+
+        @keyframes stroke2 {100% {stroke-dashoffset: 0}}
+        @keyframes scale2 {0%,100% {transform: none}50% {transform: scale3d(1.1, 1.1, 1)}}
+        @keyframes fill2 { 100% { box-shadow: inset 0px 0px 0px 30px #5bcf74;}}
+
         /* END CSS -------------------------------------------------------------------------------------------------------------------*/ 
     </style>            
                       <!-- ^     ^     ^     ^     ^     ^     ^     ^     -->
@@ -679,7 +635,7 @@
               
         <div class="score-ring"><div class="percent1">
             <svg><circle cx="70" cy="70" r="70"></circle><circle id ="set-percent" cx="70" cy="70" r="70"></circle></svg>
-            <div class="number"><a id="carpe-score"></a><a id = "percent" class="span">%</a></div></div>       
+            <div class="number"><a id="carpe-score"></a><a id = "percent" > /100</a></div></div>       
         </div>  
         <div class="font-info" id="based_on">Baserat på</div>  
         <div class="progress-bars" >
@@ -699,10 +655,18 @@
             <a style="text-decoration-color: #80c780;text-decoration-thickness: 3px;">attraherande</a>
             <a style="text-decoration-color: var(--changed-color);text-decoration-thickness: 3px;">ändrade</a>
         </div> 
-        <p class="result-info-slash">/            /            /</p>  
+        <p class="result-info-slash">                     </p>  
         <p class="result-info-ord">ord ord ord</p> 
-        <button type="submit" class="big-button" id = copy-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">KOPIERA ANNONS</button>
-        <button type="submit" class="big-button" id = save-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SPARA RESULTAT</button>   
+        <button type="submit" class="big-button" id ="copy-btn" onclick="ShowCopyStatus()">KOPIERA ANNONS</button>
+        <button type="submit" class="big-button" id ="save-btn" onclick="ShowSaveStatus()">SPARA RESULTAT</button>
+        <button type="submit" class="big-button" id = "reset-btn" onclick="ResetTable()">BÖRJA OM</button>
+
+        <div id="button-status"></div>
+        <!-- <div class="wrapper2" id="wrapper-2"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark__circle2" cx="26" cy="26" r="25" fill="none" />
+            <path class="checkmark__check2" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+        </svg>
+        </div> -->
     </div>
    
 
@@ -710,6 +674,11 @@
         <div class="popup-window" id = "popup-window">
             <div class="top" id= "pop">
             <a href="#close" id = "close-btn" title="Close" class="close">X</a>
+            <div class="wrapper" id="wrapper"> <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+            </svg>
+            </div>
             <p id="hovered-rubric"></p>
             <p id = "hovered-knowledge"></p>
             <p id = "syn-start"></p>
@@ -735,8 +704,6 @@
     </div>
 
     <div class = "column" id = "Instruction-Table">
-
-
         <input id="card-one" class="hidden" type="radio" name="ok-i-btn" checked>
         <input id="card-two" class="hidden" type="radio" name="ok-i-btn">
         <input id="card-three" class="hidden" type="radio" name="ok-i-btn">
@@ -750,12 +717,13 @@
             </div>
             <p class="page-nr"></p>
                   <div class="text">
+
                       <i class="start-quote fas fa-quote-left"></i>
                       <p class="step-nr">STEG 1</p>
                       <p class="quote">Vilken svårfångad kompetens vill du rekrytera? </p>
-                      <p class="step">Tryck på den kompetens du vill anpassa din annons till.  
-                        <button type="submit" id ="kvinnlig-btn">Kvinnlig</button> kompetens ingår alltid som grundval. 
-                        Kontakta oss om du vill <button type="submit" id = "laggtill-btn" >lägga till</button> och anpassa ditt verktyg till fler kompetenser. </p>
+                      <p class="step">Tryck på den kompetens du vill anpassa din annons till. <br></b> 
+                        <button type="submit" id ="kvinnlig-btn">Kvinnlig</button> kompetens ingår alltid som grundval. <br></br>
+                        Om du vill fånga annan kompetens trycker du på <button type="submit" id = "laggtill-btn" >lägga till</button>.</p>
                       <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
                   </div>
             <label class="i-btn" for="card-two">
@@ -773,10 +741,11 @@
                     <i class="start-quote fas fa-quote-left"></i>
                     <p class="step-nr">STEG 2</p>
                     <p class="quote">Hur vill du att din annons ska se ut? </p>
-                    <p class="step">Skriv din annonstext i textrutan. När du trycker på <button type="submit" id="skannaannons-btn" >SKANNA ANNONS</button> kommer AI-verktyget hjälpa dig att attrahera ditt kompetensval genom att färgmarkera <u id = "green-class" >attraherande</u> och <u id="red-class" >icke-attraherande</u> ord i din annons. Verktyget kommer också räkna ut ett Carpe Score baserat på hur attraherande ord annonsen har. </p>
+                    <p class="step">Skriv din annonstext i textrutan och tryck sedan på <button type="submit" id="skannaannons-btn" >SKANNA ANNONS</button>.
+                        <br></br> Vårt AI-verktyg kommer då att räkna fram ett Carpe Score som visar hur väl du attraherar ditt kompetensval.<br></br> Verktyget detektererar även ord som är <u id = "green-class" >attraherande</u> och <u id="red-class" >icke-attraherande</u>.</p> </p> 
                     <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
                 </div>
-                <label class="i-btn" for="card-three">
+                <label class="i-btn" for="card-three"> 
               <p>NÄSTA STEG</p>
             </label>
           </div>
@@ -788,7 +757,7 @@
                 <i class="start-quote fas fa-quote-left"></i>
                 <p class="step-nr">STEG 3</p>
                 <p class="quote">Hur högt Carpe Score kan du få? </p>
-                <p class="step">Om du håller pekaren över ett <u id= "red-class" >rödmarkerat</u> ord hjälper vi dig att byta ut det till ett ord som attraherar ditt kompetensval. Om du ändrar till vårt ordförslag kommer du att öka ditt Carpe Score. Ditt Carpe Score kan också ökas på egen hand, genom att du lyckas träffa in fler <u id="green-class" >grönmarkerade</u> ord.</p>
+                <p class="step">Genom att hålla pekaren över ett <u id= "red-class" >icke-attraherande</u> ord hjälper vi dig och föreslår mer attraherande ordförslag som du kan <u id = "purple-class" >ändra</u> till. <br></br> Du kommer då att öka ditt Carpe Score.</p>
                 <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
             </div>
             <label class="i-btn" for="card-four"><p>NÄSTA STEG</p></label>
@@ -801,51 +770,23 @@
               <div class="text">
                   <i class="start-quote fas fa-quote-left"></i>
                   <p class="step-nr">STEG 4</p>
-                  <p class="quote">Vill du spara statistik i din profil? </p>
-                  <p class="step">När du är nöjd med ditt Carpe Score kan du trycka på <button type="submit" id="spararesultat-btn" >SPARA RESULTAT</button>. Din annons och dina poäng kommer då att lagras så att vi kan följa upp din utveckling.</p>
+                  <p class="quote">Vill du spara ditt resultat i din profil? </p>
+                  <p class="step">När du är nöjd med ditt Carpe Score trycker du på <button type="submit" id="spararesultat-btn" >SPARA RESULTAT</button>.<br></br>Din statistik och utveckling kommer då presenteras i din profilsida.</p>
                   <img class="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU"> 
               </div>
-              <label class="i-btn" for="card-one"><p>BÖRJA OM </p></label>
+              <label class="i-btn" for="card-one"><p>KÖR IGÅNG </p></label>
             </div>
           </div>
-      </div>    
-          
+      </div>           
     </div>
 
-</div> <!-- End of section-2 -->
-   
+</div> <!-- End of section-2 --> 
 <form action ="/analyzeaction" id ="analyze-area" method="post">
     <input type="hidden" id="h-content" style="width:0%; height: 0%;" name="hidden" value="hidden-content">
-<!--      <button type="submit" class="edit-buttons big-button" id = analyze-btn name = "analyze" value="analyze" onclick="POSTHiddenDescription()">SKANNA</button> -->
-
     <div class = "section-3">
         <button type="submit" class="analyze-buttons big-button" id = analyze-btn name = "analyze" value="analyze" onclick="POST_unclassified_description()">SKANNA ANNONS</button>
     </div>
-
 </form>
-
-
-<!-- <img style="top:20%;right:30%;position:absolute;height:60%;width: 50%; opacity: .5"id="credit" src= "https://i.ibb.co/v3NDYy9/Logga-Utan-Text.png?fbclid=IwAR1fSsPwa0h3hs-3-ukMkDNIWiqO0O8WRYHHUfRY-RJQRK0B-mRMu8O-BvU">   -->
-<!-- <div class="word-info" id="word-info"><p id = "popup-window">WORD INFO</p></div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                          
@@ -859,13 +800,11 @@
 
 <script>
         //START SCRIPT --------------------------------------------------------------------------------------------------------------------
-     
-    
     var name;
     var target;
     var analyzestatus;
     var description;
-    var ongoingGame;
+    var ongoingGame = false;
 
     var synonym_dict = {}
     var word_class_dict = {};
@@ -873,6 +812,7 @@
     var current_terms_on_table = [];
 
     var PopupTable = document.getElementById("pop");
+    var checkSign = document.getElementById("wrapper");
     var PopupTable_rubric = document.getElementById("hovered-rubric");
     var PopupTable_text = document.getElementById("hovered-knowledge");
     var PopupTable_syn_start= document.getElementById("syn-start");
@@ -900,10 +840,16 @@
     var eW = document.getElementById("nr-red-words");
     var aW = document.getElementById("nr-green-words");
     var cW = document.getElementById("nr-changed-words");
+    var p_bar = document.getElementById("purple-bar");
+    var cS_node;
+    var eW_node;
+    var aW_node;
+    var cW_node;
 
-    inititateResultValues();
+    initiateResultValues();
     LoadResultTable();
     getUserParams();
+  
     
 
     function getUserParams() { 
@@ -919,7 +865,6 @@
     
         if (params.has('target')) {
             target = params.get('target');
-            document.getElementById("edit-table").style.borderColor = "#80c780"; 
             document.getElementById("w-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
             document.getElementById("w-btn").style.height = "27px";
             document.getElementById("w-btn").style.width= "87px";
@@ -927,10 +872,7 @@
             document.getElementById("w-btn").style.marginLeft = "0%";
             document.getElementById("analyze-btn").style.backgroundImage = "linear-gradient(to right,  #80c780 0%, #78cfc4 51%, #80c780 100%)";
             document.getElementById("analyze-btn").style.borderImageSource = " linear-gradient(to right, #2427e4 0%, #53dac8 51%, #73dd5e 100%)";
-            document.getElementById("blue").style.background ='#acacac'; //reset colour
-            document.getElementById("green").style.background ='#acacac'; //reset colour
-            document.getElementById("yellow").style.background ='#acacac'; //reset colour
-            document.getElementById("orange").style.background ='#acacac'; //reset colour}
+          
             console.log("Target: " + target);}
 
         if (params.has('analyze')) { 
@@ -942,6 +884,7 @@
                 console.log("Du måste välja en kompetens som annonsen ska anpassas till.");
                 console.log(analyzestatus);}
             else { /* Analyze status is successful */
+                document.getElementById("reset-btn").style.display="block";
                 const analyze_div = document.getElementById("a-status");
                 const anlz_message = document.createTextNode(analyzestatus);
                 /* analyze_div.appendChild(anlz_message); */
@@ -949,7 +892,7 @@
                 if (ongoingGame === "false") {
                     console.log("ongoing game : false: result: " + result);
                     ongoingGame = false;
-                    inititateResultValues();
+                    initiateResultValues();
                     getMLResult(result);
                     first_nr_exkluding_words = nr_exkluding_words;
                     updateResultTable(); 
@@ -962,11 +905,9 @@
                 if (ongoingGame == "true"){
                     ongoingGame = true;
                     getMLResult(result);   
-                    first_nr_exkluding_words = params.get('first_nr_exkluding_words');
-                    nr_changed_words = params.get('nr_changed_words');
-                    console.log("TRUEEEEE----####################--first number exkluding:" + first_nr_exkluding_words + ": nr_changed_Words" + nr_changed_words);
-                    updateResultTable();
-                }
+                    first_nr_exkluding_words = parseInt(params.get('first_nr_exkluding_words'));
+                    nr_changed_words = parseInt(params.get('nr_changed_words'));
+                    updateResultTable();}
             }
         }}
 
@@ -980,7 +921,6 @@
         var prob;
         var synonyms;
         EditTable.textContent = "";
-        console.log("ML Result: " + result);
         
         //Get result by word  
         for (var i in result_by_word) { 
@@ -1108,6 +1048,7 @@
 
         if (event.target.id === "red-class") { 
             PopupTable.style.display = "block";
+            checkSign.style.display="none";
             PopupTable.style.height ="200px";      
             mouse_on_red_word =  event.target.textContent;        
             
@@ -1166,6 +1107,7 @@
         
         if (event.target.id === "green-class") {  
             PopupTable.style.display = "block";
+            checkSign.style.display="none";
             PopupTable.style.height ="120px";      
             mouse_on_green_word =  event.target.textContent;
 
@@ -1182,6 +1124,7 @@
 
         if (event.target.id === "purple-class") {
             PopupTable.style.display = "block";
+            checkSign.style.display="none";
             PopupTable.style.height ="120px";   
             mouse_on_purple_word =  event.target.textContent;
 
@@ -1221,7 +1164,7 @@
                 var index = current_terms_on_table.indexOf(mouse_on_red_word.toLowerCase());
                 current_terms_on_table[index] = alternative_word;
                 exkluding_words_before = nr_exkluding_words;
-                changing_words_before = nr_changed_words;
+                changing_words_before = parseInt(nr_changed_words);
                             
                 console.log("First nr exkluding words:");
                 console.log(first_nr_exkluding_words);
@@ -1230,7 +1173,7 @@
                 console.log(changing_words_before);
                 
                 nr_exkluding_words-=1;
-                nr_changed_words+=1;
+                nr_changed_words +=1;
 
                 console.log("Changing word after");
                 console.log(nr_changed_words);
@@ -1264,9 +1207,11 @@
         undo_btn.onclick = function (event) {
             document.getElementById("pop").style.display = "none";
             exkluding_words_before = nr_exkluding_words;
-            changing_words_before = nr_changed_words;
+            changing_words_before = parseInt(nr_changed_words);
 
             nr_changed_words-=1;
+
+
             nr_exkluding_words+=1;
             console.log("LOADBAR-PURPLE IN CHANGE ALTERNATIVETABLE IF UNDO BUTTON");
             var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
@@ -1285,7 +1230,8 @@
     function updateResultTable(){
 
         /* Update Carpe Score */
-
+        var red_children = document.getElementById("red-class");
+        console.log("how many children? + " +nr_exkluding_words);
         console.log("Calculate carpe_score of current terms on table:")
         var numerator =0;
         for (var i=0; i < current_terms_on_table.length; i++) {
@@ -1293,31 +1239,29 @@
             var current_term = current_terms_on_table[i];
             console.log("Term prob:");
             console.log(term_prob_dict[current_term]);
-            numerator += term_prob_dict[current_term];
-        }
+            numerator += term_prob_dict[current_term];}
+        
         carpe_score = (100*(numerator/current_terms_on_table.length)) | 0;
         cS.textContent=carpe_score;
-
         console.log("Numerator:");
         console.log(numerator);
         console.log("Number of terms on table:");
         console.log(current_terms_on_table.length);
         console.log("Score:");
         console.log(carpe_score);
-        if (carpe_score > 9){percent_sign.style.left = "65px;"} else {percent_sign.style.left="45px;"}
-        console.log("left: "+ percent_sign.style.left)
+       
     
         /* Update result table */
-
         cS.textContent = carpe_score;
         eW.textContent = nr_exkluding_words;
         aW.textContent = nr_attractive_words;
         cW.textContent = nr_changed_words;
+        console.log("UPDATE RESULT TABLE:    "     + nr_changed_words+ cW.textContent);
 
-        /* var p_bar = document.getElementById("purple-bar");
-        p_bar.style.animationDuration = '4s'; */
-        circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)'; 
-        var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
+        circle.style.strokeDashoffset = 'calc(440 - (440 * ' +carpe_score+') / 100)';
+        circle.style.animation = 'percent 3.0s 1'
+   
+        var keyFrames_circle = document.createTextNode('@keyframes percent {0% { stroke-dashoffset:'+carpe_score+';stroke-width: 0;}}');
         var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width:' +exkluding_words_before/nr_of_words*100+'%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
         var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 0%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
         var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width:'+changing_words_before/first_nr_exkluding_words*100+'%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
@@ -1325,6 +1269,24 @@
         document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
         document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
         document.getElementsByTagName("style")[0].appendChild(keyFrames_changed);
+
+
+        if (ongoingGame){
+            if (nr_exkluding_words===0){
+                circle.style.animation = 'percent 3.0s 1'
+            var keyFrames_circle1 = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:0;}}');
+            document.getElementsByTagName("style")[0].appendChild(keyFrames_circle1); 
+            PopupTable_rubric.style.fontSize = "15px";
+            PopupTable_rubric.textContent ="Bra jobbat! Du har ändrat alla rödmarkerade ord! ";
+            PopupTable_text.textContent="Vill du höja ditt Carpe Score ytterligare kan du testa ändra på egen hand.";
+            PopupTable_text.style.fontSize = "10px";
+            PopupTable_syn_start.textContent="";
+            PopupTable_btns.textContent = "";
+            PopupTable.style.display = "block";
+            PopupTable.style.height ="205px"; 
+            PopupTable.style.width; "300px";
+            PopupTable.style.textAlign = "center";
+            checkSign.style.display="block";}}
     }
 
     function POST_unclassified_description(){
@@ -1336,7 +1298,8 @@
     function POST_classified_description(){
         document.getElementById("analyze-area").action += ":" + name + ":" + target +":" + ongoingGame+ ":"+ carpe_score+  ":" + first_nr_exkluding_words +":" + nr_exkluding_words +":" + ":" + exkluding_words_before + ":" + nr_attractive_words + ":" + nr_changed_words + ":" +changing_words_before + ":" + nr_of_words; }    
       
-    function inititateResultValues(){
+    function initiateResultValues(){
+        console.log("INITIATE---------------------------------------------------");
         carpe_score = 0;
         first_nr_exkluding_words = 0;
         nr_exkluding_words = 0;
@@ -1347,34 +1310,51 @@
         nr_of_words=0;}
 
 
-    function LoadResultTable(){
-      
-        if (!target){
-            var cS_node= document.createTextNode(carpe_score);
-            var eW_node= document.createTextNode(nr_exkluding_words);
-            var aW_node= document.createTextNode(nr_attractive_words);
-            var cW_node= document.createTextNode(nr_changed_words);
+    function LoadResultTable(){        
+            cS_node= document.createTextNode(carpe_score);
+            eW_node= document.createTextNode(nr_exkluding_words);
+            aW_node= document.createTextNode(nr_attractive_words);
+            cW_node= document.createTextNode(nr_changed_words);
+            console.log("------------------CREAAAAATINNNG -----------------")
             cS.appendChild(cS_node);
             eW.appendChild(eW_node);
             aW.appendChild(aW_node);
             cW.appendChild(cW_node);
-            var keyFrames_circle = document.createTextNode('@keyframes percent {0% {stroke-dashoffset:'+carpe_score+';}}');
-            var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% { width: 100%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
+
+            var keyFrames_circle = document.createTextNode('@keyframes percent {0%  { stroke-dashoffset:'+carpe_score+';}}');
+            var keyFrames_red = document.createTextNode('@keyframes loadbar-red {0% {  width: 100%; }100% { width: '+nr_exkluding_words/nr_of_words*100+'%; }}');
             var keyFrames_green = document.createTextNode('@keyframes loadbar-green {0% { width: 100%; }100% { width: '+nr_attractive_words/nr_of_words*100+'%; }}');
             var keyFrames_changed = document.createTextNode('@keyframes loadbar-purple {0% { width: 100%; }100% { width: '+nr_changed_words/first_nr_exkluding_words*100+'%; }}'); 
             circle.style.strokeDashoffset =  'calc(440 - (440 * ' +carpe_score+') / 100)';
+            circle.style.animation = 'percent 1.0s 3'
             document.getElementsByTagName("style")[0].appendChild(keyFrames_circle); 
             document.getElementsByTagName("style")[0].appendChild(keyFrames_red); 
             document.getElementsByTagName("style")[0].appendChild(keyFrames_green); 
-            document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); }}
+            document.getElementsByTagName("style")[0].appendChild(keyFrames_changed); }
 
-                   
-         
+        
+        function ShowCopyStatus(){
+            var buttonstatus =  document.getElementById("button-status");
+            buttonstatus.style.marginLeft = "11px";
+            buttonstatus.innerHTML = "Kopirat!";}
+
+        function ShowSaveStatus(){
+            var buttonstatus =  document.getElementById("button-status");
+            buttonstatus.style.marginLeft = "100px";
+            buttonstatus.innerHTML = "Sparat!"; }
+
+        function ResetTable(){
+            document.getElementById("reset-btn").style.display="none";
+            EditTable.textContent = " Här knappar du in din annons...";
+            ongoingGame = false;
+            synonym_dict = {}
+            word_class_dict = {};
+            term_prob_dict = {};
+            current_terms_on_table = [];
+            initiateResultValues();
+            updateResultTable();}       
 </script>
 
 </body>
 </html>
-
-
-  
 
